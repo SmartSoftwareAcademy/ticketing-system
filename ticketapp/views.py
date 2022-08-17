@@ -129,7 +129,11 @@ class TicketDeleteView(LoginRequiredMixin, generic.DeleteView):
 @login_required
 def ticket_list(request):
     import_email()
-    tickets = Ticket.objects.all()
+    if request.user.is_superuser:
+        tickets = Ticket.objects.all()
+    else:
+        tickets = Ticket.objects.filter(
+            assigned_to=request.user)
     return render(request, 'ticketapp/allissues.html', {'tickets': tickets})
 
 
