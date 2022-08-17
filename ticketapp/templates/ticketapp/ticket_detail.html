@@ -1,0 +1,135 @@
+{% extends 'ticketapp/base.html' %} {% block content %}
+
+<div class="container">
+  <h1>{{object.title}}</h1>
+  <p>Client Name: {{object.customer_full_name}}</p>
+  <p>Phone number: {{object.customer_phone_number}}</p>
+  <p>
+    Email:
+    <a href="mailto:{{object.customer_email}}">{{object.customer_email}}</a>
+  </p>
+  <p>
+    Urgency:
+    <span
+      class="badge badge-pill {% if object.ticket_priority == 'Urgent' %} bg-danger {% elif object.ticket_priority == 'Medium' %} bg-warning {% else %} bg-secondary {% endif %} text-white"
+      >{{object.ticket_priority}}</span
+    >
+  </p>
+  {% if object.completed_status %}
+  <p class="badge badge-pill bg-info text-white">Resolved</p>
+  {% else %}
+  <p class="badge badge-pill bg-danger text-white">Unresolved</p>
+  {% endif %}
+  <p>
+    Assigned To:
+    {{object.assigned_to.username}}&nbsp;{{object.assigned_to.last_name}}
+  </p>
+  <p>Created: {{object.created_date}}</p>
+
+  <br />
+  <p>
+    <b>Content:</b><br />{{object.issue_description}}
+    <br />
+    {% if object.mediafiles_set.all|length > 0 %}
+    <span
+      >Attachments <br />{% for item in object.mediafiles_set.all %}
+      <a href="{{item}}" class="img-fluid">{{item}}</a>
+      {% endfor %}
+    </span>
+    {% endif %}
+  </p>
+</div>
+
+<div class="container d-flex mt-2">
+  {% if user.is_staff %} {% if object.completed_status != True %}
+  <button
+    type="button"
+    class="btn btn-success"
+    data-bs-toggle="modal"
+    data-bs-target="#markResolvedModal"
+  >
+    Ressolve
+  </button>
+  {% elif object.completed_status == True %}
+  <button
+    type="button"
+    class="btn btn-success"
+    data-bs-toggle="modal"
+    data-bs-target="#markResolvedModal"
+  >
+    Merge
+  </button>
+  {% endif %} {% endif %}
+  <a
+    href="{% url 'ticketapp:update-ticket' pk=object.pk %}"
+    class="btn btn-primary mx-2"
+    >Edit</a
+  >
+  <a
+    href="{% url 'ticketapp:delete-ticket' pk=object.pk %}"
+    class="btn btn-danger mx-2"
+    >Delete</a
+  >
+</div>
+
+{% if comments %}
+<div class="container mt-4">
+  <h2>Note</h2>
+
+  {% for comment in comments %}
+  <div class="bg-light mt-2 mb-2">
+    <p class="text-secondary">
+      @{{comment.user.username}} {{comment.created_date}}
+    </p>
+    <p>{{comment.text}}</p>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endif %}
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="markResolvedModal"
+  tabindex="-1"
+  aria-labelledby="markResolvedModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="markResolvedModalLabel">Add Note</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="{% url 'ticketapp:mark-resolved' id=object.pk %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <div class="form-group mt-2 mb-2">
+            <textarea
+              name="comment"
+              cols="15"
+              rows="10"
+              class="form-control"
+              value="Issue Ressolved"
+              placeholder="Add note on how issue was solved..."
+            ></textarea>
+
+            <input type="submit" class="btn btn-secondary mt-2" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
