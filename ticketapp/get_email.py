@@ -93,8 +93,8 @@ class EmailDownload:
 
                     # convert the byte data to message
                     email_message = email.message_from_bytes(bytes_data)
-                    self.save_data_in_json(email_message)
-                    self.save_data_in_csv(email_message)
+                    #self.save_data_in_json(email_message)
+                    #self.save_data_in_csv(email_message)
                     self.save_to_db(email_message)
                 except Exception as e:
                     print(e)
