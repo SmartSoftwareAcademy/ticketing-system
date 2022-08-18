@@ -4,7 +4,7 @@ from django.db.models.base import ModelState
 from django.forms import PasswordInput
 from django.urls import reverse
 from django.utils.crypto import get_random_string
-
+from tinymce import models as tinymce_models
 # Create your models here.
 
 
@@ -37,7 +37,8 @@ class Ticket(models.Model):
         User, on_delete=models.CASCADE, null=True, blank=True)
     ticket_id = models.CharField(max_length=8, unique=True, blank=True)
     title = models.CharField(max_length=500)
-    issue_description = models.TextField(max_length=25000)
+    issue_description = tinymce_models.HTMLField(
+        max_length=25000, null=True, blank=True)
     customer_full_name = models.CharField(
         max_length=200, null=True, blank=True)
     customer_phone_number = models.CharField(

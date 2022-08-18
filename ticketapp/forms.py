@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Ticket
+from tinymce.widgets import TinyMCE
 
 TICKET_SECTIONS = (
     ('Software', 'Software'),
@@ -31,8 +32,8 @@ class TicketForm(forms.ModelForm):
                                             max_length=20, widget=forms.TextInput(attrs={'class': 'form-control'}))
     customer_email = forms.CharField(
         max_length=40, widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    issue_description = forms.CharField(
-        max_length=25000, widget=forms.Textarea(attrs={'class': 'form-control'}))
+    issue_description = forms.CharField(required=False,
+                                        max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 10, 'class': 'tinymce'}))
     ticket_section = forms.ChoiceField(
         choices=TICKET_SECTIONS, widget=forms.Select(attrs={'class': 'form-control'}))
     ticket_priority = forms.ChoiceField(
@@ -56,7 +57,7 @@ class TicketUpdateForm(forms.ModelForm):
     customer_email = forms.CharField(required=False,
                                      max_length=40, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     issue_description = forms.CharField(required=False,
-                                        max_length=25000, widget=forms.Textarea(attrs={'class': 'form-control'}))
+                                        max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce'}))
     ticket_section = forms.ChoiceField(required=False,
                                        choices=TICKET_SECTIONS, widget=forms.Select(attrs={'class': 'form-control'}))
     ticket_priority = forms.ChoiceField(

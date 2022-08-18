@@ -12,9 +12,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .models import Ticket, Comment, EmailDetails
 from .forms import TicketForm, TicketUpdateForm
-from .import_email_tickets import *
 from .get_email import EmailDownload
-
+from ticketsupdater.import_email_tickets import import_email
 # Create your views here.
 
 
@@ -29,7 +28,6 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         try:
-            import_email()
             context = super().get_context_data(**kwargs)
             if self.request.user.is_superuser:
                 context['all_issues'] = Ticket.objects.all().count()
@@ -128,7 +126,6 @@ class TicketDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 @login_required
 def ticket_list(request):
-    import_email()
     if request.user.is_superuser:
         tickets = Ticket.objects.all()
     else:
@@ -139,7 +136,6 @@ def ticket_list(request):
 
 @login_required
 def urgent_ticket_list(request):
-    import_email()
     if request.user.is_superuser:
         tickets = Ticket.objects.filter(
             ticket_priority='Urgent')
@@ -151,7 +147,6 @@ def urgent_ticket_list(request):
 
 @login_required
 def resolved_tickets(request):
-    import_email()
     if request.user.is_superuser:
         tickets = Ticket.objects.filter(
             completed_status=True)
@@ -163,7 +158,6 @@ def resolved_tickets(request):
 
 @login_required
 def unresolved_tickets(request):
-    import_email()
     if request.user.is_superuser:
         tickets = Ticket.objects.filter(
             completed_status=False)
@@ -329,8 +323,9 @@ def add_email(request):
 
 
 def get_emails(request):
-    email = 'icthelpdesk23@gmail.com'
-    password = 'tin_ashe10#1'
+    # helpdesk@gokhanmasterspacejv.co.ke
+    email = "info@tdbsoft.co.ke"
+    password = "Netflix201501$!!"  # Legal123!@#
     try:
         EmailDownload(email, password).login_to_imap_server()
         messages.success(request, "Email retrieved successfully")

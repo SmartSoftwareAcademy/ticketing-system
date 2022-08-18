@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from .import_email_tickets import *
 
 app_name = 'ticketapp'
 

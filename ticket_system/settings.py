@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'accounts',
     'ticketapp',
 ]
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'ticket_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'helpdesk',
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'PORT': 3307,
     }
 }
 
@@ -118,9 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
+STATIC_ROOT = os.path.join('static')
 MEDIA_URL = '/media/'  # This is just for url i.e https://l.me/media/l.jpg
 # This is the folder the image will be uploaded
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -136,3 +139,47 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'titusowuor30@gmail.com'
 EMAIL_HOST_PASSWORD = 'xdofqrtncuimlewm'
+
+TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT)
+TINYMCE_DEFAULT_CONFIG = {
+
+    'height': 360,
+    'width': 750,
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'plugins': '''
+   textcolor save link image media preview codesample contextmenu
+   table code lists fullscreen insertdatetime nonbreaking
+   contextmenu directionality searchreplace wordcount visualblocks
+   visualchars code fullscreen autolink lists charmap print hr
+   anchor pagebreak help
+   ''',
+    'toolbar1': '''
+   fullscreen preview bold italic underline | fontselect,
+   fontsizeselect | forecolor backcolor | alignleft alignright |
+   aligncenter alignjustify | indent outdent | bullist numlist table |
+   | link image media | codesample |
+   ''',
+    'toolbar2': '''
+   visualblocks visualchars |
+   charmap hr pagebreak nonbreaking anchor | code |
+   ''',
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+}
+#TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = False
+TINYMCE_JS_URL = os.path.join('tinymce', "tinymce.min.js")
+# TINYMCE_EXTRA_MEDIA = {
+#     'css': {
+#         'all': [
+#             ...
+#         ],
+#     },
+#     'js': [
+#         ...
+#     ],
+# }

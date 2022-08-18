@@ -1,8 +1,9 @@
-{% extends 'ticketapp/base.html' %} {% block content %}
+{% extends 'ticketapp/base.html' %} {% block content %} {% block extra_head %}
+{{form.media}} {% endblock extra_head %}
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Add Ticket</h1>
-
+{{ form.media }}
 <form class="" method="POST">
   {% if form.errors %}
   <ul class="messages">

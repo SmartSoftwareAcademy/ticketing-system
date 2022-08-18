@@ -27,8 +27,9 @@
   <p>Created: {{object.created_date}}</p>
 
   <br />
+      <b>Issue Description</b><br />
   <p>
-    <b>Content:</b><br />{{object.issue_description}}
+<blockquote>{{object.issue_description|safe}}</blockquote>
     <br />
     {% if object.mediafiles_set.all|length > 0 %}
     <span
