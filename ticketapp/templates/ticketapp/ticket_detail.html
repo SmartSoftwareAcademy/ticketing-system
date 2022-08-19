@@ -34,7 +34,7 @@
     {% if object.mediafiles_set.all|length > 0 %}
     <span
       >Attachments <br />{% for item in object.mediafiles_set.all %}
-      <a href="{{item}}" class="img-fluid">{{item}}</a>
+      <a href="{% url 'ticketapp:ticket-list' %}{{item.file}}" class="img-fluid"><i class='fa fa-file'></i></a>
       {% endfor %}
     </span>
     {% endif %}

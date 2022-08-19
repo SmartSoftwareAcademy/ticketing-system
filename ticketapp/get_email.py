@@ -7,10 +7,16 @@ import imaplib
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Ticket
+from .models import *
 from .email_regex import GetEmailDetails
 import os
-
+from django.core.mail import EmailMessage, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.contrib.sites.models import Site
+from django.utils import timezone
+from django.conf import settings
+import os
 
 class EmailDownload:
 
@@ -18,11 +24,13 @@ class EmailDownload:
 
     #################################################################################################################################
 
-    def __init__(self, email, password):
+    def __init__(self,request, email, password,config,backend):
         """Yeah, initializing everything"""
         self.email = str(email)
         self.password = str(password)
-
+        self.config = config 
+        self.backend = backend 
+        self.request=request
     #################################################################################################################################
 
     def login_to_imap_server(self):
@@ -203,14 +211,26 @@ class EmailDownload:
                         file=path)
             ticket.save()
             print(ticket)
-            
-            subject = 'Issue recieved'
-            message = 'Hi {}.\n Your issue \'{}\' has been created successfully. You will recieve an email once it has been resolved.\n Regards,\n ICT Helpdesk'.format(
-                str(mail_from_).split('<')[0].split(' ')[0], str(subject).strip('RE:'))
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
-            #send_mail( subject, message, email_from, recipient_list )
-            
+            if self.config.send_auto_email_on_ticket_creation:
+                subject = 'Issue recieved'
+                message = self.config.code_for_automated_reply.replace(
+                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
+                #email_from = settings.EMAIL_HOST_USER
+                recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
+                #send_mail( subject, message, email_from, recipient_list )
+                email = EmailMessage(subject=subject, body=strip_tags(message), from_email=self.config.support_reply_email, to=recipient_list,connection=self.backend)
+                attachments = ticket.mediafiles_set.all()
+                # Site.objects.get_current().domain
+                domain = self.request.META['HTTP_HOST']
+                protocol = 'https' if self.request.is_secure() else 'http'
+
+                if attachments:
+                    for attch in attachments:
+                        filename = str(protocol+'//'+str(domain)+'/'+str(attch.file))
+                        print(filename)
+                        email.attach(attch.file.name, attch.file.read(),
+                                     attch.file.content_type)
+                email.send()
             print("Ticket created successfully:{}\n{}".format(
                 recipient_list, str(subject).strip('RE:')))
         except Exception as e:

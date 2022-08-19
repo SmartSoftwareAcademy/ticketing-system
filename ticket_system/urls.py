@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,3 +24,10 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('', include('ticketapp.urls')),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# default: "Django Administration"
+admin.site.site_header = 'Helpdesk Administration'
+# default: "Site administration"
+admin.site.index_title = 'Admin Area'
+admin.site.site_title = 'Administration'

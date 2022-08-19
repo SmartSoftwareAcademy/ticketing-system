@@ -30,6 +30,13 @@ class TicketAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+class OutgoinEmailSettingsAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE()}
+    }
+
+
 admin.site.register(Ticket, TicketAdmin)
+admin.site.register(OutgoinEmailSettings, OutgoinEmailSettingsAdmin)
 admin.site.register(Comment)
-admin.site.register(MediaFiles)
+admin.site.register([MediaFiles, ImapSettings])

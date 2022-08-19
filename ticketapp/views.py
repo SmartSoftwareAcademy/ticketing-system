@@ -1,4 +1,9 @@
+from django.shortcuts import render
+from django.http.response import HttpResponse
+import os
+import mimetypes
 import datetime
+from operator import concat
 from django.shortcuts import redirect, render, HttpResponseRedirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic
@@ -10,10 +15,11 @@ from django.contrib import messages
 from django.db.models import Count
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Ticket, Comment, EmailDetails
+from .models import *
 from .forms import TicketForm, TicketUpdateForm
 from .get_email import EmailDownload
 from ticketsupdater.import_email_tickets import import_email
+from django.core.mail.backends.smtp import EmailBackend
 # Create your views here.
 
 
@@ -109,8 +115,15 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = TicketForm
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+        try:
+            form.instance.user = self.request.user
+            files = self.request.FILES.getlist('attach')
+            for file in files:
+                MediaFiles.objects.get_or_create(
+                    file=file)
+            return super().form_valid(form)
+        except Exception as e:
+            print("ticket create error:{}".format(e))
 
 
 class TicketUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -323,14 +336,45 @@ def add_email(request):
 
 
 def get_emails(request):
-    # helpdesk@gokhanmasterspacejv.co.ke
-    email = "info@tdbsoft.co.ke"
-    password = "Netflix201501$!!"  # Legal123!@#
     try:
-        EmailDownload(email, password).login_to_imap_server()
+        imap_settings = ImapSettings.objects.all()[0]
+        config = OutgoinEmailSettings.objects.all()[0]
+        print(imap_settings.email_id, imap_settings.email_password)
+        backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
+                               password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
+
+        EmailDownload(request, imap_settings.email_id, imap_settings.email_password,
+                      config, backend).login_to_imap_server()
         messages.success(request, "Email retrieved successfully")
     except Exception as e:
         print(e)
         messages.error(request, "Failed to retrieve emails")
-
     return HttpResponseRedirect('/')
+
+
+# Import mimetypes module
+# import os module
+# Import HttpResponse module
+# Import render module
+
+# Define function to download pdf file using template
+
+def download_file(request, filename=''):
+    if filename != '':
+        # Define Django project base directory
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # Define the full file path
+        filepath = BASE_DIR + '/filedownload/Files/' + filename
+        # Open the file for reading content
+        path = open(filepath, 'rb')
+        # Set the mime type
+        mime_type, _ = mimetypes.guess_type(filepath)
+        # Set the return value of the HttpResponse
+        response = HttpResponse(path, content_type=mime_type)
+        # Set the HTTP header for sending to browser
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        # Return the response value
+        return response
+    else:
+        # Load the template
+        return redirect('ticketapp:ticket-list')

@@ -40,6 +40,8 @@ class TicketForm(forms.ModelForm):
         choices=TICKET_URGENCY, widget=forms.Select(attrs={'class': 'form-control'}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
+    attach = forms.FileField(
+        widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     class Meta:
         model = Ticket
@@ -64,6 +66,8 @@ class TicketUpdateForm(forms.ModelForm):
         choices=TICKET_URGENCY, widget=forms.Select(attrs={'class': 'form-control'}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
+    attach = forms.FileField(
+        widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     class Meta:
         model = Ticket

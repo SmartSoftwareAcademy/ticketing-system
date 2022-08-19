@@ -35,4 +35,5 @@ urlpatterns = [
 
     path("get-emails/", views.get_emails, name="get-emails"),
     path('get_mail_tickets/', views.sync_tickets, name='import_tickets'),
+    path('download/<str:filename>/', views.download_file, name='downloadfile'),
 ]

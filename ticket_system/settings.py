@@ -9,11 +9,12 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+#from ticketapp.models import *
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+#email_settings = OutgoinEmailSettings.objects.all()
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'tinymce',
     'accounts',
     'ticketapp',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -112,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -133,18 +137,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# .format(email_settings.email_backed)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = ''  # email_settings.email_host  # 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'titusowuor30@gmail.com'
-EMAIL_HOST_PASSWORD = 'xdofqrtncuimlewm'
+EMAIL_PORT = ''  # email_settings.email_port  # 587
+EMAIL_HOST_USER = ''  # email_settings.support_reply_email  # 'titusowuor30@gmail.com'
+EMAIL_HOST_PASSWORD = ''  # email_settings.email_password  # 'xdofqrtncuimlewm'
 
 TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT)
 TINYMCE_DEFAULT_CONFIG = {
 
-    'height': 360,
-    'width': 750,
+    'height': 540,
+    'width': 920,
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',

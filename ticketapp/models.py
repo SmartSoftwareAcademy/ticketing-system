@@ -96,3 +96,41 @@ class EmailDetails(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class ImapSettings(models.Model):
+    imap_server = models.CharField(max_length=100)
+    email_id = models.EmailField(max_length=100)
+    email_password = models.CharField(max_length=100)
+    imap_port = models.IntegerField()
+
+    def __str__(self):
+        return self.email_id
+
+    class Meta:
+        verbose_name_plural = 'Imap Email Setup - (Incoming)'
+
+
+class OutgoinEmailSettings(models.Model):
+    support_reply_email_name = models.CharField(
+        max_length=255, default='ICT Helpdesk')
+    support_reply_email = models.EmailField(
+        max_length=255, default='titusowuor30@gmail.com')
+    email_password = models.CharField(
+        max_length=255, default='xdofqrtncuimlewm')
+    email_port = models.IntegerField(default=587)
+    email_backed = models.CharField(max_length=100, default='smtp')
+    email_host = models.CharField(max_length=255, default='smtp.gmail.com')
+    fail_silently = models.BooleanField(default=True)
+    use_tls = models.BooleanField(default=True)
+    send_auto_email_on_ticket_creation = models.BooleanField(default=True)
+    code_for_automated_reply = models.TextField(max_length=25000)
+    end_auto_email_on_agent_reply = models.BooleanField(default=True)
+    code_for_agent_reply = models.TextField(max_length=25000)
+    code_place_holders = models.TextField(max_length=25000)
+
+    def __str__(self):
+        return self.support_reply_email_name
+
+    class Meta:
+        verbose_name_plural = 'Support Email Setup - (Outgoing)'
