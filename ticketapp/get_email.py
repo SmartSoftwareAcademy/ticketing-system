@@ -226,9 +226,9 @@ class EmailDownload:
 
                 if attachments:
                     for attch in attachments:
-                        filename = str(protocol+'//'+str(domain)+'/'+str(attch.file))
+                        filename = str(protocol+'\\'+str(domain)+'\\'+str(attch.file))
                         print(filename)
-                        email.attach(attch.file.name, attch.file.read(),
+                        email.attach(attch.file.name.strip("\\").join('/'), attch.file.read(),
                                      attch.file.content_type)
                 email.send()
             print("Ticket created successfully:{}\n{}".format(
