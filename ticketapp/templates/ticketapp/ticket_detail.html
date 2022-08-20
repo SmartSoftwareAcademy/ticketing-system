@@ -1,7 +1,7 @@
 {% extends 'ticketapp/base.html' %} {% block content %}
 
 <div class="container">
-  <h1>{{object.title}}</h1>
+  <h5><strong>{{object.title}}</strong></h5>
   <p>Client Name: {{object.customer_full_name}}</p>
   <p>Phone number: {{object.customer_phone_number}}</p>
   <p>
@@ -49,7 +49,7 @@
     data-bs-toggle="modal"
     data-bs-target="#markResolvedModal"
   >
-    Ressolve
+    Reply
   </button>
   {% elif object.completed_status == True %}
   <button
@@ -75,14 +75,14 @@
 
 {% if comments %}
 <div class="container mt-4">
-  <h2>Note</h2>
+  <h5>Comments</h5>
 
   {% for comment in comments %}
   <div class="bg-light mt-2 mb-2">
     <p class="text-secondary">
       @{{comment.user.username}} {{comment.created_date}}
     </p>
-    <p>{{comment.text}}</p>
+    <p>{{comment.text|safe}}</p>
   </div>
 
   {% endfor %}
@@ -92,7 +92,7 @@
 
 <!-- Modal -->
 <div
-  class="modal fade"
+  class="modal fade bd-example-modal-lg"
   id="markResolvedModal"
   tabindex="-1"
   aria-labelledby="markResolvedModalLabel"
@@ -110,21 +110,19 @@
         ></button>
       </div>
       <div class="modal-body">
+        
+        {{email_form.media}}
         <form
           action="{% url 'ticketapp:mark-resolved' id=object.pk %}"
-          method="post"
-        >
+          method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-group mt-2 mb-2">
-            <textarea
-              name="comment"
-              cols="15"
-              rows="10"
-              class="form-control"
-              value="Issue Ressolved"
-              placeholder="Add note on how issue was solved..."
-            ></textarea>
-
+            {{email_form.subject}}
+            {{email_form.attach}}
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="closeticket" value=getValue() name="closeticket">
+              <label class="form-check-label" for="exampleCheck1">Reply and close ticket</label>
+            </div>
             <input type="submit" class="btn btn-secondary mt-2" />
           </div>
         </form>
@@ -132,5 +130,16 @@
     </div>
   </div>
 </div>
-
 {% endblock content %}
+{% block extra_scripts %}
+<script>
+  function getValue(){
+    close_ticket_check=document.getElementById("closeticket")
+    if(close_ticket_check.checked == True){
+      close_ticket_check.value='True'
+    }else{
+      close_ticket_check.value='False'
+    }
+  }
+</script>
+{% endblock %}

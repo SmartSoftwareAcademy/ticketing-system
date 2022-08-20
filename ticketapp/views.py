@@ -13,14 +13,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Count
-from django.core.mail import send_mail
 from django.conf import settings
 from .models import *
-from .forms import TicketForm, TicketUpdateForm
+from .forms import *
 from .get_email import EmailDownload
 from ticketsupdater.import_email_tickets import import_email
-from django.core.mail.backends.smtp import EmailBackend
-# Create your views here.
+from django.utils import timezone
 
 
 def sync_tickets(request):
@@ -107,6 +105,8 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(
             ticket=self.get_object()).order_by('-created_date')
+        form = EmaiailAttachmentForm
+        context['email_form'] = form
         return context
 
 
@@ -182,24 +182,37 @@ def unresolved_tickets(request):
 
 @login_required
 def mark_ticket_as_resolved(request, id):
-    if request.method == 'POST':
-        comment = request.POST['comment']
-        ticket = Ticket.objects.get(id=id)
-        user = request.user
-        date_time = datetime.datetime.now()
-        ticket.resolved_by = user
-        ticket.resolved_date = date_time
-        ticket.completed_status
-        Comment.objects.create(ticket=ticket, user=user, text=comment)
-        Ticket.objects.filter(id=id).update(
-            completed_status=True, resolved_by=user, resolved_date=date_time)
-
-        subject = 'Issue resolved'
-        message = f'Good day.\n Please note your issue: \n{ticket.issue_description}\n has been resolved successfully\nRegards,\n ICT Helpdesk'
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = [ticket.customer_email, ]
-        send_mail(subject, message, email_from, recipient_list)
-
+    try:
+        if request.method == 'POST':
+            comment = request.POST['subject']
+            ticket = Ticket.objects.get(id=id)
+            user = request.user
+            date_time = datetime.datetime.now()
+            ticket.resolved_by = user
+            ticket.resolved_date = date_time
+            ticket.completed_status
+            config = OutgoinEmailSettings.objects.all()[0]
+            Comment.objects.create(ticket=ticket, user=user, text=comment)
+            message = config.code_for_agent_reply.replace(
+                '[id]', ticket.ticket_id).replace('[tags]', 'None').replace('[date]', str(timezone.now()))
+            subject = 'Ticket:(#{}) Updated'.format(ticket.ticket_id)
+            print("Close ticket:".format(request.POST.get('closeticket')))
+            if request.POST.get('closeticket') == 'on':
+                Ticket.objects.filter(id=id).update(
+                    completed_status=True, resolved_by=user, resolved_date=date_time)
+                message = 'Your ticket (#({}) has been close by {}.\nIf you are not fully satisfied with the issue,submit another ticket to Helpdesk'.format(
+                    ticket.ticket_id, user)
+                subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
+            recipient_list = [ticket.customer_email, ]
+            print("Files:".format(request.FILES.getlist('attach')))
+            if len(request.FILES.getlist('attach')) > 0:
+                attachments = request.FILES.getlist('attach')
+            else:
+                attachments = []
+            EmailDownload.send_email(request,
+                                     subject, message, recipient_list, attachments)
+    except Exception as e:
+        print(e)
     return HttpResponseRedirect(reverse("ticketapp:ticket-detail", kwargs={'pk': id}))
 
 
@@ -338,13 +351,9 @@ def add_email(request):
 def get_emails(request):
     try:
         imap_settings = ImapSettings.objects.all()[0]
-        config = OutgoinEmailSettings.objects.all()[0]
         print(imap_settings.email_id, imap_settings.email_password)
-        backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
-                               password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
-
-        EmailDownload(request, imap_settings.email_id, imap_settings.email_password,
-                      config, backend).login_to_imap_server()
+        EmailDownload(request, imap_settings.email_id,
+                      imap_settings.email_password).login_to_imap_server()
         messages.success(request, "Email retrieved successfully")
     except Exception as e:
         print(e)

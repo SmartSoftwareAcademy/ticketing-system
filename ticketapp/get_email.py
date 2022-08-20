@@ -1,4 +1,5 @@
 import csv
+from email.mime import image
 import json
 import random
 import shelve
@@ -17,6 +18,9 @@ from django.contrib.sites.models import Site
 from django.utils import timezone
 from django.conf import settings
 import os
+from django.core.mail.backends.smtp import EmailBackend
+from django.contrib import messages
+
 
 class EmailDownload:
 
@@ -24,15 +28,36 @@ class EmailDownload:
 
     #################################################################################################################################
 
-    def __init__(self,request, email, password,config,backend):
+    def __init__(self,request, email, password):
         """Yeah, initializing everything"""
         self.email = str(email)
         self.password = str(password)
-        self.config = config 
-        self.backend = backend 
         self.request=request
     #################################################################################################################################
 
+    def send_email(request,subject, body, to,attachments):
+        imap_settings = ImapSettings.objects.all()[0]
+        config = OutgoinEmailSettings.objects.all()[0]
+        print(imap_settings.email_id, imap_settings.email_password)
+        backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
+                               password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
+        if attachments:
+            email = EmailMessage(subject=subject, body=strip_tags(
+                body), from_email=config.support_reply_email, to=to, connection=backend)
+            for attch in attachments:
+                #filename = str(protocol+'\\'+str(domain)+'\\'+str(attch.file))
+                #print(filename)
+                email.attach(attch.file.name, attch.file.read(),
+                                attch.file.content_type)
+            email.send()
+            messages.success(request,'Email sent successfully!')
+        else:
+            email = EmailMessage(subject=subject, body=strip_tags(
+                body), from_email=config.support_reply_email, to=to, connection=backend)
+            email.send()
+            messages.success(request, 'Email sent successfully!')
+            
+        
     def login_to_imap_server(self):
         """Log in to the imap server"""
 
@@ -215,22 +240,12 @@ class EmailDownload:
                 subject = 'Issue recieved'
                 message = self.config.code_for_automated_reply.replace(
                     '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
-                #email_from = settings.EMAIL_HOST_USER
                 recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
-                #send_mail( subject, message, email_from, recipient_list )
-                email = EmailMessage(subject=subject, body=strip_tags(message), from_email=self.config.support_reply_email, to=recipient_list,connection=self.backend)
-                attachments = ticket.mediafiles_set.all()
+                attachments = []#ticket.mediafiles_set.all()
                 # Site.objects.get_current().domain
-                domain = self.request.META['HTTP_HOST']
-                protocol = 'https' if self.request.is_secure() else 'http'
-
-                if attachments:
-                    for attch in attachments:
-                        filename = str(protocol+'\\'+str(domain)+'\\'+str(attch.file))
-                        print(filename)
-                        email.attach(attch.file.name.strip("\\").join('/'), attch.file.read(),
-                                     attch.file.content_type)
-                email.send()
+                # domain = self.request.META['HTTP_HOST']
+                # protocol = 'https' if self.request.is_secure() else 'http'
+                self.send_email(subject,message,recipient_list,attachments)
             print("Ticket created successfully:{}\n{}".format(
                 recipient_list, str(subject).strip('RE:')))
         except Exception as e:

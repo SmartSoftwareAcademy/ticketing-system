@@ -1,3 +1,4 @@
+from email.policy import default
 from django import forms
 from django.contrib.auth.models import User
 from .models import Ticket
@@ -73,3 +74,10 @@ class TicketUpdateForm(forms.ModelForm):
         model = Ticket
         exclude = ('user', 'ticket_id', 'created_date',
                    'resolved_by', 'resolved_date')
+
+
+class EmaiailAttachmentForm(forms.Form):
+    subject = forms.CharField(required=False,
+                              max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce', 'placeholder': 'Add note on how issue was solved'}))
+    attach = forms.FileField(
+        widget=forms.ClearableFileInput(attrs={'multiple': True, 'name': 'attach'}))

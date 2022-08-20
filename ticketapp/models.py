@@ -89,6 +89,9 @@ class Comment(models.Model):
     text = models.CharField(max_length=500)
     created_date = models.DateTimeField(null=True, auto_now_add=True)
 
+    def __str__(self):
+        return self.ticket.title
+
 
 class EmailDetails(models.Model):
     email = models.EmailField(max_length=254)
