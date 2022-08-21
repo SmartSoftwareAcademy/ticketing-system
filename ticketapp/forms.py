@@ -79,5 +79,5 @@ class TicketUpdateForm(forms.ModelForm):
 class EmaiailAttachmentForm(forms.Form):
     subject = forms.CharField(required=False,
                               max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce', 'placeholder': 'Add note on how issue was solved'}))
-    attach = forms.FileField(
-        widget=forms.ClearableFileInput(attrs={'multiple': True, 'name': 'attach'}))
+    attach = forms.FileField(required=False,
+                             widget=forms.ClearableFileInput(attrs={'multiple': True, 'name': 'attach'}))

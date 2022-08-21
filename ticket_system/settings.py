@@ -127,7 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join('static')
+#STATIC_ROOT = os.path.join('static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 MEDIA_URL = '/media/'  # This is just for url i.e https://l.me/media/l.jpg
 # This is the folder the image will be uploaded
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -145,7 +146,7 @@ EMAIL_PORT = ''  # email_settings.email_port  # 587
 EMAIL_HOST_USER = ''  # email_settings.support_reply_email  # 'titusowuor30@gmail.com'
 EMAIL_HOST_PASSWORD = ''  # email_settings.email_password  # 'xdofqrtncuimlewm'
 
-TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT)
+TINYMCE_JS_ROOT = os.path.join('static')
 TINYMCE_DEFAULT_CONFIG = {
 
     'height': 540,

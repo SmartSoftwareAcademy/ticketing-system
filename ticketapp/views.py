@@ -224,7 +224,7 @@ def mark_ticket_as_resolved(request, id):
             message = config.code_for_agent_reply.replace(
                 '[id]', ticket.ticket_id).replace('[tags]', 'None').replace('[date]', str(timezone.now()))
             subject = 'Ticket:(#{}) Updated'.format(ticket.ticket_id)
-            print("Close ticket:".format(request.POST.get('closeticket')))
+            print("Close ticket:{}".format(request.POST.get('closeticket')))
             if request.POST.get('closeticket') == 'on':
                 Ticket.objects.filter(id=id).update(
                     completed_status=True, resolved_by=user, resolved_date=date_time)
