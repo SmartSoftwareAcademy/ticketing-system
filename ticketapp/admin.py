@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 from tinymce.widgets import TinyMCE
+from .forms import ImapForm
 
 
 class TicketAdmin(admin.ModelAdmin):
@@ -36,7 +37,12 @@ class OutgoinEmailSettingsAdmin(admin.ModelAdmin):
     }
 
 
+class ImapAdmin(admin.ModelAdmin):
+    form = ImapForm
+
+
 admin.site.register(Ticket, TicketAdmin)
 admin.site.register(OutgoinEmailSettings, OutgoinEmailSettingsAdmin)
+admin.site.register(ImapSettings, ImapAdmin)
 admin.site.register(Comment)
-admin.site.register([MediaFiles, ImapSettings])
+admin.site.register([MediaFiles, ])

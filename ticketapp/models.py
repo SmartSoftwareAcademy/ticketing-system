@@ -106,6 +106,8 @@ class ImapSettings(models.Model):
     email_id = models.EmailField(max_length=100)
     email_password = models.CharField(max_length=100)
     imap_port = models.IntegerField()
+    auto_import_mails_as_tickets = models.BooleanField(
+        default=False, blank=True, null=True)
 
     def __str__(self):
         return self.email_id
@@ -131,6 +133,8 @@ class OutgoinEmailSettings(models.Model):
     code_place_holders = models.TextField(
         max_length=25000, blank=True, null=True)
     send_auto_email_on_ticket_creation = models.BooleanField(
+        default=True, blank=True, null=True)
+    auto_assign_tickets = models.BooleanField(
         default=True, blank=True, null=True)
     code_for_automated_reply = models.TextField(
         max_length=25000, blank=True, null=True)

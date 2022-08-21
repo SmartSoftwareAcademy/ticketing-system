@@ -231,7 +231,7 @@ def mark_ticket_as_resolved(request, id):
                 message = 'Your ticket (#({}) has been close by {}.\nIf you are not fully satisfied with the issue,submit another ticket to Helpdesk'.format(
                     ticket.ticket_id, user)
                 subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
-            recipient_list = [ticket.customer_email, ]
+            recipient_list = [ticket.objects.values('assigned_to__email'), ]
             print("Files:{}".format(
                 request.FILES.getlist('attach')))
             if len(request.FILES.getlist('attach')) > 0:
@@ -321,8 +321,8 @@ class UserPerformanceListView(LoginRequiredMixin, generic.ListView):
         context = super().get_context_data(**kwargs)
         vals = Ticket.objects.values('resolved_by__username').annotate(
             resolved_count=Count('resolved_by'))
-        print(vals)
-
+        ticket = Ticket.objects.all().first()
+        print(ticket.assigned_to.email)
         my_users = [str(x['resolved_by__username']) for x in vals]
         my_users.pop(0)
         print(my_users)

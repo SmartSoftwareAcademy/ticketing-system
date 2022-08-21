@@ -6,6 +6,10 @@ class TicketappConfig(AppConfig):
     name = 'ticketapp'
 
     def ready(request):
-        # from ticketsupdater import updater
-        # updater.start(request)
-        pass
+        from ticketsupdater import updater
+        from .models import ImapSettings
+        imap_settings = ImapSettings.objects.all().first()
+        if imap_settings.auto_import_mails_as_tickets:
+            updater.start(request)
+        else:
+            pass

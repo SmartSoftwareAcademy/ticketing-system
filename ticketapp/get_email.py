@@ -7,7 +7,8 @@ import random
 import shelve
 import email
 import imaplib
-from django.contrib.auth.models import User
+from tokenize import group
+from unicodedata import name
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import *
@@ -22,6 +23,7 @@ from django.conf import settings
 import re
 from django.core.mail.backends.smtp import EmailBackend
 from django.contrib import messages
+from django.contrib.auth.models import User, Group
 
 
 class EmailDownload:
@@ -35,6 +37,22 @@ class EmailDownload:
         self.password = str(password)
         self.request=request
         print('Checking mail...')
+        try:
+            #default admin
+            df_admin, created = User.objects.get_or_create(username="superadmin", email="info@tdbsoft.co.ke", password="@Admin123") 
+            df_admin.is_superuser = True
+            df_admin.is_staff = True
+            df_admin.save()
+            user_groups= Group.objects.all()
+            list_names = ["ExternalAdmins", "Admins", "Agents"]
+            for name in list_names:
+                for g in user_groups:
+                    if name.lower() ==  str(g.name).lower():
+                        pass
+                    else:
+                        group, created = Group.objects.get_or_create(name=name)
+        except Exception as e:
+            print("group create error:{}".format(e))
     #################################################################################################################################
 
     def send_email(request,subject, body, to,attachments):
@@ -165,6 +183,7 @@ class EmailDownload:
 
     def save_to_db(self, email_message):
         try:
+            config = OutgoinEmailSettings.objects.all()[0]
             user,created=User.objects.get_or_create(username='chatbot',first_name='chatbot', last_name='chatbot', password="@User1234", is_staff=True, is_superuser=True)
             subject = email_message["subject"]
             mail_to = email_message["to"]
@@ -197,8 +216,8 @@ class EmailDownload:
                 print("Paths=>{}".format(paths))
                 ############################################################################
             email_details = GetEmailDetails(message)
-            if 'helpdesk@gokhanmasterspacejv.co.ke' in str(mail_to).lower():
-                mail_to=str(mail_to).strip('helpdesk@gokhanmasterspacejv.co.ke')
+            if config.support_reply_email in str(mail_to).lower():
+                mail_to = str(mail_to).strip(config.support_reply_email)
                 print("Mail_to:{}".format(mail_to))
                 if ',' in str(mail_to):
                     assign_to, created = User.objects.get_or_create(
@@ -210,10 +229,13 @@ class EmailDownload:
                     assign_to, created = User.objects.get_or_create(
                         username=str(mail_to).strip('\"').strip(), email=str(mail_to).strip(), password='@User1234')
                 assign_to.is_staff = True
+                group = Group.objects.get(name="Agents")
+                if assign_to not in group.user_set.all():
+                    assign_to.groups.add(group)
                 assign_to.save()
             else:
                 assign_to = random.choice(
-                    User.objects.exclude(username='chatbot'))
+                    User.objects.exclude(username='chatbot').exclude(username='superadmin').exclude(email='').exclude(groups__name='ExternalAdmins'))
 
             # ticket_object = Ticket.objects.create(
             #     user=user,
@@ -231,8 +253,9 @@ class EmailDownload:
                 customer_full_name=str(mail_from_).split('<')[0], 
                 customer_email=str(mail_from_).split('<')[1].strip('>'), 
                 ticket_section=email_details.get_issue_section(),
-                customer_phone_number=email_details.get_phone_number(),
-                assigned_to=assign_to)
+                customer_phone_number=email_details.get_phone_number())
+            if config.auto_assign_tickets:
+                ticket.assigned_to = assign_to
             # get attachments            
             if paths:
                 for path in paths:
@@ -240,7 +263,6 @@ class EmailDownload:
                         file=path)
             ticket.save()
             print(ticket)
-            config=OutgoinEmailSettings.objects.all()[0]
             if config.send_auto_email_on_ticket_creation:
                 recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
                 subject = 'Issue recieved'
@@ -257,11 +279,12 @@ class EmailDownload:
                 message = config.code_for_automated_assign.replace(
                     '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
                 receipient_list = [ticket.assigned_to.email, ]
+                subject = "Ticket assignmet:(#{})".format(ticket.ticket_id)
                 print("recipient list:".format(receipient_list))
                 self.send_email(self.request,
-                                         "Ticket assignmet:(#{})".format(ticket.ticket_id), message, receipient_list, attachments)
+                                         subject, message, receipient_list, attachments)
             print("Ticket created successfully:{}\n{}".format(
-                recipient_list, str(subject).strip('RE:')))
+                recipient_list, subject))
         except Exception as e:
             print("create error:{}".format(e))
 

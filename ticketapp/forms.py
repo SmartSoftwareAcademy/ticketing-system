@@ -1,7 +1,9 @@
+from dataclasses import fields
+from django.forms import ModelForm, PasswordInput
 from email.policy import default
 from django import forms
 from django.contrib.auth.models import User
-from .models import Ticket
+from .models import ImapSettings, Ticket
 from tinymce.widgets import TinyMCE
 
 TICKET_SECTIONS = (
@@ -81,3 +83,11 @@ class EmaiailAttachmentForm(forms.Form):
                               max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce', 'placeholder': 'Add note on how issue was solved'}))
     attach = forms.FileField(required=False,
                              widget=forms.ClearableFileInput(attrs={'multiple': True, 'name': 'attach'}))
+
+
+class ImapForm(ModelForm):
+   #email_password = forms.CharField(widget=PasswordInput())
+
+    class Meta:
+        model = ImapSettings
+        fields = '__all__'
