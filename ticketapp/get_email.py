@@ -1,5 +1,6 @@
 from ast import ExceptHandler
 import csv
+from email import message
 from email.mime import image
 import json
 import random
@@ -18,7 +19,7 @@ from django.utils.html import strip_tags
 from django.contrib.sites.models import Site
 from django.utils import timezone
 from django.conf import settings
-import os
+import re
 from django.core.mail.backends.smtp import EmailBackend
 from django.contrib import messages
 
@@ -38,14 +39,13 @@ class EmailDownload:
 
     def send_email(request,subject, body, to,attachments):
         try:
-            imap_settings = ImapSettings.objects.all()[0]
             config = OutgoinEmailSettings.objects.all()[0]
-            print(imap_settings.email_id, imap_settings.email_password)
+            #print(imap_settings.email_id, imap_settings.email_password)
             backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
                                 password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
+            message = re.sub(r'(?<!&nbsp;)&nbsp;', ' ',strip_tags(body))#replace &nbsp; with space
             if attachments:
-                email = EmailMessage(subject=subject, body=strip_tags(
-                    body), from_email=config.support_reply_email, to=to, connection=backend)
+                email = EmailMessage(subject=subject,body=message, from_email=config.support_reply_email, to=to, connection=backend)
                 for attch in attachments:
                     #filename = str(protocol+'\\'+str(domain)+'\\'+str(attch.file))
                     #print(filename)
@@ -54,8 +54,8 @@ class EmailDownload:
                 email.send()
                 messages.success(request,'Email sent successfully!')
             else:
-                email = EmailMessage(subject=subject, body=strip_tags(
-                    body), from_email=config.support_reply_email, to=to, connection=backend)
+                email = EmailMessage(
+                    subject=subject, body=message, from_email=config.support_reply_email, to=to, connection=backend)
                 email.send()
                 messages.success(request, 'Email sent successfully!')
         except Exception as e:
@@ -240,7 +240,7 @@ class EmailDownload:
                         file=path)
             ticket.save()
             print(ticket)
-            config=OutgoinEmailSettings.objects.all[0]
+            config=OutgoinEmailSettings.objects.all()[0]
             if config.send_auto_email_on_ticket_creation:
                 recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
                 subject = 'Issue recieved'
@@ -256,7 +256,7 @@ class EmailDownload:
                 ticket_url = protocol+"://"+domain+'/ticket-detail/{}/'.format(ticket.id)
                 message = config.code_for_automated_assign.replace(
                     '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
-                receipient_list = [ticket.assigned_to.email,]
+                receipient_list = [ticket.assigned_to.email, ]
                 self.send_email(self.request,
                                          "Ticket assignmet:(#{})".format(ticket.ticket_id), message, receipient_list, attachments)
             print("Ticket created successfully:{}\n{}".format(
