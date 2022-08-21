@@ -384,7 +384,7 @@ def get_emails(request):
         print(imap_settings.email_id, imap_settings.email_password)
         EmailDownload(request, imap_settings.email_id,
                       imap_settings.email_password).login_to_imap_server()
-        messages.success(request, "Email retrieved successfully")
+        messages.success(request, "Emails retrieved successfully")
     except Exception as e:
         print(e)
         messages.error(request, "Failed to retrieve emails")

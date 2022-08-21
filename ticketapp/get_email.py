@@ -55,7 +55,7 @@ class EmailDownload:
             print("group create error:{}".format(e))
     #################################################################################################################################
 
-    def send_email(request,subject, body, to,attachments):
+    def send_email(self,subject, body, to,attachments):
         try:
             config = OutgoinEmailSettings.objects.all()[0]
             #print(imap_settings.email_id, imap_settings.email_password)
@@ -70,14 +70,14 @@ class EmailDownload:
                     email.attach(attch.name, attch.read(),
                                     attch.content_type)
                 email.send()
-                messages.success(request,'Email sent successfully!')
+                messages.success(self.request, 'Email sent successfully!')
             else:
                 email = EmailMessage(
                     subject=subject, body=message, from_email=config.support_reply_email, to=to, connection=backend)
                 email.send()
-                messages.success(request, 'Email sent successfully!')
+                messages.success(self.request, 'Email sent successfully!')
         except Exception as e:
-            messages.info(request,"Email send error:{}".format(e))
+            messages.info(self.request,"Email send error:{}".format(e))
             
         
     def login_to_imap_server(self):
@@ -266,24 +266,33 @@ class EmailDownload:
                         file=path)
             ticket.save()
             if config.send_auto_email_on_ticket_creation:
-                recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
-                subject = 'Issue recieved'
-                message = config.code_for_automated_reply.replace(
-                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
-                attachments = []#ticket.mediafiles_set.all()
-                # Site.objects.get_current().domain
-                self.send_email(self.request,subject,message,recipient_list,attachments)
+                #send client email
+                try:
+                    recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
+                    print("recipient_list:{}".format(recipient_list))
+                    subject = 'Issue recieved'
+                    message = config.code_for_automated_reply.replace(
+                        '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
+                    attachments = []#ticket.mediafiles_set.all()
+                    # Site.objects.get_current().domain
+                    self.send_email(subject,message,recipient_list,attachments)
+                except Exception as e:
+                  print("customer email error:{}".format(e))
             if config.send_auto_email_on_agent_assignment:
+                try:
                     # send mail to assignee
-                domain = self.request.META['HTTP_HOST']
-                protocol = 'https' if self.request.is_secure() else 'http'
-                ticket_url = protocol+"://"+domain+'/ticket-detail/{}/'.format(ticket.id)
-                message = config.code_for_automated_assign.replace(
-                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
-                subject = "Ticket assignmet:(#{})".format(ticket.ticket_id)
-                print("recipient list:".format(to_list))
-                self.send_email(self.request,
-                                subject, message, to_list, attachments)
+                    print("to list:{}".format(to_list))
+                    domain = self.request.META['HTTP_HOST']
+                    protocol = 'https' if self.request.is_secure() else 'http'
+                    ticket_url = protocol+"://"+domain+'/ticket-detail/{}/'.format(ticket.id)
+                    message = config.code_for_automated_assign.replace(
+                        '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
+                    subject = "Ticket assignmet:(#{})".format(ticket.ticket_id)
+                    print("recipient list:".format(to_list))
+                    self.send_email(subject, message,
+                                    to_list, attachments)
+                except Exception as e:
+                  print("assignee email error:{}".format(e))
             print("Ticket created successfully}")
         except Exception as e:
             print("create error:{}".format(e))
