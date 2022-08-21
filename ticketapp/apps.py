@@ -6,6 +6,6 @@ class TicketappConfig(AppConfig):
     name = 'ticketapp'
 
     def ready(request):
-        from ticketsupdater import updater
-        updater.start(request)
-        # pass
+        # from ticketsupdater import updater
+        # updater.start(request)
+        pass

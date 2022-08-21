@@ -8949,3 +8949,2609 @@ Tags : None
 Regards,
 Support Team
 "
+"Wed, 17 Aug 2022 14:27:24 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,2022 Multicloud Report,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003399;"">2022 Multicloud Report</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">2022 Multicloud Report</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">Technology choices are never made without tradeoffs. In the fourth installment of their annual report, Turbonomic captures the current state of multicloud, as well as the main motivations and tradeoffs—including an increasing focus on sustainability. Explore the 2022 state of multi-cloud report right here.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800655/44616024 "" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800655/44616024 ""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1647271631_406.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=219494f6-310b-4ffc-a226-9ff47e6e32f7"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=219494f6-310b-4ffc-a226-9ff47e6e32f7"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Wed, 17 Aug 2022 14:27:24 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,2022 Multicloud Report,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003399;"">2022 Multicloud Report</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">2022 Multicloud Report</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">Technology choices are never made without tradeoffs. In the fourth installment of their annual report, Turbonomic captures the current state of multicloud, as well as the main motivations and tradeoffs—including an increasing focus on sustainability. Explore the 2022 state of multi-cloud report right here.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800655/44616024 "" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800655/44616024 ""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1647271631_406.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=219494f6-310b-4ffc-a226-9ff47e6e32f7"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=219494f6-310b-4ffc-a226-9ff47e6e32f7"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Wed, 17 Aug 2022 13:15:58 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,Network management: 5 key 2022 trends,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003399;"">Network management: 5 key 2022 trends</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">Network management: 5 key 2022 trends</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">96% of corporate networks have or will have IoT devices and sensors connecting to them, according to an EMA Research Report of 409 IT professional survey respondents. Open this report to uncover key recommendations for resolving today’s network modernization challenges.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800703/44616024"" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800703/44616024""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1654190074_548.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Thu, 18 Aug 2022 22:01:45 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,test email,"this is the test content
+find attached
+"
+"Fri, 19 Aug 2022 11:54:59 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,Test email with 2 attachments,"Test email content
+Find attached files
+"
+"Wed, 17 Aug 2022 13:15:58 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,Network management: 5 key 2022 trends,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003399;"">Network management: 5 key 2022 trends</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">Network management: 5 key 2022 trends</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">96% of corporate networks have or will have IoT devices and sensors connecting to them, according to an EMA Research Report of 409 IT professional survey respondents. Open this report to uncover key recommendations for resolving today’s network modernization challenges.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800703/44616024"" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800703/44616024""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1654190074_548.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Thu, 18 Aug 2022 22:01:45 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,test email,"this is the test content
+find attached
+"
+"Fri, 19 Aug 2022 11:54:59 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,Test email with 2 attachments,"Test email content
+Find attached files
+"
+"Wed, 17 Aug 2022 14:27:24 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,2022 Multicloud Report,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003399;"">2022 Multicloud Report</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">2022 Multicloud Report</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">Technology choices are never made without tradeoffs. In the fourth installment of their annual report, Turbonomic captures the current state of multicloud, as well as the main motivations and tradeoffs—including an increasing focus on sustainability. Explore the 2022 state of multi-cloud report right here.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800655/44616024 "" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800655/44616024 ""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1647271631_406.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=219494f6-310b-4ffc-a226-9ff47e6e32f7"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=219494f6-310b-4ffc-a226-9ff47e6e32f7"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Wed, 17 Aug 2022 14:27:24 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,2022 Multicloud Report,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003399;"">2022 Multicloud Report</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">2022 Multicloud Report</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">Technology choices are never made without tradeoffs. In the fourth installment of their annual report, Turbonomic captures the current state of multicloud, as well as the main motivations and tradeoffs—including an increasing focus on sustainability. Explore the 2022 state of multi-cloud report right here.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800655/44616024 "" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800655/44616024 ""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1647271631_406.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=219494f6-310b-4ffc-a226-9ff47e6e32f7"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=219494f6-310b-4ffc-a226-9ff47e6e32f7"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Wed, 17 Aug 2022 13:15:58 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,Network management: 5 key 2022 trends,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003399;"">Network management: 5 key 2022 trends</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">Network management: 5 key 2022 trends</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">96% of corporate networks have or will have IoT devices and sensors connecting to them, according to an EMA Research Report of 409 IT professional survey respondents. Open this report to uncover key recommendations for resolving today’s network modernization challenges.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800703/44616024"" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800703/44616024""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1654190074_548.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Thu, 18 Aug 2022 22:01:45 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,test email,"this is the test content
+find attached
+"
+"Fri, 19 Aug 2022 11:54:59 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,Test email with 2 attachments,"Test email content
+Find attached files
+"
+"Wed, 17 Aug 2022 13:15:58 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,Network management: 5 key 2022 trends,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003399;"">Network management: 5 key 2022 trends</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">Network management: 5 key 2022 trends</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">96% of corporate networks have or will have IoT devices and sensors connecting to them, according to an EMA Research Report of 409 IT professional survey respondents. Open this report to uncover key recommendations for resolving today’s network modernization challenges.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800703/44616024"" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800703/44616024""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1654190074_548.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Thu, 18 Aug 2022 22:01:45 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,test email,"this is the test content
+find attached
+"
+"Fri, 19 Aug 2022 11:54:59 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,Test email with 2 attachments,"Test email content
+Find attached files
+"
+"Wed, 17 Aug 2022 14:27:24 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,2022 Multicloud Report,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003399;"">2022 Multicloud Report</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">2022 Multicloud Report</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">Technology choices are never made without tradeoffs. In the fourth installment of their annual report, Turbonomic captures the current state of multicloud, as well as the main motivations and tradeoffs—including an increasing focus on sustainability. Explore the 2022 state of multi-cloud report right here.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800655/44616024 "" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800655/44616024 "" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800655/44616024 ""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1647271631_406.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=219494f6-310b-4ffc-a226-9ff47e6e32f7"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=219494f6-310b-4ffc-a226-9ff47e6e32f7"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Wed, 17 Aug 2022 13:15:58 +0000 (UTC)",ComputerWeekly <info@sg-lists-email.techtarget.com>,info@tdbsoft.co.ke,Network management: 5 key 2022 trends,"
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Technology Research from ComputerWeekly</title>
+<meta charset=""utf-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+<!--[if mso]>
+<style type=""text/css"">
+body {margin: 0px !important; padding: 0px !important;}
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=""text/css"">
+/* CLIENT-SPECIFIC STYLES */
+body {margin: 0px !important; padding: 0px !important; font-family: Helvetica, Arial, sans-serif;}
+body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+a {color: #003bac !important;text-decoration: underline !important;}
+a:hover {color: #000 !important;text-decoration:underline !important;}
+table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+/* RESET STYLES */
+img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+table{border-collapse: collapse !important;}
+body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+span.preheader { display: none !important; }
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: #008bc1 !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+a[x-apple-data-detectors]:hover {color: #005272 !important;text-decoration:underline !important;}
+/* ANDROID CENTER FIX */
+div[style*=""margin: 16px 0;""] { margin: 0 !important; }
+*[class=""mobile-button-container""] {
+width: 243px;
+}
+/* These are our tablet/medium screen media queries */
+@media screen and (max-width: 525px){
+/* Hide stuff */
+*[class=""hide""] {display:none !important;}
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""100p""] {width:100% !important; height:auto !important;}
+*[class=""mobile-block""] {display:block !important;width:100% !important;border: none !important;line-height:1.2em !important;padding-left:0 !important;font-size:19px !important;}
+*[class=""mobile-date""] {display:block !important;width:100% !important;border: none !important;line-height:1.5em !important;padding-left:0 !important;padding-top:2px;font-size: 13px !important;}
+/* Centers content on mobile */
+*[class=""center""] {text-align:center !important; width:100% !important; height:auto !important;}
+/* Changes padding for sections on mobile */
+*[class=""mobile-section""] {width:100% !important; height:auto !important;padding-top: 20px !important;padding-bottom: 0 !important;}
+/* mobile header */
+*[class=""mobile-header""] {padding-top: 7px !important;padding-bottom: 7px !important;}
+}
+@media screen and (max-device-width: 480px){
+/* This sets elements to 100% width and fixes the height issues too, a god send */
+*[class=""mobile-title""] {font-size:24px !important;}
+*[class=""mobile-summary""] {font-size: 18px !important; line-height:1.3em !important;}
+*[class=""mobile-button""] {width:100%; min-width:280px !important; max-width: 600px !important;}
+*[class=""mobile-button-container""] {
+width: 100% !important;
+}
+/* Hide stuff */
+*[class=""mobile-hide""] {display:none !important;}
+}
+</style>
+</head>
+<body style=""margin:0px; padding:0px; background: #ffffff;font-family: Helvetica, Arial, sans-serif;"" bgcolor=""#ffffff"">
+<!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div style=""display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"" class=""preheader"">
+<span class=""preheader"">The latest white papers, case studies and product information</span>
+</div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN HONEYPOT LINK -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""0"">
+<tbody>
+<tr>
+<td style=""display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"" height=""0"">
+<a href=""https://go.techtarget.com/r/243800640/44616024"" style=""text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"">&nbsp;</a>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END HONEYPOT LINK -->
+<!-- begin header -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"" >
+<table width=""640"" border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"" align=""center"" style=""border-bottom:1px solid #666666;background:#ffffff;"">
+<tr>
+<td valign=""top"" height=""45"" class=""100p"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" class=""100p"">
+<tr>
+<td align=""left"" width=""90%"" style=""height:45px;color:#ffffff;font-family:Helvetica,arial,sans-serif;font-size:22px;padding:0 0 0 12px;font-weight:400;"" class=""mobile-header"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td class=""mobile-block"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 17px;"" class=""mobile-block""><b>Business Technology Research</b></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline-block;line-height:17px;background-color: #85dad6;width: 1px;padding:0;"" class=""hide"" width=""1"" height=""17"" bgcolor=""#000000""></td>
+<td style=""display:inline-block;line-height:17px"" class=""hide"" width=""10"">&nbsp;</td>
+<td style=""display:inline;line-height:17px;font-family:Helvetica,arial,sans-serif;color:#000000;font-size: 13px;font-weight: 100;"" class=""mobile-date"">August 17, 2022</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=""right"" valign=""middle"" width=""10%"" style=""height:45px;"">
+<a href=""https://go.techtarget.com/r/243800654/44616024 "" border=""0"" style=""color:#003bac;display:block;text-decoration:none !important""><img src=""https://www.computerweekly.com/rms/ux/responsive/img/cw_logo.png"" width=""192"" height=""33"" alt=""ComputerWeekly.com"" style=""vertical-align:middle;""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table> <!-- end header -->
+<!-- BEING content -->
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#f2f2f2"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 30px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:14px;font-weight:bold;"" class=""100p""><span style=""color:#131313; text-decoration:none;"">IN THIS ISSUE</span></td>
+</tr>
+<tr>
+<td style=""padding:0 0 10px 30px;color:#003bac;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"">
+<tr>
+<td style=""font-family:Helvetica,arial,sans-serif;font-size:14px;padding-bottom:7px;"" class=""mobile-highlight-link"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003399;"">Network management: 5 key 2022 trends</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=""100%"" cellspacing=""0"" cellpadding=""0"" bgcolor=""#ffffff"" class=""100p"" align=""center"">
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""640"" bgcolor=""#ffffff"" align=""center"" class=""100p"">
+<tr>
+<td valign=""top"" style=""padding-top:20px;padding-right:20px;vertical-align:top;"" class=""mobile-section"">
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" valign=""top"" class=""100p"">
+<tr>
+<td style=""padding:0 0 5px 20px;text-align:left;font-family:Helvetica,arial,sans-serif;font-size:22px;font-weight:bold;"" class=""100p""><a href=""https://go.techtarget.com/r/243800703/44616024"" style=""color:#003bac !important;text-align:left;text-decoration:none;"" class=""mobile-title"">Network management: 5 key 2022 trends</a></td>
+</tr>
+<tr><td style=""padding:0 0 5px 20px;font-family:Helvetica,arial,sans-serif;font-size:11px;color:#afafaf;text-align:left;"">SPONSORED BY: Turbonomic an IBM company</td></tr>
+<tr>
+<td style=""padding:0 0 10px 20px;color:#626262;font-weight:100;font-size:14px;line-height:21px;font-family:Helvetica,arial,sans-serif;text-align:left;"" class=""mobile-summary"">96% of corporate networks have or will have IoT devices and sensors connecting to them, according to an EMA Research Report of 409 IT professional survey respondents. Open this report to uncover key recommendations for resolving today’s network modernization challenges.</td>
+</tr>
+<tr>
+<td style=""padding: 0 20px 20px 20px;"">
+<div>
+<!--[if mso]>
+<v:roundrect xmlns:v=""urn:schemas-microsoft-com:vml"" xmlns:w=""urn:schemas-microsoft-com:office:word"" href=""https://go.techtarget.com/r/243800703/44616024"" style=""height:40px;v-text-anchor:middle;width:224px;"" arcsize=""5%"" stroke=""f"" fillcolor=""#ce3325"" class=""mobile-button"">
+<w:anchorlock/>
+<center style=""font-weight:bold;color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;"">
+Read More
+</center>
+</v:roundrect>
+<![endif]-->
+<![if !mso]>
+<table cellspacing=""0"" cellpadding=""0"" class=""mobile-button-container"">
+<tr>
+<td align=""center"" width=""224"" height=""40"" bgcolor=""#ce3325"" style=""-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: #ffffff; display: block;"" class=""mobile-button"">
+<a href=""https://go.techtarget.com/r/243800703/44616024"" style=""font-size:18px; font-family:Helvetica, Arial, sans-serif; text-decoration: none !important; line-height:40px; width:100%; display:inline-block;font-weight:bold;"">
+<span style=""color: #ffffff;"">Read More</span>
+</a>
+</td>
+</tr>
+</table>
+<![endif]>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td width=""150px"" style=""padding-top:20px;padding-bottom:10px;vertical-align:top;padding-left:10px;"" class=""hide""><div style=""border:1px solid #cccccc""><a href=""https://go.techtarget.com/r/243800703/44616024""><img src=""https://cdn.ttgtmedia.com/bitpipe/covers/1654190074_548.jpg"" width=""150"" border=""0""></a></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- END content -->
+<!-- footer -->
+<table border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" align=""center"" class=""100p"" >
+<tr>
+<td width=""640"" valign=""top"" class=""100p"" align=""center"">
+<table border=""0"" cellspacing=""0"" cellpadding=""15"" width=""640"" align=""center"" style=""border-top:1px solid #e5e5e5;"" class=""100p"">
+<tr>
+<td width=""80%"" style=""text-align:left;color:#898989;font-weight:100;line-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;"">
+This newsletter is published by <a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">TechTarget, Inc.</a>
+<br>275 Grove Street, Newton, Massachusetts, 02466 US
+<br>
+<br><!--UNSUBLINK_START-->Click to: <a href=""https://users.techtarget.com/registration/techtarget/Unsubscribe.page?lid=1736905&em=info@tdbsoft.co.ke&uid=44616024&sci=10184218&smi=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" style=""color:#008bc1 !important;text-decoration:underline !important"">Unsubscribe</a><!--UNSUBLINK_END-->
+<br>
+<br>
+You are receiving this email because you are a member of TechTarget. When you access content from this email, your
+information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date
+<a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+below, as described in our
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>.
+For additional assistance, please contact:
+<a href=""mailto:webmaster@techtarget.com"" style=""color:#008bc1 !important;text-decoration:underline !important;"">webmaster@techtarget.com</a>
+<br>
+<br>
+&copy; 2022 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners.
+<br>
+<br>
+<a href=""https://go.techtarget.com/r/243800734/44616024 "" id=""privacypolicylink"" style=""color:#008bc1 !important;text-decoration:underline !important;"">Privacy Policy</a>
+| <a href=""https://go.techtarget.com/r/243800726/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">Partners List</a>
+| <a href=""https://go.techtarget.com/r/243800735/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;"">BrightTALK Privacy Policy</a>
+</td>
+<td align=""right"" valign=""top"" width=""20%"" style=""padding-top:5px;padding-left:10px;color:#008bc1 !important;"">
+<a href=""https://go.techtarget.com/r/243800656/44616024 "" style=""color:#008bc1 !important;text-decoration:underline !important; border:none !important;""><img src=""https://cdn.ttgtmedia.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png"" width=""86"" height=""45"" border=""0"" alt=""TechTarget""></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<img src=""https://go.techtarget.com/clear.jpg?g=5934562&u=44616024&m=1c07b9ad-94d3-4bdb-80c8-bfe503759186"" width=""1"" height=""1""/> </body>
+</html>	
+
+
+"
+"Thu, 18 Aug 2022 22:01:45 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,test email,"this is the test content
+find attached
+"
+"Thu, 18 Aug 2022 22:01:45 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,test email,"this is the test content
+find attached
+"
+"Fri, 19 Aug 2022 11:54:59 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,Test email with 2 attachments,"Test email content
+Find attached files
+"
+"Fri, 19 Aug 2022 11:54:59 +0300",Titus Owuor <titusowuor30@gmail.com>,info@tdbsoft.co.ke,Test email with 2 attachments,"Test email content
+Find attached files
+"

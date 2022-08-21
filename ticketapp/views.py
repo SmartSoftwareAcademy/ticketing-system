@@ -146,6 +146,7 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
                 message = config.code_for_automated_assign.replace(
                     '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
                 receipient_list = [ticket.assigned_to.email, ]
+                print("receipient_list:".format(receipient_list))
                 EmailDownload.send_email(self.request,
                                          "Ticket assignmet:(#{})".format(ticket.ticket_id), message, receipient_list, files)
         except Exception as e:
