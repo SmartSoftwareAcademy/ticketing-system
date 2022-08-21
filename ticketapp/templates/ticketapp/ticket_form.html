@@ -4,7 +4,7 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Add Ticket</h1>
 {{ form.media }}
-<form class="" method="POST">
+<form class="" method="POST" enctype="multipart/form-data">
   {% if form.errors %}
   <ul class="messages">
     {% for error in form.errors %}

@@ -1,3 +1,4 @@
+from ast import ExceptHandler
 import csv
 from email.mime import image
 import json
@@ -27,35 +28,38 @@ class EmailDownload:
     """This Class Downloads emails in the inbox of a particular gmail account and create a csv file with the information"""
 
     #################################################################################################################################
-
     def __init__(self,request, email, password):
         """Yeah, initializing everything"""
         self.email = str(email)
         self.password = str(password)
         self.request=request
+        print('Checking mail...')
     #################################################################################################################################
 
     def send_email(request,subject, body, to,attachments):
-        imap_settings = ImapSettings.objects.all()[0]
-        config = OutgoinEmailSettings.objects.all()[0]
-        print(imap_settings.email_id, imap_settings.email_password)
-        backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
-                               password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
-        if attachments:
-            email = EmailMessage(subject=subject, body=strip_tags(
-                body), from_email=config.support_reply_email, to=to, connection=backend)
-            for attch in attachments:
-                #filename = str(protocol+'\\'+str(domain)+'\\'+str(attch.file))
-                #print(filename)
-                email.attach(attch.file.name, attch.file.read(),
-                                attch.file.content_type)
-            email.send()
-            messages.success(request,'Email sent successfully!')
-        else:
-            email = EmailMessage(subject=subject, body=strip_tags(
-                body), from_email=config.support_reply_email, to=to, connection=backend)
-            email.send()
-            messages.success(request, 'Email sent successfully!')
+        try:
+            imap_settings = ImapSettings.objects.all()[0]
+            config = OutgoinEmailSettings.objects.all()[0]
+            print(imap_settings.email_id, imap_settings.email_password)
+            backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
+                                password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
+            if attachments:
+                email = EmailMessage(subject=subject, body=strip_tags(
+                    body), from_email=config.support_reply_email, to=to, connection=backend)
+                for attch in attachments:
+                    #filename = str(protocol+'\\'+str(domain)+'\\'+str(attch.file))
+                    #print(filename)
+                    email.attach(attch.name, attch.read(),
+                                    attch.content_type)
+                email.send()
+                messages.success(request,'Email sent successfully!')
+            else:
+                email = EmailMessage(subject=subject, body=strip_tags(
+                    body), from_email=config.support_reply_email, to=to, connection=backend)
+                email.send()
+                messages.success(request, 'Email sent successfully!')
+        except Exception as e:
+            messages.info("Email send error:{}".format(e))
             
         
     def login_to_imap_server(self):
@@ -236,16 +240,25 @@ class EmailDownload:
                         file=path)
             ticket.save()
             print(ticket)
-            if self.config.send_auto_email_on_ticket_creation:
-                subject = 'Issue recieved'
-                message = self.config.code_for_automated_reply.replace(
-                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
+            config=OutgoinEmailSettings.objects.all[0]
+            if config.send_auto_email_on_ticket_creation:
                 recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
+                subject = 'Issue recieved'
+                message = config.code_for_automated_reply.replace(
+                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
                 attachments = []#ticket.mediafiles_set.all()
                 # Site.objects.get_current().domain
-                # domain = self.request.META['HTTP_HOST']
-                # protocol = 'https' if self.request.is_secure() else 'http'
                 self.send_email(subject,message,recipient_list,attachments)
+            if config.send_auto_email_on_agent_assignment:
+                    # send mail to assignee
+                domain = self.request.META['HTTP_HOST']
+                protocol = 'https' if self.request.is_secure() else 'http'
+                ticket_url = protocol+"://"+domain+'/ticket-detail/{}/'.format(ticket.id)
+                message = config.code_for_automated_assign.replace(
+                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
+                receipient_list = [ticket.assigned_to.email,]
+                self.send_email(self.request,
+                                         "Ticket assignmet:(#{})".format(ticket.ticket_id), message, receipient_list, attachments)
             print("Ticket created successfully:{}\n{}".format(
                 recipient_list, str(subject).strip('RE:')))
         except Exception as e:

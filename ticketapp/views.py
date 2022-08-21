@@ -1,3 +1,4 @@
+from email import message
 from django.shortcuts import render
 from django.http.response import HttpResponse
 import os
@@ -117,13 +118,39 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         try:
             form.instance.user = self.request.user
+            super().form_valid(form)  # create ticket object
+            ticket = self.object
+            # add attachments if any
             files = self.request.FILES.getlist('attach')
-            for file in files:
-                MediaFiles.objects.get_or_create(
-                    file=file)
-            return super().form_valid(form)
+            if files:
+                for file in files:
+                    ticket.mediafiles_set.get_or_create(file=file)
+            # send mail if true
+            config = OutgoinEmailSettings.objects.all()[0]
+            if config.send_auto_email_on_ticket_creation:
+                attachments = []
+                subject = "Issue received"
+                receipient_list = [self.request.POST['customer_email'], ]
+                print(receipient_list)
+                message = config.code_for_automated_reply.replace(
+                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now()))
+                # send mail to client
+                EmailDownload.send_email(self.request,
+                                         subject, message, receipient_list, attachments)
+            if config.send_auto_email_on_agent_assignment:
+                # send mail to assignee
+                domain = self.request.META['HTTP_HOST']
+                protocol = 'https' if self.request.is_secure() else 'http'
+                ticket_url = protocol+"://"+domain + \
+                    '/ticket-detail/{}/'.format(ticket.id)
+                message = config.code_for_automated_assign.replace(
+                    '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
+                receipient_list = [ticket.assigned_to.email, ]
+                EmailDownload.send_email(self.request,
+                                         "Ticket assignmet:(#{})".format(ticket.ticket_id), message, receipient_list, files)
         except Exception as e:
             print("ticket create error:{}".format(e))
+        return redirect('ticketapp:ticket-list')
 
 
 class TicketUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -204,7 +231,8 @@ def mark_ticket_as_resolved(request, id):
                     ticket.ticket_id, user)
                 subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
             recipient_list = [ticket.customer_email, ]
-            print("Files:".format(request.FILES.getlist('attach')))
+            print("Files:{}".format(
+                request.FILES.getlist('attach')))
             if len(request.FILES.getlist('attach')) > 0:
                 attachments = request.FILES.getlist('attach')
             else:
@@ -292,10 +320,11 @@ class UserPerformanceListView(LoginRequiredMixin, generic.ListView):
         context = super().get_context_data(**kwargs)
         vals = Ticket.objects.values('resolved_by__username').annotate(
             resolved_count=Count('resolved_by'))
+        print(vals)
 
-        my_users = [str(x['resolved_by__username'])
-                    for x in vals]
+        my_users = [str(x['resolved_by__username']) for x in vals]
         my_users.pop(0)
+        print(my_users)
         context['my_users'] = my_users
         user_num_tickets = [i['resolved_count']
                             for i in vals]

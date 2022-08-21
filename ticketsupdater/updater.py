@@ -6,12 +6,12 @@ from django.core.mail.backends.smtp import EmailBackend
 from ticketapp.models import *
 
 
-def start():
-    imap_settings = ImapSettings.objects.all()
-    config = OutgoinEmailSettings.objects.all()
-    backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
-                           password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(EmailDownload(
-        imap_settings.email_id, imap_settings.email_password, config, backend).login_to_imap_server(), 'interval', minutes=0.25)
-    scheduler.start()
+def start(request):
+    try:
+        imap_settings = ImapSettings.objects.all()[0]
+        scheduler = BackgroundScheduler()
+        scheduler.add_job(EmailDownload(request, imap_settings.email_id,
+                                        imap_settings.email_password).login_to_imap_server, 'interval', minutes=0.25)
+        scheduler.start()
+    except Exception as e:
+        print(e)

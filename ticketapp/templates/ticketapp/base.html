@@ -295,7 +295,26 @@
               </li>
             </ul>
           </nav>
-
+          <!-- messages-->
+          <div class="mt-2 pt-2">
+            {% if messages %} {% for message in messages %}
+            <div
+              class="alert alert-{{message.tags}} alert-dismissable fade show"
+              role="alert"
+            >
+              {{message}}
+              <button
+                class="close"
+                type="button"
+                data-dismiss="alert"
+                aria-label="close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+          <!-- messages-->
           <!-- Begin Page Content -->
           <div class="container-fluid">
             {% block content %} {% endblock content %}

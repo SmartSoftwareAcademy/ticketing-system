@@ -116,21 +116,32 @@ class ImapSettings(models.Model):
 
 class OutgoinEmailSettings(models.Model):
     support_reply_email_name = models.CharField(
-        max_length=255, default='ICT Helpdesk')
+        max_length=255, default='ICT Helpdesk', blank=True, null=True)
     support_reply_email = models.EmailField(
-        max_length=255, default='titusowuor30@gmail.com')
+        max_length=255, default='titusowuor30@gmail.com', blank=True, null=True)
     email_password = models.CharField(
-        max_length=255, default='xdofqrtncuimlewm')
-    email_port = models.IntegerField(default=587)
-    email_backed = models.CharField(max_length=100, default='smtp')
-    email_host = models.CharField(max_length=255, default='smtp.gmail.com')
-    fail_silently = models.BooleanField(default=True)
-    use_tls = models.BooleanField(default=True)
-    send_auto_email_on_ticket_creation = models.BooleanField(default=True)
-    code_for_automated_reply = models.TextField(max_length=25000)
-    end_auto_email_on_agent_reply = models.BooleanField(default=True)
-    code_for_agent_reply = models.TextField(max_length=25000)
-    code_place_holders = models.TextField(max_length=25000)
+        max_length=255, default='xdofqrtncuimlewm', blank=True, null=True)
+    email_port = models.IntegerField(default=587, blank=True, null=True)
+    email_backed = models.CharField(
+        max_length=100, default='smtp', blank=True, null=True)
+    email_host = models.CharField(
+        max_length=255, default='smtp.gmail.com', blank=True, null=True)
+    fail_silently = models.BooleanField(default=True, blank=True, null=True)
+    use_tls = models.BooleanField(default=True, blank=True, null=True)
+    code_place_holders = models.TextField(
+        max_length=25000, blank=True, null=True)
+    send_auto_email_on_ticket_creation = models.BooleanField(
+        default=True, blank=True, null=True)
+    code_for_automated_reply = models.TextField(
+        max_length=25000, blank=True, null=True)
+    send_auto_email_on_agent_reply = models.BooleanField(
+        default=True, blank=True, null=True)
+    send_auto_email_on_agent_assignment = models.BooleanField(
+        default=True, blank=True, null=True)
+    code_for_automated_assign = models.TextField(
+        max_length=25000, blank=True, null=True)
+    code_for_agent_reply = models.TextField(
+        max_length=25000, blank=True, null=True)
 
     def __str__(self):
         return self.support_reply_email_name
