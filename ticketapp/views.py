@@ -359,8 +359,6 @@ class UserPerformanceListView(LoginRequiredMixin, generic.ListView):
         context = super().get_context_data(**kwargs)
         vals = Ticket.objects.values('resolved_by__username').annotate(
             resolved_count=Count('resolved_by'))
-        ticket = Ticket.objects.all().first()
-        print(ticket.assigned_to.email)
         my_users = [str(x['resolved_by__username']) for x in vals]
         my_users.pop(0)
         print(my_users)
