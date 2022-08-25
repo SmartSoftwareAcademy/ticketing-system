@@ -2,7 +2,7 @@ from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 #from .import_email_tickets import import_email
 from ticketapp.get_email import EmailDownload
-from django.core.mail.backends.smtp import EmailBackend
+#from django.core.mail.backends.smtp import EmailBackend
 from ticketapp.models import *
 
 

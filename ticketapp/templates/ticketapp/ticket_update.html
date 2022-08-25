@@ -37,18 +37,22 @@
     </div>
 
     <div class="form-group">
-      <label for="id_ticket_section">Possible Ticket Category</label>
+      <label for="id_ticket_section">Ticket Category</label>
       {{form.ticket_section}}
     </div>
 
     <div>
-      <label for="id_urgent_status">Urgency</label>
+      <label for="id_ticket_priority">Priority</label>
       {{form.ticket_priority}}
+    </div>
+    <div>
+      <label for="id_tags">Tags</label>
+      {{form.tags}}
     </div>
 
     <div>
-      <label for="id_completed_status">Resolved</label>
-      {{form.completed_status}}
+      <label for="id_ticket_status">Status</label>
+      {{form.ticket_status}}
     </div>
 
     <div class="form-group pt-2 pb-2">

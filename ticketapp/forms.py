@@ -3,7 +3,7 @@ from django.forms import ModelForm, PasswordInput
 from email.policy import default
 from django import forms
 from django.contrib.auth.models import User
-from .models import ImapSettings, Ticket
+from .models import ImapSettings, Tags, Ticket
 from tinymce.widgets import TinyMCE
 
 TICKET_SECTIONS = (
@@ -18,9 +18,15 @@ TICKET_SECTIONS = (
     ('Transport', 'Transport'),
     ('General', 'General'),
 )
-TICKET_URGENCY = (
+TICKET_STATUSES = (
+    ('Pending', 'Pending'),
+    ('Resolved', 'Resolved'),
+    ('Unsolved', 'Unsolved'),
+)
+TICKET_PRIORITIES = (
     ('Low', 'Low'),
     ('Medium', 'Medium'),
+    ('Normal', 'Normal'),
     ('High', 'High'),
     ('Urgent', 'Urgent'),
 )
@@ -40,7 +46,7 @@ class TicketForm(forms.ModelForm):
     ticket_section = forms.ChoiceField(
         choices=TICKET_SECTIONS, widget=forms.Select(attrs={'class': 'form-control'}))
     ticket_priority = forms.ChoiceField(
-        choices=TICKET_URGENCY, widget=forms.Select(attrs={'class': 'form-control'}))
+        choices=TICKET_PRIORITIES, widget=forms.Select(attrs={'class': 'form-control'}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
     attach = forms.FileField(required=False,
@@ -63,10 +69,14 @@ class TicketUpdateForm(forms.ModelForm):
                                      max_length=40, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     issue_description = forms.CharField(required=False,
                                         max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce'}))
-    ticket_section = forms.ChoiceField(required=False,
-                                       choices=TICKET_SECTIONS, widget=forms.Select(attrs={'class': 'form-control'}))
-    ticket_priority = forms.ChoiceField(
-        choices=TICKET_URGENCY, widget=forms.Select(attrs={'class': 'form-control'}))
+    ticket_section = forms.ChoiceField(
+        choices=TICKET_SECTIONS, widget=forms.Select(attrs={'class': 'form-control'}))
+    ticket_priority = forms.ChoiceField(required=False,
+                                        choices=TICKET_PRIORITIES, widget=forms.Select(attrs={'class': 'form-control'}))
+    ticket_status = forms.ChoiceField(required=False,
+                                      choices=TICKET_STATUSES, widget=forms.Select(attrs={'class': 'form-control'}))
+    tags = forms.ModelMultipleChoiceField(required=False,
+                                          queryset=Tags.objects.all(), widget=forms.Select(attrs={'class': 'form-control', 'multiple': True}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
     attach = forms.FileField(required=False,

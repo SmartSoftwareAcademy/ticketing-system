@@ -14,7 +14,7 @@ class TicketAdmin(admin.ModelAdmin):
         'customer_email',
         'ticket_section',
         'ticket_priority',
-        'completed_status',
+        'ticket_status',
         'assigned_to',
         'resolved_by'
     )
@@ -22,19 +22,36 @@ class TicketAdmin(admin.ModelAdmin):
         models.TextField: {'widget': TinyMCE()}
     }
     list_filter = (
-        # 'ticket_section',
+        'ticket_section',
         'ticket_priority',
-        'title',
-        'completed_status',
+        'ticket_status',
+        'tags__tag_name',
     )
 
-    search_fields = ('title',)
+    search_fields = ('title', 'ticket_status', 'tcket_id',)
 
 
 class OutgoinEmailSettingsAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE()}
     }
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'text',
+        'created_date',
+    )
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE()}
+    }
+    list_filter = (
+        'user__username',
+        'created_date',
+    )
+
+    search_fields = ('text', 'ticket__id', 'user__username', 'created_date',)
 
 
 class ImapAdmin(admin.ModelAdmin):
@@ -44,5 +61,5 @@ class ImapAdmin(admin.ModelAdmin):
 admin.site.register(Ticket, TicketAdmin)
 admin.site.register(OutgoinEmailSettings, OutgoinEmailSettingsAdmin)
 admin.site.register(ImapSettings, ImapAdmin)
-admin.site.register(Comment)
-admin.site.register([MediaFiles, ])
+admin.site.register(Comment, CommentAdmin)
+admin.site.register([MediaFiles, Tags])

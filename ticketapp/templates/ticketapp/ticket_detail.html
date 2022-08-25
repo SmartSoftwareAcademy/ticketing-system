@@ -15,10 +15,12 @@
       >{{object.ticket_priority}}</span
     >
   </p>
-  {% if object.completed_status %}
-  <p class="badge badge-pill bg-info text-white">Resolved</p>
+  {% if object.ticket_status == 'Resolved' %}{{object.ticket_status}}
+  <p class="badge badge-pill bg-success text-white">Resolved</p>
+  {% elif object.ticket_status == 'Unsolved' %}
+  <p class="badge badge-pill bg-warning text-white">Unresolved</p>
   {% else %}
-  <p class="badge badge-pill bg-danger text-white">Unresolved</p>
+  <p class="badge badge-pill bg-danger text-white">Pending</p>
   {% endif %}
   <p>
     Assigned To:
@@ -42,7 +44,7 @@
 </div>
 
 <div class="container d-flex mt-2">
-  {% if user.is_staff %} {% if object.completed_status != True %}
+  {% if user.is_staff %} {% if object.ticket_status != 'Resolved' %}
   <button
     type="button"
     class="btn btn-success"
@@ -51,14 +53,14 @@
   >
     Reply
   </button>
-  {% elif object.completed_status == True %}
+  {% else %}
   <button
     type="button"
     class="btn btn-success"
     data-bs-toggle="modal"
     data-bs-target="#markResolvedModal"
   >
-    Merge
+    Reopen
   </button>
   {% endif %} {% endif %}
   <a

@@ -320,6 +320,26 @@
                         <td>{{ ticket.customer_full_name }}</td>
                         <td>{{ ticket.customer_email }}</td>
                         <td>{{ ticket.ticket_priority }}</td>
+                        <td>
+                          {% if ticket.ticket_status == 'Solved' %}
+                          <div class="form-check m-auto">
+                            <input
+                              type="checkbox"
+                              class="form-check-input"
+                              id="exampleCheck1"
+                              checked
+                            />
+                          </div>
+                          {% else %}
+                          <div class="form-check m-auto">
+                            <input
+                              type="checkbox"
+                              class="form-check-input"
+                              id="exampleCheck1"
+                            />
+                          </div>
+                          {% endif %}
+                        </td>
 
                         <td>
                           <div class="row">

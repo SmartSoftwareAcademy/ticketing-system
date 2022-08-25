@@ -322,7 +322,7 @@
                         <td>{{ ticket.customer_email }}</td>
                         <td>{{ ticket.ticket_priority }}</td>
                         <td>
-                          {% if ticket.completed_status %}
+                          {% if ticket.ticket_status == 'Solved' %}
                           <div class="form-check m-auto">
                             <input
                               type="checkbox"

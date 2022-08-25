@@ -22,19 +22,21 @@ class Ticket(models.Model):
         ('Transport', 'Transport'),
         ('General', 'General'),
     )
-    TICKET_URGENCY = (
-        ('Low', 'Low'),
-        ('Medium', 'Medium'),
-        ('High', 'High'),
-        ('Urgent', 'Urgent'),
-    )
     TICKET_STATUSES = (
         ('Pending', 'Pending'),
         ('Resolved', 'Resolved'),
         ('Unsolved', 'Unsolved'),
     )
+    TICKET_PRIORITIES = (
+        ('Low', 'Low'),
+        ('Medium', 'Medium'),
+        ('Normal', 'Normal'),
+        ('High', 'High'),
+        ('Urgent', 'Urgent'),
+    )
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
+    tags = models.ManyToManyField('Tags', null=True, blank=True)
     ticket_id = models.CharField(max_length=8, unique=True, blank=True)
     title = models.CharField(max_length=500)
     issue_description = tinymce_models.HTMLField(
@@ -48,8 +50,9 @@ class Ticket(models.Model):
     ticket_section = models.CharField(
         max_length=30, choices=TICKET_SECTIONS, null=True, blank=True, default='General')
     ticket_priority = models.CharField(
-        max_length=100, null=True, blank=True, default="Low")
-    completed_status = models.BooleanField(default=False)
+        max_length=100, choices=TICKET_PRIORITIES, null=True, blank=True, default="Low")
+    ticket_status = models.CharField(
+        max_length=100, choices=TICKET_STATUSES, default='Unsolved')
     assigned_to = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='assigned_to', null=True, blank=True)
     resolved_by = models.ForeignKey(
@@ -91,6 +94,25 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.ticket.title
+
+
+class Tags(models.Model):
+    TICKET_TAGS = (
+        ('Low', 'Low'),
+        ('Medium', 'Medium'),
+        ('Normal', 'Normal'),
+        ('High', 'High'),
+        ('Urgent', 'Urgent'),
+    )
+    #ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    tag_name = models.CharField(
+        max_length=100, choices=TICKET_TAGS, default='Normal')
+
+    def __str__(self):
+        return self.tag_name
+
+    class Meta:
+        verbose_name_plural = 'Tags'
 
 
 class EmailDetails(models.Model):

@@ -9,17 +9,15 @@ import email
 import imaplib
 from tokenize import group
 from unicodedata import name
-from django.core.mail import send_mail
-from django.conf import settings
 from .models import *
 from .email_regex import GetEmailDetails
 import os
-from django.core.mail import EmailMessage, EmailMultiAlternatives
-from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+#from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.contrib.sites.models import Site
+#from django.contrib.sites.models import Site
 from django.utils import timezone
-from django.conf import settings
+#from django.conf import settings
 import re
 from django.core.mail.backends.smtp import EmailBackend
 from django.contrib import messages
@@ -270,7 +268,7 @@ class EmailDownload:
                 try:
                     recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
                     print("recipient_list:{}".format(recipient_list))
-                    subject = 'Issue recieved'
+                    subject = 'Ticket[#{}]:Issue recieved'
                     message = config.code_for_automated_reply.replace(
                         '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
                     attachments = []#ticket.mediafiles_set.all()
@@ -287,7 +285,7 @@ class EmailDownload:
                     ticket_url = protocol+"://"+domain+'/ticket-detail/{}/'.format(ticket.id)
                     message = config.code_for_automated_assign.replace(
                         '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
-                    subject = "Ticket assignmet:(#{})".format(ticket.ticket_id)
+                    subject = "[#{}]:Ticket assigned to you".format(ticket.ticket_id)
                     print("recipient list:".format(to_list))
                     self.send_email(subject, message,
                                     to_list, attachments)

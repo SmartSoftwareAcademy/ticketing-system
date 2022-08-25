@@ -20,6 +20,37 @@ from .forms import *
 from .get_email import EmailDownload
 from ticketsupdater.import_email_tickets import import_email
 from django.utils import timezone
+import re
+from django.core.mail.backends.smtp import EmailBackend
+from django.core.mail import EmailMessage
+from django.utils.html import strip_tags
+
+
+def send_email(request, subject, body, to, attachments):
+    try:
+        config = OutgoinEmailSettings.objects.all()[0]
+        #print(imap_settings.email_id, imap_settings.email_password)
+        backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
+                               password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
+        # replace &nbsp; with space
+        message = re.sub(r'(?<!&nbsp;)&nbsp;', ' ', strip_tags(body))
+        if attachments:
+            email = EmailMessage(
+                subject=subject, body=message, from_email=config.support_reply_email, to=to, connection=backend)
+            for attch in attachments:
+                #filename = str(protocol+'\\'+str(domain)+'\\'+str(attch.file))
+                # print(filename)
+                email.attach(attch.name, attch.read(),
+                             attch.content_type)
+            email.send()
+            messages.success(request, 'Email sent successfully!')
+        else:
+            email = EmailMessage(
+                subject=subject, body=message, from_email=config.support_reply_email, to=to, connection=backend)
+            email.send()
+            messages.success(request, 'Email sent successfully!')
+    except Exception as e:
+        messages.info(request, "Email send error:{}".format(e))
 
 
 def sync_tickets(request):
@@ -39,9 +70,11 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
                 context['urgent_count'] = Ticket.objects.filter(
                     ticket_priority="Urgent").count()
                 context['resolved_count'] = Ticket.objects.filter(
-                    completed_status=True).count()
+                    ticket_status="Resolved").count()
                 context['unresolved_count'] = Ticket.objects.filter(
-                    completed_status=False).count()
+                    ticket_status="Unsolved").count()
+                context['pending_count'] = Ticket.objects.filter(
+                    ticket_status="Pending").count()
                 context['normal_user_list'] = Ticket.objects.filter(
                     user=self.request.user)
                 context['staff_user_list'] = Ticket.objects.filter(
@@ -69,9 +102,11 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
                 context['urgent_count'] = Ticket.objects.filter(
                     assigned_to=self.request.user, ticket_priority="Urgent").count()
                 context['resolved_count'] = Ticket.objects.filter(
-                    assigned_to=self.request.user, completed_status=True).count()
+                    assigned_to=self.request.user, ticket_status="Resolved").count()
                 context['unresolved_count'] = Ticket.objects.filter(
-                    assigned_to=self.request.user, completed_status=False).count()
+                    assigned_to=self.request.user, ticket_status="Unsolved").count()
+                context['pending_count'] = Ticket.objects.filter(
+                    ticket_status="Pending").count()
                 context['normal_user_list'] = Ticket.objects.filter(
                     user=self.request.user)
                 context['staff_user_list'] = Ticket.objects.filter(
@@ -135,8 +170,8 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
                 message = config.code_for_automated_reply.replace(
                     '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now()))
                 # send mail to client
-                EmailDownload.send_email(self.request,
-                                         subject, message, receipient_list, attachments)
+                send_email(self.request,
+                           subject, message, receipient_list, attachments)
             if config.send_auto_email_on_agent_assignment:
                 # send mail to assignee
                 domain = self.request.META['HTTP_HOST']
@@ -147,8 +182,8 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
                     '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
                 receipient_list = [ticket.assigned_to.email, ]
                 print("receipient_list:".format(receipient_list))
-                EmailDownload.send_email(self.request,
-                                         "Ticket assignmet:(#{})".format(ticket.ticket_id), message, receipient_list, files)
+                send_email(self.request, "Ticket assignmet:(#{})".format(
+                    ticket.ticket_id), message, receipient_list, files)
         except Exception as e:
             print("ticket create error:{}".format(e))
         return redirect('ticketapp:ticket-list')
@@ -190,10 +225,10 @@ def urgent_ticket_list(request):
 def resolved_tickets(request):
     if request.user.is_superuser:
         tickets = Ticket.objects.filter(
-            completed_status=True)
+            ticket_status="Resolved")
     else:
         tickets = Ticket.objects.filter(
-            assigned_to=request.user, completed_status=True)
+            assigned_to=request.user,  ticket_status="Resolved")
     return render(request, 'ticketapp/closed.html', {'tickets': tickets})
 
 
@@ -201,10 +236,10 @@ def resolved_tickets(request):
 def unresolved_tickets(request):
     if request.user.is_superuser:
         tickets = Ticket.objects.filter(
-            completed_status=False)
+            ticket_status="Unsolved")
     else:
         tickets = Ticket.objects.filter(
-            assigned_to=request.user, completed_status=False)
+            assigned_to=request.user, ticket_status="Unsolved")
     return render(request, 'ticketapp/open.html', {'tickets': tickets})
 
 
@@ -218,28 +253,31 @@ def mark_ticket_as_resolved(request, id):
             date_time = datetime.datetime.now()
             ticket.resolved_by = user
             ticket.resolved_date = date_time
-            ticket.completed_status
+            ticket.ticket_status
             config = OutgoinEmailSettings.objects.all()[0]
             Comment.objects.create(ticket=ticket, user=user, text=comment)
             message = config.code_for_agent_reply.replace(
                 '[id]', ticket.ticket_id).replace('[tags]', 'None').replace('[date]', str(timezone.now()))
-            subject = 'Ticket:(#{}) Updated'.format(ticket.ticket_id)
+            subject = 'Ticket[#{}]: Updated'.format(ticket.ticket_id)
             print("Close ticket:{}".format(request.POST.get('closeticket')))
             if request.POST.get('closeticket') == 'on':
                 Ticket.objects.filter(id=id).update(
-                    completed_status=True, resolved_by=user, resolved_date=date_time)
+                    ticket_status="Resolved", resolved_by=user, resolved_date=date_time)
                 message = 'Your ticket (#({}) has been close by {}.\nIf you are not fully satisfied with the issue,submit another ticket to Helpdesk'.format(
                     ticket.ticket_id, user)
                 subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
-            recipient_list = [ticket.objects.values('assigned_to__email'), ]
+            recipient_list = [ticket.customer_email, ]
+            print("recipient_list:{}".format(recipient_list))
+            print("subject:{}".format(subject))
+            print("message:{}".format(message))
             print("Files:{}".format(
                 request.FILES.getlist('attach')))
             if len(request.FILES.getlist('attach')) > 0:
                 attachments = request.FILES.getlist('attach')
             else:
                 attachments = []
-            EmailDownload.send_email(request,
-                                     subject, message, recipient_list, attachments)
+            send_email(request,
+                       subject, message, recipient_list, attachments)
     except Exception as e:
         print(e)
     return HttpResponseRedirect(reverse("ticketapp:ticket-detail", kwargs={'pk': id}))
@@ -247,7 +285,7 @@ def mark_ticket_as_resolved(request, id):
 
 @login_required
 def mark_ticket_as_unresolved(request, id):
-    Ticket.objects.filter(id=id).update(completed_status=False)
+    Ticket.objects.filter(id=id).update(ticket_status="Unsolved")
     return HttpResponseRedirect(reverse("ticketapp:ticket-detail", kwargs={'pk': id}))
 
 
@@ -260,7 +298,7 @@ def add_comment(request, ticket_id):
         date_time = datetime.datetime.now()
         ticket.resolved_by = user
         ticket.resolved_date = date_time
-        ticket.completed_status
+        ticket.ticket_status
 
         Comment.objects.create(ticket=ticket, user=user, text=comment)
         return HttpResponseRedirect(reverse("ticketapp:ticket-detail", kwargs={'pk': ticket_id}))
@@ -341,13 +379,13 @@ def user_performance_details(request, username):
     tickets = Ticket.objects.filter(assigned_to=user)
 
     resolved_tickets = Ticket.objects.filter(
-        assigned_to=user, completed_status=True)
+        assigned_to=user, ticket_status="Solved")
     unresolved_tickets = Ticket.objects.filter(
-        assigned_to=user, completed_status=False)
+        assigned_to=user, ticket_status="Unsolved")
     resolved_count = Ticket.objects.filter(
-        assigned_to=user, completed_status=True).count()
+        assigned_to=user, ticket_status="Solved").count()
     unresolved_count = Ticket.objects.filter(
-        assigned_to=user, completed_status=False).count()
+        assigned_to=user, ticket_status="Unsolved").count()
 
     context = {
         'tickets': tickets,
