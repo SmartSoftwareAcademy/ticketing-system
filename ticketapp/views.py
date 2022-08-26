@@ -150,6 +150,8 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
         form = EmaiailAttachmentForm
         context['email_form'] = form
         context['users'] = User.objects.all().exclude(username='chatbot')
+        context['ticket_ids'] = Ticket.objects.all().exclude(
+            id=self.get_object().id)
         return context
 
 
@@ -256,6 +258,17 @@ def urgent_ticket_list(request):
         tickets = Ticket.objects.filter(
             assigned_to=request.user, ticket_priority='Urgent')
     return render(request, 'ticketapp/urgent.html', {'tickets': tickets})
+
+
+@login_required
+def pending_ticket_list(request):
+    if request.user.is_superuser:
+        tickets = Ticket.objects.filter(
+            ticket_priority='Pending')
+    else:
+        tickets = Ticket.objects.filter(
+            assigned_to=request.user, ticket_priority='Pending')
+    return render(request, 'ticketapp/pending.html', {'tickets': tickets})
 
 
 @login_required

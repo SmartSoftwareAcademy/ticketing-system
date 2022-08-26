@@ -17,6 +17,7 @@ urlpatterns = [
     path('unresolved-tickets/', views.unresolved_tickets,
          name='unresolved-tickets'),
     path('urgent-tickets/', views.urgent_ticket_list, name='urgent-tickets'),
+    path('pending-tickets/', views.urgent_ticket_list, name='pending-tickets'),
     path('mark-resolved/<int:id>',
          views.mark_ticket_as_resolved, name='mark-resolved'),
     path('mark-unresolved/<int:id>',

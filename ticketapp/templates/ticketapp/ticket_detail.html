@@ -61,9 +61,16 @@
             class="mx-2"
             ><i class="fa fa-trash text-danger"></i></a
           >
+          <a
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#mergeTicketsModal"
+            class="mx-2 btn btn-default border-1 border-secondary"
+            ><small class="text-dark">Merge Tickets</small></a
+          >
       </div>
-        </div>
-      </div>
+    </div>
+  </div>
   <div class="card-body">
     <p>
       Urgency:
@@ -122,7 +129,59 @@
   </div>
   </div>
     
-
+<!-- Merge Tickets Modal -->
+  <div
+    class="modal fade bd-example-modal-lg"
+    id="mergeTicketsModal"
+    tabindex="-1"
+    aria-labelledby="markResolvedModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mergeTicketsModalLabel">Merge Tickets</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form
+            action="{% url 'ticketapp:mark-resolved' id=object.pk %}"
+            method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mt-2 mb-2">
+              <div class="form-group mt-2">
+                <label>Selet Ticket Ids:</label>
+                <select
+                  class="select2"
+                  name="cc"
+                  id="input-select"
+                  multiple="multiple"
+                  data-placeholder="Select an Input"
+                  style="width: 100%"
+                >
+                  {% for ticket in ticket_ids %}
+                  <option value="{{ticket.id}}">{{ticket.id}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="row align-content-end justify-content-end align-items-end">
+                <div class="col-sm-3">
+                 <button class="btn btn-default border-1 border-secondary d-inline">close</button>
+                 <button type="submit" class="btn btn-success d-inline">verify</button>
+                 <button type="submit" class="btn btn-primary">confirm</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Mark Resolved Modal -->
   <div
     class="modal fade bd-example-modal-lg"
@@ -131,7 +190,7 @@
     aria-labelledby="markResolvedModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="markResolvedModalLabel">Add Note</h5>
