@@ -153,9 +153,9 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
         context['users'] = User.objects.all().exclude(username='chatbot')
         context['ticket_ids'] = Ticket.objects.all().exclude(
             id=self.get_object().id)
-        context['days'] = datetime.now().day - ticket.created_date.day
-        context['hours'] = datetime.now().hour - ticket.created_date.hour
-        context['mins'] = datetime.now().minute - ticket.created_date.minute
+        context['days'] = timezone.now().day - ticket.created_date.day
+        context['hours'] = timezone.now().hour - ticket.created_date.hour
+        context['mins'] = timezone.now().minute - ticket.created_date.minute
         context['agent_voice'] = Comment.objects.filter(
             ticket=self.get_object()).count()
         ticket_settings = TicketSettings.objects.all().first()
@@ -165,9 +165,8 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
                 escallate_time = ticket.created_date
                 escallate_time += timedelta(
                     hours=int(ticket_settings.duration_before_escallation))
-                now = datetime.now()
-                if now.hour > escallate_time.hour:
-                    context['escallate_time'] = now.hour - escallate_time.hour
+                now = timezone.now()
+                context['escallate_time'] = escallate_time-now
         return context
 
 

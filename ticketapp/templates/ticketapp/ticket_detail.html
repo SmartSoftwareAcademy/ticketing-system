@@ -69,7 +69,7 @@
             ><small class="text-dark float-right">Merge Tickets</small></a
           >
           {% if escallate_time %}
-          <small class="text-warning">This ticket will be escallated to Top Helpdesk Officials if you no reply is recorded within {{escallate_hours}} hours. <br />Remaining hours to escallation:{{escallate_time}}</small>
+          <small class="text-warning">This ticket will be escallated to Top Helpdesk Officials if you no reply is recorded within {{escallate_hours}} hours. <br /><span class="text-danger">Time to escallation:{{escallate_time}}</span></small>
           {% endif %}
       </div>
     </div>
