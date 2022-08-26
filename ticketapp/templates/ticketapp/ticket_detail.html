@@ -14,9 +14,9 @@
         <span class="fa fa-user-alt"
           >By:&nbsp;{{object.customer_full_name}} ({{object.customer_email}}) <br /><br /><i class="fa fa-calendar-alt"
             >{{object.created_date}}</i
-          >|<i class="fa fa-clock">{{0}}D:{{0}}H:{{0}}M</i>|<i class="fa fa-sms"
+          >|<i class="fa fa-clock">{{days}}D:{{hours}}H:{{mins}}M</i>|<i class="fa fa-sms"
             >{{0}} Raiser voice</i
-          >|<i class="fa fa-bell">{{0}} Agent voice</i>|<i
+          >|<i class="fa fa-bell">{{agent_voice}} Agent voice</i>|<i
             class="fa fa-star"
           >Rating:{{None}}</i
           >
@@ -65,15 +65,15 @@
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#mergeTicketsModal"
-            class="mx-2 btn btn-default border-1 border-secondary"
-            ><small class="text-dark">Merge Tickets</small></a
+            class="mx-2 btn btn-default border-1 border-secondary float-right"
+            ><small class="text-dark float-right">Merge Tickets</small></a
           >
       </div>
     </div>
   </div>
   <div class="card-body">
     <p>
-      Urgency:
+      Priority:
       <span
         class="badge badge-pill {% if object.ticket_priority == 'Urgent' %} bg-danger {% elif object.ticket_priority == 'Medium' %} bg-warning {% else %} bg-secondary {% endif %} text-white"
         >{{object.ticket_priority}}</span

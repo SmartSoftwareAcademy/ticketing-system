@@ -147,11 +147,17 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(
             ticket=self.get_object()).order_by('-created_date')
+        ticket = self.get_object()
         form = EmaiailAttachmentForm
         context['email_form'] = form
         context['users'] = User.objects.all().exclude(username='chatbot')
         context['ticket_ids'] = Ticket.objects.all().exclude(
             id=self.get_object().id)
+        context['days'] = datetime.now().day - ticket.created_date.day
+        context['hours'] = datetime.now().hour - ticket.created_date.hour
+        context['mins'] = datetime.now().minute - ticket.created_date.minute
+        context['agent_voice'] = Comment.objects.filter(
+            ticket=self.get_object()).count()
         return context
 
 
