@@ -22,7 +22,6 @@ from django.conf import settings
 from .models import *
 from .forms import *
 from .get_email import EmailDownload
-from ticketsupdater.import_email_tickets import import_email
 from django.utils import timezone
 import re
 from django.core.mail.backends.smtp import EmailBackend
@@ -57,11 +56,6 @@ def send_email(request, subject, body, to, attachments):
     except Exception as e:
         print(e)
         # messages.info(request, "Email send error:{}".format(e))
-
-
-def sync_tickets(request):
-    import_email()
-    return redirect('ticketapp:all-tickets')
 
 
 class TicketListView(LoginRequiredMixin, generic.ListView):
@@ -515,7 +509,7 @@ def get_emails(request):
     except Exception as e:
         print(e)
         messages.error(request, "Failed to retrieve emails")
-    return HttpResponseRedirect('/')
+    return redirect('ticketapp:all-tickets')
 
 # Ticket escalation
 
