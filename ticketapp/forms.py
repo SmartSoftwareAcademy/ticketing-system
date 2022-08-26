@@ -55,7 +55,7 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
         exclude = ('user', 'ticket_id', 'created_date',
-                   'ticket_status', 'resolved_by', 'resolved_date')
+                   'completed_status', 'resolved_by', 'resolved_date')
 
 
 class TicketUpdateForm(forms.ModelForm):
@@ -75,8 +75,6 @@ class TicketUpdateForm(forms.ModelForm):
                                         choices=TICKET_PRIORITIES, widget=forms.Select(attrs={'class': 'form-control'}))
     ticket_status = forms.ChoiceField(required=False,
                                       choices=TICKET_STATUSES, widget=forms.Select(attrs={'class': 'form-control'}))
-    tags = forms.ModelMultipleChoiceField(required=False,
-                                          queryset=Tags.objects.all(), widget=forms.Select(attrs={'class': 'form-control', 'multiple': True}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
     attach = forms.FileField(required=False,

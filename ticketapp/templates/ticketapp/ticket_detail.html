@@ -1,8 +1,52 @@
 {% extends 'ticketapp/base.html' %} {% block content %}
 
-<div class="container">
-  <h5><strong>{{object.title}}</strong></h5>
-  <p>Client Name: {{object.customer_full_name}}</p>
+<div class="col-12 overflow-auto">
+  <div class="card">
+      <div class="card-header py-3 d-flex">
+        <div class="d-inline m-auto"> <i class="fa fa-info-circle text-secondary fa-2x"></i></div>
+        <div class="col-lg-12">
+         <div class"" id="title">
+          <h5 class="m-0 font-weight-bold text-dark">
+          REF:{{object.title|safe}}
+          </h5>
+          <hr />
+        </div>
+      <div class="d-flex mt-2" id="title-body">
+          {% if user.is_staff %} {% if object.ticket_status != 'Resolved' %}
+          <a
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#markResolvedModal"
+          >
+         <i class="fa fa-reply text-success"></i>
+          </a>
+      
+          {% else %}
+          <a
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#markResolvedModal"
+          >
+           <i class="fa fa-folder-open text-success"></i>
+          </a>
+          {% endif %} {% endif %}
+          <a
+            href="{% url 'ticketapp:update-ticket' pk=object.pk %}"
+            class="mx-2"
+            ><i class="fa fa-edit text-primary"></i></a
+          >
+          <a
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#ticketDeletedModal"
+            class="mx-2"
+            ><i class="fa fa-trash text-danger"></i></a
+          >
+      </div>
+        </div>
+      </div>
+       <div class="card-body">
+        <p>Client Name: {{object.customer_full_name}}</p>
   <p>Phone number: {{object.customer_phone_number}}</p>
   <p>
     Email:
@@ -27,11 +71,14 @@
     {{object.assigned_to.username}}&nbsp;{{object.assigned_to.last_name}}
   </p>
   <p>Created: {{object.created_date}}</p>
+  {% for tag in object.tags.all %}
+  <p>Tags: <span class="bage badge-pill bg-{% if tag.tag_name == 'Normal' %}success{% endif %}">{{tag}},</span></p>
+  {% endfor %}
 
   <br />
       <b>Issue Description</b><br />
   <p>
-<blockquote>{{object.issue_description|safe}}</blockquote>
+<p class="overflow-auto word-wrap">{{object.issue_description|safe}}</p>
     <br />
     {% if object.mediafiles_set.all|length > 0 %}
     <span
@@ -42,39 +89,6 @@
     {% endif %}
   </p>
 </div>
-
-<div class="container d-flex mt-2">
-  {% if user.is_staff %} {% if object.ticket_status != 'Resolved' %}
-  <button
-    type="button"
-    class="btn btn-success"
-    data-bs-toggle="modal"
-    data-bs-target="#markResolvedModal"
-  >
-    Reply
-  </button>
-  {% else %}
-  <button
-    type="button"
-    class="btn btn-success"
-    data-bs-toggle="modal"
-    data-bs-target="#markResolvedModal"
-  >
-    Reopen
-  </button>
-  {% endif %} {% endif %}
-  <a
-    href="{% url 'ticketapp:update-ticket' pk=object.pk %}"
-    class="btn btn-primary mx-2"
-    >Edit</a
-  >
-  <a
-    href="{% url 'ticketapp:delete-ticket' pk=object.pk %}"
-    class="btn btn-danger mx-2"
-    >Delete</a
-  >
-</div>
-
 {% if comments %}
 <div class="container mt-4">
   <h5>Comments</h5>
@@ -92,7 +106,11 @@
 
 {% endif %}
 
-<!-- Modal -->
+</div>
+</div>
+  
+
+<!-- Modals -->
 <div
   class="modal fade bd-example-modal-lg"
   id="markResolvedModal"
@@ -127,6 +145,37 @@
             <input type="submit" class="btn btn-secondary mt-2" />
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal delete -->
+<div
+  class="modal fade bd-example-modal-lg"
+  id="ticketDeletedModal"
+  tabindex="-1"
+  aria-labelledby="markResolvedModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="markResolvedModalLabel">Delete Ticket</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+    <form method="post" action="{% url 'ticketapp:delete-ticket' pk=object.pk %}">
+        {% csrf_token %}
+        <p>Are you sure you want to delete Ticket: [#{{object.ticket_id}}]?</p>
+        <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
+</div>
       </div>
     </div>
   </div>

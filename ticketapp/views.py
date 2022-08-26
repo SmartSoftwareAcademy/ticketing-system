@@ -1,4 +1,6 @@
 from tkinter import E
+from turtle import title
+from urllib import request
 from pytz import timezone
 from email import message
 from django.shortcuts import render
@@ -198,6 +200,35 @@ class TicketUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Ticket
     form_class = TicketUpdateForm
     template_name = 'ticketapp/ticket_update.html'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(self.model, pk=self.kwargs['pk'])
+
+    def get(self, request, *args, **kwargs):
+        self.referer = request.META.get("HTTP_REFERER", "")
+        request.session["login_referer"] = self.referer
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags'] = Tags.objects.all()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.referer = request.session.get("login_referer", "")
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        redirect_url = super().form_valid(form)
+        ticket = self.object
+        tags = self.request.POST.getlist("tag_names")
+        print(ticket)
+        print(tags)
+        for tag_name in tags:
+            ticket.tags.add(int(tag_name))
+        ticket.save()
+        messages.info(self.request, "Ticket updates saved!")
+        return redirect_url
 
 
 class TicketDeleteView(LoginRequiredMixin, generic.DeleteView):

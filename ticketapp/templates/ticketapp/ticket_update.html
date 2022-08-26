@@ -45,9 +45,20 @@
       <label for="id_ticket_priority">Priority</label>
       {{form.ticket_priority}}
     </div>
-    <div>
-      <label for="id_tags">Tags</label>
-      {{form.tags}}
+    <div class="form-group">
+      <label>Tags</label>
+      <select
+        class="select2"
+        name="tag_names"
+        id="input-select"
+        multiple="multiple"
+        data-placeholder="Select an Input"
+        style="width: 100%"
+      >
+        {% for tag in tags %}
+        <option value="{{tag.id}}">{{tag}}</option>
+        {% endfor %}
+      </select>
     </div>
 
     <div>
