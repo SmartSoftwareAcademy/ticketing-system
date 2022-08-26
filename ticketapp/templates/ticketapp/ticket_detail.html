@@ -44,7 +44,7 @@
           <a
             type="button"
             data-bs-toggle="modal"
-            data-bs-target="#markResolvedModal"
+            data-bs-target="#markUnResolvedModal"
           >
            <i class="fa fa-folder-open text-success"></i>
           </a>
@@ -81,12 +81,13 @@
     <p class="badge badge-pill bg-danger text-white">Pending</p>
     {% endif %}
     </div>
+    {% if object.tags.all|length > 0 %}
     <p>Tags:   
       {% for tag in object.tags.all %}
     <span class="text-info">{{tag}},</span>
     {% endfor %}
   </p>
-
+{% endif %}
     <br />
         <b>Issue</b><br />
     <p>
@@ -122,7 +123,7 @@
   </div>
     
 
-  <!-- Modals -->
+  <!-- Mark Resolved Modal -->
   <div
     class="modal fade bd-example-modal-lg"
     id="markResolvedModal"
@@ -171,6 +172,35 @@
               </div>
               <input type="submit" class="btn btn-secondary mt-2" />
             </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!--Mark Unresolved Modal -->
+    <div
+    class="modal fade bd-example-modal-lg"
+    id="markUnResolvedModal"
+    tabindex="-1"
+    aria-labelledby="markResolvedModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="markResolvedModalLabel">Re-Open Ticket:[#{{object.ticket_id}}]</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="{% url 'ticketapp:mark-unresolved' id=object.pk %}">
+          {% csrf_token %}
+          <p>Are you sure you want to re-open this ticket?</p>
+          <input type="submit" class="btn btn-secondary" value="Yes,Re-open">
           </form>
         </div>
       </div>

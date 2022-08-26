@@ -48,15 +48,15 @@ def send_email(request, subject, body, to, attachments):
                 email.attach(attch.name, attch.read(),
                              attch.content_type)
             email.send()
-            #messages.success(request, 'Email sent successfully!')
+            # messages.success(request, 'Email sent successfully!')
         else:
             email = EmailMessage(
                 subject=subject, body=message, from_email=config.support_reply_email, to=to, connection=backend)
             email.send()
-            #messages.success(request, 'Email sent successfully!')
+            # messages.success(request, 'Email sent successfully!')
     except Exception as e:
         print(e)
-        #messages.info(request, "Email send error:{}".format(e))
+        # messages.info(request, "Email send error:{}".format(e))
 
 
 def sync_tickets(request):
@@ -297,7 +297,7 @@ def mark_ticket_as_resolved(request, id):
             conversions = Comment.objects.all()
             conversion = ''
             for comment in conversions:
-                conversion += "\n"+comment
+                conversion += "\n"+str(comment.text)
             message = config.code_for_agent_reply.replace(
                 '[id]', ticket.ticket_id).replace('[tags]', 'None').replace('[date]', str(datetime.now())).replace('[conversation_history]', conversion)
             subject = 'Ticket[#{}]: Updated'.format(ticket.ticket_id)
@@ -310,11 +310,6 @@ def mark_ticket_as_resolved(request, id):
                 subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
             recipient_list = request.POST.getlist('cc')
             recipient_list.append(ticket.customer_email)
-            print("recipient_list:{}".format(recipient_list))
-            print("subject:{}".format(subject))
-            print("message:{}".format(message))
-            print("Files:{}".format(
-                request.FILES.getlist('attach')))
             if len(request.FILES.getlist('attach')) > 0:
                 attachments = request.FILES.getlist('attach')
             else:
@@ -328,7 +323,31 @@ def mark_ticket_as_resolved(request, id):
 
 @login_required
 def mark_ticket_as_unresolved(request, id):
-    Ticket.objects.filter(id=id).update(ticket_status="Unsolved")
+    ticket = Ticket.objects.get(id=id)
+    ticket.ticket_status = "Unresolved"
+    ticket.save()
+    message = 'Your ticket (#({}) has been re-opened by {}.\nFor any queries,submit another ticket to Helpdesk'.format(
+        ticket.ticket_id, request.user.username)
+    subject = 'Ticket:(#{}) Re-opened'.format(ticket.ticket_id)
+    recipient_list = [ticket.customer_email, ]
+    attachments = []
+    send_email(request,
+               subject, message, recipient_list, attachments)
+    return HttpResponseRedirect(reverse("ticketapp:ticket-detail", kwargs={'pk': id}))
+
+
+@login_required
+def mark_ticket_as_pending(request, id):
+    ticket = Ticket.objects.get(id=id)
+    ticket.ticket_status = "Pending"
+    ticket.save()
+    message = 'Ticket (#({}) status changed to Pending by {}.\nFor any queries,submit another ticket to Helpdesk'.format(
+        ticket.ticket_id, request.user.username)
+    subject = 'Ticket:(#{}) status changed'.format(ticket.ticket_id)
+    recipient_list = [ticket.customer_email, ]
+    attachments = []
+    send_email(request,
+               subject, message, recipient_list, attachments)
     return HttpResponseRedirect(reverse("ticketapp:ticket-detail", kwargs={'pk': id}))
 
 
@@ -496,8 +515,8 @@ class Escallate:
                     time_to_escallate += timedelta(days=0,
                                                    hours=0, minutes=int(ticket_settings.duration_before_escallation))
                     today = datetime.now()
-                    print(today)
-                    print(time_to_escallate)
+                    # print(today)
+                    # print(time_to_escallate)
                     second_diff = today.second - time_to_escallate.second
                     if (today.day == time_to_escallate.day) and (today.hour == time_to_escallate.hour) and (today.minute == time_to_escallate.minute) and (second_diff >= 0 or second_diff <= 20):
                         print("Escallation in progress...")
@@ -517,8 +536,7 @@ class Escallate:
                         # send maill to client
                         send_email(
                             self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
-                        print("Escallate Ticket:[#{}] to {}".format(
-                            t.ticket_id, assignee.username))
+                        # print("Escallate Ticket:[#{}] to {}".format(t.ticket_id, assignee.username))
 # Define function to download pdf file using template
 
 

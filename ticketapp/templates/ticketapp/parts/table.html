@@ -1,0 +1,153 @@
+<div class="card shadow mb-4">
+      <div class="card-body">
+        <div class="table-responsive">
+        <form>
+          <div class="d-flex flex-row">
+          <div class="table-responsive-sm col-sm-1">
+          <table class="table table-bordered" width="50%"
+            cellspacing="0">
+            <tbody>
+                <tr>
+                  <td> 
+                    <a href="{% url 'ticketapp:import_tickets' %}"><i class="fa fa-sync"></i></a>
+                  </td>
+                  <td> 
+                    <a href="{% url 'ticketapp:import_tickets' %}"><i class="fa fa-trash-alt"></i></a>
+                  </td>
+                  <td> 
+                    <a href="{% url 'ticketapp:import_tickets' %}"><i class="fa fa-edit"></i></a>
+                  </td>
+                  <td> 
+                    <a href="{% url 'ticketapp:import_tickets' %}"><i class="fa fa-filter"></i></a>
+                  </td>
+                </tr>
+              </div>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-responsive-sm col-sm-1 ml-5">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle border-1 border-secondary" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Action
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item" type="button">Mark as Pending</button></li>
+              <li><button class="dropdown-item" type="button">Mark as Unsolved</button></li>
+              <li><button class="dropdown-item" type="button">Mark as Solved</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+          <table
+            class="table"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr class="bg-light">
+                <th>
+                  <div class="form-check m-auto">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="check-all"
+                    />
+                  </div>
+                </th>
+                <th>#</th>
+                <th>Title</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Urgency</th>
+                <th>Resolved</th>
+
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr class="bg-light">
+                <th>
+                  <div class="form-check m-auto">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="check-all"
+                    />
+                  </div>
+                </th>
+                <th>#</th>
+                <th>Title</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Urgency</th>
+                <th>Resolved</th>
+
+                <th>Action</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              {% for ticket in tickets %}
+              <tr>
+                <td>
+                  <div class="form-check m-auto">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="check-{{ticket.id}}"
+                      value="{{ticket.id}}"
+                    />
+                  </div>
+                </td>
+                <td>{{ticket.id}}</td>
+                <td>{{ ticket.title }}</td>
+                <td>{{ ticket.customer_full_name }}</td>
+                <td>{{ ticket.customer_email }}</td>
+                <td>{{ ticket.ticket_priority }}</td>
+                <td>
+                  {% if ticket.ticket_status == 'Solved' %}
+                  <div class="form-check m-auto">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="exampleCheck1"
+                      checked
+                    />
+                  </div>
+                  {% else %}
+                  <div class="form-check m-auto">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="exampleCheck1"
+                    />
+                  </div>
+                  {% endif %}
+                </td>
+
+                <td>
+                  <div class="row">
+                    <a
+                      href="{% url 'ticketapp:ticket-detail' pk=ticket.id %}"
+                      class="btn btn-info btn-circle btn-sm"
+                    >
+                      <i class="fas fa-info-circle"></i>
+                    </a>
+                    <a
+                      href="{% url 'ticketapp:update-ticket' pk=ticket.id %}"
+                      class="btn btn-primary btn-circle btn-sm"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </form>
+        </div>
+      </div>
+    </div>
+  <!-- /.container-fluid -->
+  </div>
