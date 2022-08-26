@@ -3,14 +3,33 @@
 <div class="col-12 overflow-auto">
   <div class="card">
       <div class="card-header py-3 d-flex">
-        <div class="d-inline m-auto"> <i class="fa fa-info-circle text-secondary fa-2x"></i></div>
+        <div class="d-inline m-auto"> <i class="fa fa-info-circle text-secondary fa-3x"></i></div>
         <div class="col-lg-12">
          <div class"" id="title">
           <h5 class="m-0 font-weight-bold text-dark">
-          REF:{{object.title|safe}}
+          {{object.title|safe}}
           </h5>
-          <hr />
-        </div>
+          <hr class="col-lg-11 overflow-hidden" />
+          <div class="d-flex mt-2" id="title-body">
+        <span class="fa fa-user-alt"
+          >By:&nbsp;{{object.customer_full_name}} ({{object.customer_email}}) <br /><br /><i class="fa fa-calendar-alt"
+            >{{object.created_date}}</i
+          >|<i class="fa fa-clock">{{0}}D:{{0}}H:{{0}}M</i>|<i class="fa fa-sms"
+            >{{0}} Raiser voice</i
+          >|<i class="fa fa-bell">{{0}} Agent voice</i>|<i
+            class="fa fa-star"
+          >Rating:{{None}}</i
+          >
+        </span>
+      </div>
+      <div class="d-flex mt-2 mt-1" id="title-body">
+        <span class="fa fa-user-alt mt-1"
+          >Assignee:&nbsp;&nbsp;{{object.assigned_to.username}} ({{object.assigned_to.email}})</i
+          >
+        </span>
+      </div>
+       <hr class="col-lg-11 overflow-hidden" />
+      </div>
       <div class="d-flex mt-2" id="title-body">
           {% if user.is_staff %} {% if object.ticket_status != 'Resolved' %}
           <a
@@ -45,137 +64,145 @@
       </div>
         </div>
       </div>
-       <div class="card-body">
-        <p>Client Name: {{object.customer_full_name}}</p>
-  <p>Phone number: {{object.customer_phone_number}}</p>
-  <p>
-    Email:
-    <a href="mailto:{{object.customer_email}}">{{object.customer_email}}</a>
-  </p>
-  <p>
-    Urgency:
-    <span
-      class="badge badge-pill {% if object.ticket_priority == 'Urgent' %} bg-danger {% elif object.ticket_priority == 'Medium' %} bg-warning {% else %} bg-secondary {% endif %} text-white"
-      >{{object.ticket_priority}}</span
-    >
-  </p>
-  {% if object.ticket_status == 'Resolved' %}{{object.ticket_status}}
-  <p class="badge badge-pill bg-success text-white">Resolved</p>
-  {% elif object.ticket_status == 'Unsolved' %}
-  <p class="badge badge-pill bg-warning text-white">Unresolved</p>
-  {% else %}
-  <p class="badge badge-pill bg-danger text-white">Pending</p>
-  {% endif %}
-  <p>
-    Assigned To:
-    {{object.assigned_to.username}}&nbsp;{{object.assigned_to.last_name}}
-  </p>
-  <p>Created: {{object.created_date}}</p>
-  {% for tag in object.tags.all %}
-  <p>Tags: <span class="bage badge-pill bg-{% if tag.tag_name == 'Normal' %}success{% endif %}">{{tag}},</span></p>
-  {% endfor %}
-
-  <br />
-      <b>Issue Description</b><br />
-  <p>
-<p class="overflow-auto word-wrap">{{object.issue_description|safe}}</p>
-    <br />
-    {% if object.mediafiles_set.all|length > 0 %}
-    <span
-      >Attachments <br />{% for item in object.mediafiles_set.all %}
-      <a href="{% url 'ticketapp:ticket-list' %}{{item.file}}" class="img-fluid"><i class='fa fa-file'></i></a>
-      {% endfor %}
-    </span>
-    {% endif %}
-  </p>
-</div>
-{% if comments %}
-<div class="container mt-4">
-  <h5>Comments</h5>
-
-  {% for comment in comments %}
-  <div class="bg-light mt-2 mb-2">
-    <p class="text-secondary">
-      @{{comment.user.username}} {{comment.created_date}}
+  <div class="card-body">
+    <p>
+      Urgency:
+      <span
+        class="badge badge-pill {% if object.ticket_priority == 'Urgent' %} bg-danger {% elif object.ticket_priority == 'Medium' %} bg-warning {% else %} bg-secondary {% endif %} text-white"
+        >{{object.ticket_priority}}</span
+      >
     </p>
-    <p>{{comment.text|safe}}</p>
+    <div><span>Status:</span>
+    {% if object.ticket_status == 'Resolved' %}{{object.ticket_status}}
+    <p class="badge badge-pill bg-success text-white">Resolved</p>
+    {% elif object.ticket_status == 'Unsolved' %}
+    <p class="badge badge-pill bg-warning text-white">Unresolved</p>
+    {% else %}
+    <p class="badge badge-pill bg-danger text-white">Pending</p>
+    {% endif %}
+    </div>
+    <p>Tags:   
+      {% for tag in object.tags.all %}
+    <span class="text-info">{{tag}},</span>
+    {% endfor %}
+  </p>
+
+    <br />
+        <b>Issue</b><br />
+    <p>
+  <p class="overflow-auto word-wrap">{{object.issue_description|safe}}</p>
+      <br />
+      {% if object.mediafiles_set.all|length > 0 %}
+      <span
+        >Attachments <br />{% for item in object.mediafiles_set.all %}
+        <a href="{% url 'ticketapp:ticket-list' %}{{item.file}}" class="img-fluid"><i class='fa fa-file'></i></a>
+        {% endfor %}
+      </span>
+      {% endif %}
+    </p>
+  </div>
+  {% if comments %}
+  <div class="container mt-4">
+    <h5>Comments</h5>
+
+    {% for comment in comments %}
+    <div class="bg-light mt-2 mb-2">
+      <div class="text-white bg-secondary rounded">
+        <span>@{{comment.user.username}} {{comment.created_date}}</span><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="m-auto badge badge-secondary bg-gradient-light text-primary my-3">{{comment.text|safe}}</span>
+      </div>
+    </div>
+
+    {% endfor %}
   </div>
 
-  {% endfor %}
-</div>
+  {% endif %}
 
-{% endif %}
+  </div>
+  </div>
+    
 
-</div>
-</div>
-  
-
-<!-- Modals -->
-<div
-  class="modal fade bd-example-modal-lg"
-  id="markResolvedModal"
-  tabindex="-1"
-  aria-labelledby="markResolvedModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="markResolvedModalLabel">Add Note</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        {{email_form.media}}
-        <form
-          action="{% url 'ticketapp:mark-resolved' id=object.pk %}"
-          method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div class="form-group mt-2 mb-2">
-            {{email_form.subject}}
-            {{email_form.attach}}
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="closeticket" name="closeticket">
-              <label class="form-check-label" for="exampleCheck1">Reply and close ticket</label>
+  <!-- Modals -->
+  <div
+    class="modal fade bd-example-modal-lg"
+    id="markResolvedModal"
+    tabindex="-1"
+    aria-labelledby="markResolvedModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="markResolvedModalLabel">Add Note</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          {{email_form.media}}
+          <form
+            action="{% url 'ticketapp:mark-resolved' id=object.pk %}"
+            method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group mt-2 mb-2">
+              {{email_form.subject}}
+              {{email_form.attach}}
+              <div class="form-group mt-2">
+                <label>Cc:</label>
+                <select
+                  class="select2"
+                  name="cc"
+                  id="input-select"
+                  multiple="multiple"
+                  data-placeholder="Select an Input"
+                  style="width: 100%"
+                >
+                  {% for user in users %}
+                  <option value="{{user.email}}">{{user}}|{{user.email}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="closeticket" name="closeticket">
+                <label class="form-check-label" for="exampleCheck1">Reply and close ticket</label>
+              </div>
+              <input type="submit" class="btn btn-secondary mt-2" />
             </div>
-            <input type="submit" class="btn btn-secondary mt-2" />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- modal delete -->
-<div
-  class="modal fade bd-example-modal-lg"
-  id="ticketDeletedModal"
-  tabindex="-1"
-  aria-labelledby="markResolvedModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="markResolvedModalLabel">Delete Ticket</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-    <form method="post" action="{% url 'ticketapp:delete-ticket' pk=object.pk %}">
-        {% csrf_token %}
-        <p>Are you sure you want to delete Ticket: [#{{object.ticket_id}}]?</p>
-        <input type="submit" class="btn btn-danger" value="Delete">
-    </form>
-</div>
+  <!-- modal delete -->
+  <div
+    class="modal fade bd-example-modal-lg"
+    id="ticketDeletedModal"
+    tabindex="-1"
+    aria-labelledby="markResolvedModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="markResolvedModalLabel">Delete Ticket</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+      <form method="post" action="{% url 'ticketapp:delete-ticket' pk=object.pk %}">
+          {% csrf_token %}
+          <p>Are you sure you want to delete Ticket: [#{{object.ticket_id}}]?</p>
+          <input type="submit" class="btn btn-danger" value="Delete">
+      </form>
+  </div>
       </div>
     </div>
   </div>

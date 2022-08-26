@@ -149,6 +149,7 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
             ticket=self.get_object()).order_by('-created_date')
         form = EmaiailAttachmentForm
         context['email_form'] = form
+        context['users'] = User.objects.all().exclude(username='chatbot')
         return context
 
 
@@ -293,17 +294,22 @@ def mark_ticket_as_resolved(request, id):
             ticket.ticket_status
             config = OutgoinEmailSettings.objects.all()[0]
             Comment.objects.create(ticket=ticket, user=user, text=comment)
+            conversions = Comment.objects.all()
+            conversion = ''
+            for comment in conversions:
+                conversion += "\n"+comment
             message = config.code_for_agent_reply.replace(
-                '[id]', ticket.ticket_id).replace('[tags]', 'None').replace('[date]', str(timezone.now()))
+                '[id]', ticket.ticket_id).replace('[tags]', 'None').replace('[date]', str(datetime.now())).replace('[conversation_history]', conversion)
             subject = 'Ticket[#{}]: Updated'.format(ticket.ticket_id)
             print("Close ticket:{}".format(request.POST.get('closeticket')))
             if request.POST.get('closeticket') == 'on':
                 Ticket.objects.filter(id=id).update(
                     ticket_status="Resolved", resolved_by=user, resolved_date=date_time)
-                message = 'Your ticket (#({}) has been close by {}.\nIf you are not fully satisfied with the issue,submit another ticket to Helpdesk'.format(
+                message = 'Your ticket (#({}) has been closed by {}.\nIf you are not fully satisfied with the issue,submit another ticket to Helpdesk'.format(
                     ticket.ticket_id, user)
                 subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
-            recipient_list = [ticket.customer_email, ]
+            recipient_list = request.POST.getlist('cc')
+            recipient_list.append(ticket.customer_email)
             print("recipient_list:{}".format(recipient_list))
             print("subject:{}".format(subject))
             print("message:{}".format(message))

@@ -1,78 +1,82 @@
 {% extends 'ticketapp/base.html' %} {% block content %}
 
-<div class="container bg-light mt-2 pt-2 pb-4">
-  <h1 class="text-center">Update ticket</h1>
-  {{ form.media }}
-  <form action="" method="post">
-    {% if form.errors %}
-    <ul class="messages">
-      {% for error in form.errors %}
-      <li class="text-danger">{{ error }}</li>
-      {% endfor %}
-    </ul>
-
-    {% endif %} {% csrf_token %}
-    <div class="form-group">
-      <label for="id_title">Title</label>
-      {{form.title}}
+<div class="col-12 overflow-auto">
+  <div class="card">
+    <div class="card-header py-3 d-flex">
+      <div class="d-inline m-auto">
+        <i class="fa fa-edit text-secondary fa-2x"></i>
+      </div>
+      <div class="col-lg-12">
+        <div class"" id="title">
+        <h5 class="m-0 font-weight-bold text-dark">
+          Update Ticket:[#{{object.ticket_id|safe}}]
+        </h5>
+        <hr class="col-lg-11 overflow-hidden" />
+      </div>
+      <div class="d-flex mt-2" id="title-body">
+        <span class="fa fa-user-alt"
+          >by&nbsp;&nbsp;{{object.customer_email}}|<i class="fa fa-calendar-alt"
+            >{{object.created_date}}</i
+          >|<i class="fa fa-clock">{{0}}D:{{0}}H:{{0}}M</i>|<i class="fa fa-sms"
+            >{{0}} Raiser voice</i
+          >|<i class="fa fa-bell">{{0}} Agent voice</i>|<i
+            class="fa fa-star"
+          ></i
+          >Rating:{{None}}
+        </span>
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="id_customer_full_name">Customer full name</label>
-      {{form.customer_full_name}}
-    </div>
-
-    <div class="form-group">
-      <label for="id_customer_phone_number">Phone number</label>
-      {{form.customer_phone_number}}
-    </div>
-
-    <div class="form-group">
-      <label for="id_customer_email">Email</label>
-      {{form.customer_email}}
-    </div>
-    <div class="form-group">
-      <label for="id_issue_description">Description</label>
-      {{form.issue_description}}
-    </div>
-
-    <div class="form-group">
-      <label for="id_ticket_section">Ticket Category</label>
-      {{form.ticket_section}}
-    </div>
-
-    <div>
-      <label for="id_ticket_priority">Priority</label>
-      {{form.ticket_priority}}
-    </div>
-    <div class="form-group">
-      <label>Tags</label>
-      <select
-        class="select2"
-        name="tag_names"
-        id="input-select"
-        multiple="multiple"
-        data-placeholder="Select an Input"
-        style="width: 100%"
-      >
-        {% for tag in tags %}
-        <option value="{{tag.id}}">{{tag}}</option>
+  </div>
+  <div class="card-body">
+    {{ form.media }}
+    <form action="" method="post">
+      {% if form.errors %}
+      <ul class="messages">
+        {% for error in form.errors %}
+        <li class="text-danger">{{ error }}</li>
         {% endfor %}
-      </select>
-    </div>
+      </ul>
 
-    <div>
-      <label for="id_ticket_status">Status</label>
-      {{form.ticket_status}}
-    </div>
+      {% endif %} {% csrf_token %}
+      <div class="form-group">{{form.title}}</div>
+      <div class="form-group">{{form.customer_full_name}}</div>
+      <div class="form-group">{{form.customer_phone_number}}</div>
+      <div class="form-group">{{form.customer_email}}</div>
+      <div class="form-group">{{form.issue_description}}</div>
+      <div class="form-group">
+        <label for="id_ticket_section">Ticket Category</label>
+        {{form.ticket_section}}
+      </div>
+      <div>
+        <label for="id_ticket_priority">Priority</label>
+        {{form.ticket_priority}}
+      </div>
+      <div class="form-group">
+        <label>Tags</label>
+        <select
+          class="select2"
+          name="tag_names"
+          id="input-select"
+          multiple="multiple"
+          data-placeholder="Select an Input"
+          style="width: 100%"
+        >
+          {% for tag in tags %}
+          <option value="{{tag.id}}">{{tag}}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-    <div class="form-group pt-2 pb-2">
-      <label for="id_assigned_to">Assign to</label>
-      {{form.assigned_to}}
-    </div>
-    <div class="form-group pt-2 pb-2">{{form.attach}}</div>
-    <input type="submit" class="btn btn-primary" />
-  </form>
+      <div class="d-none">{{form.ticket_status}}</div>
+
+      <div class="form-group pt-2 pb-2">
+        <label for="id_assigned_to">Assignee</label>
+        {{form.assigned_to}}
+      </div>
+      <div class="form-group pt-2 pb-2">{{form.attach}}</div>
+      <input type="submit" class="btn btn-primary" />
+    </form>
+  </div>
+
+  {% endblock content %}
 </div>
-
-{% endblock content %}

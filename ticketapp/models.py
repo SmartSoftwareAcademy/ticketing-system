@@ -90,7 +90,7 @@ class MediaFiles(models.Model):
 class Comment(models.Model):
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.CharField(max_length=500)
+    text = models.TextField(max_length=500)
     created_date = models.DateTimeField(null=True, auto_now_add=True)
 
     def __str__(self):

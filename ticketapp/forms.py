@@ -60,21 +60,21 @@ class TicketForm(forms.ModelForm):
 
 class TicketUpdateForm(forms.ModelForm):
     title = forms.CharField(max_length=500, widget=forms.TextInput(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form-control', 'type': 'hidden'}))
     customer_full_name = forms.CharField(required=False,
-                                         max_length=200, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'If applicable'}))
+                                         max_length=200, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'If applicable', 'type': 'hidden'}))
     customer_phone_number = forms.CharField(required=False,
-                                            max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'If applicable'}))
+                                            max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'If applicable', 'type': 'hidden'}))
     customer_email = forms.CharField(required=False,
-                                     max_length=40, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+                                     max_length=40, widget=forms.EmailInput(attrs={'class': 'form-control', 'type': 'hidden'}))
     issue_description = forms.CharField(required=False,
-                                        max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce'}))
+                                        max_length=25000, widget=forms.TextInput(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce', 'type': 'hidden'}))
     ticket_section = forms.ChoiceField(
         choices=TICKET_SECTIONS, widget=forms.Select(attrs={'class': 'form-control'}))
     ticket_priority = forms.ChoiceField(required=False,
                                         choices=TICKET_PRIORITIES, widget=forms.Select(attrs={'class': 'form-control'}))
     ticket_status = forms.ChoiceField(required=False,
-                                      choices=TICKET_STATUSES, widget=forms.Select(attrs={'class': 'form-control'}))
+                                      choices=TICKET_STATUSES, widget=forms.Select(attrs={'class': 'form-control', 'type': 'hidden'}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
     attach = forms.FileField(required=False,
@@ -94,7 +94,7 @@ class EmaiailAttachmentForm(forms.Form):
 
 
 class ImapForm(ModelForm):
-   #email_password = forms.CharField(widget=PasswordInput())
+   # email_password = forms.CharField(widget=PasswordInput())
 
     class Meta:
         model = ImapSettings
