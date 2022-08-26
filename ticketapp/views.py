@@ -158,6 +158,16 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
         context['mins'] = datetime.now().minute - ticket.created_date.minute
         context['agent_voice'] = Comment.objects.filter(
             ticket=self.get_object()).count()
+        ticket_settings = TicketSettings.objects.all().first()
+        context['escallate_hours'] = ticket_settings.duration_before_escallation
+        if ticket_settings.enable_ticket_escalltion:
+            if len(ticket.assigned_to.groups.filter(name="Admins")) <= 0 and (ticket.ticket_status == "Unsolved" or ticket.ticket_status == "Pending"):
+                escallate_time = ticket.created_date
+                escallate_time += timedelta(
+                    hours=int(ticket_settings.duration_before_escallation))
+                now = datetime.now()
+                if now.hour > escallate_time.hour:
+                    context['escallate_time'] = now.hour - escallate_time.hour
         return context
 
 
@@ -524,15 +534,14 @@ class Escallate:
         top_assignees = User.objects.filter(groups__name='Admins')
         # escallate after time specified
         ticket_settings = TicketSettings.objects.all().first()
-        ticket_settings = TicketSettings.objects.all().first()
         time_zone = str(ticket_settings.time_zone)
         tz = timezone(time_zone)
         for t in tickets:
             if str(t.ticket_status).lower() == 'unsolved' or str(t.ticket_status).lower() == 'pending':
                 if len(t.assigned_to.groups.filter(name='Admins')) <= 0:
                     time_to_escallate = t.created_date.astimezone(tz)
-                    time_to_escallate += timedelta(days=0,
-                                                   hours=0, minutes=int(ticket_settings.duration_before_escallation))
+                    time_to_escallate += timedelta(
+                        hours=int(ticket_settings.duration_before_escallation))
                     today = datetime.now()
                     # print(today)
                     # print(time_to_escallate)
