@@ -54,6 +54,20 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('text', 'ticket__id', 'user__username', 'created_date',)
 
 
+class TicketSettingAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE()}
+    }
+    list_filter = (
+        'id',
+        'duration_before_escallation',
+        'duration_before_escallation',
+    )
+
+    search_fields = ('id', 'duration_before_escallation',
+                     'duration_before_escallation',)
+
+
 class ImapAdmin(admin.ModelAdmin):
     form = ImapForm
 
@@ -62,4 +76,6 @@ admin.site.register(Ticket, TicketAdmin)
 admin.site.register(OutgoinEmailSettings, OutgoinEmailSettingsAdmin)
 admin.site.register(ImapSettings, ImapAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(TicketSettings, TicketSettingAdmin)
+
 admin.site.register([MediaFiles, Tags])

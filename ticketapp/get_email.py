@@ -68,14 +68,15 @@ class EmailDownload:
                     email.attach(attch.name, attch.read(),
                                     attch.content_type)
                 email.send()
-                messages.success(self.request, 'Email sent successfully!')
+                #messages.success(self.request, 'Email sent successfully!')
             else:
                 email = EmailMessage(
                     subject=subject, body=message, from_email=config.support_reply_email, to=to, connection=backend)
                 email.send()
-                messages.success(self.request, 'Email sent successfully!')
+                #messages.success(self.request, 'Email sent successfully!')
         except Exception as e:
-            messages.info(self.request,"Email send error:{}".format(e))
+            print(e)
+            #messages.info(self.request,"Email send error:{}".format(e))
             
         
     def login_to_imap_server(self):

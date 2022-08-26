@@ -55,7 +55,7 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
         exclude = ('user', 'ticket_id', 'created_date',
-                   'completed_status', 'resolved_by', 'resolved_date')
+                   'ticket_status', 'resolved_by', 'resolved_date')
 
 
 class TicketUpdateForm(forms.ModelForm):

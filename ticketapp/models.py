@@ -5,7 +5,8 @@ from django.forms import PasswordInput
 from django.urls import reverse
 from django.utils.crypto import get_random_string
 from tinymce import models as tinymce_models
-# Create your models here.
+import pytz
+from timezone_field import TimeZoneField
 
 
 class Ticket(models.Model):
@@ -174,3 +175,21 @@ class OutgoinEmailSettings(models.Model):
 
     class Meta:
         verbose_name_plural = 'Support Email Setup - (Outgoing)'
+
+
+class TicketSettings(models.Model):
+    enable_ticket_escalltion = models.BooleanField(
+        default=True, blank=True, null=True)
+    time_zone = TimeZoneField(use_pytz=True, default='Africa/Nairobi')
+    duration_before_escallation = models.IntegerField(
+        default=48, help_text="Time in hours")
+    code_place_holders = models.TextField(
+        max_length=25000, blank=True, null=True)
+    code_for_automated_escallation_email = models.TextField(
+        max_length=25000, blank=True, null=True)
+
+    def __str__(self):
+        return "Ticket Settings"
+
+    class Meta:
+        verbose_name_plural = 'Ticket Settings'
