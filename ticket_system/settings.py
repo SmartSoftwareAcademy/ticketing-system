@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'tinymce',
     'accounts',
+    'resource_center',
     'ticketapp',
 ]
 
