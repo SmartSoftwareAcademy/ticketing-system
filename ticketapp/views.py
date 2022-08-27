@@ -28,6 +28,7 @@ from django.core.mail.backends.smtp import EmailBackend
 from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from datetime import datetime, timedelta
+from django.contrib.auth.models import User
 
 
 def send_email(request, subject, body, to, attachments):
@@ -65,7 +66,7 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         try:
             context = super().get_context_data(**kwargs)
-            if self.request.user.is_superuser:
+            if self.request.user.is_superuser or len(self.request.user.groups.filter(name='Admins')) > 0:
                 context['all_issues'] = Ticket.objects.all().count()
                 context['urgent_count'] = Ticket.objects.filter(
                     ticket_priority="Urgent").count()
@@ -95,6 +96,24 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
                     ticket_section='HR').count()
                 context['general_tickets'] = Ticket.objects.filter(
                     ticket_section='General').count()
+
+                # tags
+                context['urgent_tag_count'] = Ticket.objects.filter(
+                    tags__tag_name='Urgent').count()
+                context['high_tag_count'] = Ticket.objects.filter(
+                    tags__tag_name='High').count()
+                context['medium_tag_count'] = Ticket.objects.filter(
+                    tags__tag_name='Medium').count()
+                context['low_tag_count'] = Ticket.objects.filter(
+                    tags__tag_name='Low').count()
+
+                # avg time taken to ressolve
+
+                # first reply time
+                context['agents'] = [
+                    user.username for user in User.objects.filter(groups__name='Agents')]
+
+                # no of tickets per day
 
             elif self.request.user.is_staff:
                 context['all_issues'] = Ticket.objects.filter(
