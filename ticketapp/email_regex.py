@@ -25,7 +25,7 @@ class GetEmailDetails:
     def get_name(self):
         try:
             fullname = self.name_regex.search(self.email).group(1)
-            print("Full name: ", fullname)
+            #print("Full name: ", fullname)
             if fullname:
                 return fullname
             return None
@@ -36,7 +36,7 @@ class GetEmailDetails:
         try:
             email_address = self.email_regex.findall(
                 self.email).strip('helpdesk@gokhanmasterspacejv.co.ke')
-            print("Email address: ", email_address)
+            #print("Email address: ", email_address)
             if email_address:
                 return email_address[0]
             return None
@@ -46,7 +46,7 @@ class GetEmailDetails:
     def get_phone_number(self):
         try:
             phone_number = self.phone_number.findall(self.email)
-            print("Phone number: ", phone_number)
+            #print("Phone number: ", phone_number)
             if phone_number:
                 return str(phone_number[0][1])
             return None
@@ -72,7 +72,7 @@ class GetEmailDetails:
         try:
             description = self.issue_description.search(self.email).end()
             issue_description = self.email[description:]
-            print("Description: ", issue_description)
+            #print("Description: ", issue_description)
 
             if issue_description:
                 return issue_description

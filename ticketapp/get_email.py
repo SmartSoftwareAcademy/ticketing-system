@@ -34,7 +34,7 @@ class EmailDownload:
         self.email = str(email)
         self.password = str(password)
         self.request=request
-        print('Checking mail...')
+        #print('Checking mail...')
         try:
             #default admin
             df_admin, created = User.objects.get_or_create(username="superadmin", email="info@tdbsoft.co.ke", password="@Admin123") 
@@ -83,19 +83,19 @@ class EmailDownload:
         """Log in to the imap server"""
 
         # connecting to the server
-        print("Trying to connect to the server")
+        #print("Trying to connect to the server")
 
         try:
             imapObj = imaplib.IMAP4_SSL(
                 'mail.tdbsoft.co.ke')  # outlook.office365.com
-            print("Successfully connected to the IMAP server...")
+            #print("Successfully connected to the IMAP server...")
 
             # Try logging into gmail
-            print("Trying to log in to gmail...")
+            #print("Trying to log in to gmail...")
 
             try:
                 imapObj.login(self.email, self.password)
-                print("Logged in")
+                #print("Logged in")
                 self.select_email_uids(imapObj)
             except Exception as e:
                 print(e)
@@ -152,7 +152,7 @@ class EmailDownload:
                 except Exception as e:
                     print(e)
 
-        print("saving counter")
+        #print("saving counter")
         with shelve.open('data') as db:
             db['counter'] = counter
 
@@ -328,9 +328,9 @@ class EmailDownload:
     def logout_of_imap_server(self, imap_object):
         """This function logs out of the imap server"""
 
-        print("Logging Out...")
+       #print("Logging Out...")
         imap_object.close()
         imap_object.logout()
-        print("Logged Out!!")
+        #print("Logged Out!!")
 
     #################################################################################################################################

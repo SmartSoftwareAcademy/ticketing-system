@@ -10,14 +10,14 @@ from ticketapp.views import Escallate
 
 def start(request):
     try:
+        imap_settings = ImapSettings.objects.all()[0]
         job = EmailDownload(request, imap_settings.email_id,
                             imap_settings.email_password).login_to_imap_server
-        imap_settings = ImapSettings.objects.all()[0]
         scheduler = BackgroundScheduler()
         scheduler.add_job(job, 'interval', minutes=0.25)
         scheduler.start()
     except Exception as e:
-        print(e)
+        print("upadter->{}".format(e))
 
 
 def escallate(request):
@@ -27,4 +27,4 @@ def escallate(request):
         scheduler.add_job(job, 'interval', minutes=0.10)
         scheduler.start()
     except Exception as e:
-        print(e)
+        print("upadter->{}".format(e))
