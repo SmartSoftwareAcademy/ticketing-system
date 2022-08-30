@@ -130,7 +130,7 @@ class ImapSettings(models.Model):
     email_password = models.CharField(max_length=100)
     imap_port = models.IntegerField()
     auto_import_mails_as_tickets = models.BooleanField(
-        default=False, blank=True, null=True)
+        default=True, blank=True, null=True)
 
     def __str__(self):
         return self.email_id
