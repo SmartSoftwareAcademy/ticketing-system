@@ -628,13 +628,13 @@
         var myBarChart = new Chart(ctx4, {
       type: 'bar',
       data: {
-          labels: ['Urgent','High','Medium','Low'],
+          labels: ['Urgent','High','Medium','Normal','Low'],
           datasets: [{
           label: "No. of Tickets Per Tag",
           backgroundColor: "#4e73df",
           hoverBackgroundColor: "#2e59d9",
           borderColor: "#4e73df",
-          data: [`{{urgent_tag_count}}`, `{{high_tag_count}}`, `{{medium_tag_count}}`, `{{low_tag_count}}`],
+          data: [`{{urgent_tag_count}}`, `{{high_tag_count}}`, `{{medium_tag_count}}`, `{{normal_tag_count}}`, `{{low_tag_count}}`],
           }],
       },
       options: {
@@ -657,7 +657,7 @@
               drawBorder: true
               },
               ticks: {
-              maxTicksLimit: 6
+              maxTicksLimit: 1
               },
               maxBarThickness: 25,
           }],
@@ -665,7 +665,7 @@
               ticks: {
               min: 0,
               max: {{all_issues}},
-              maxTicksLimit: 10,
+              maxTicksLimit: 5,
               padding: 10,
               // Include a dollar sign in the ticks
               callback: function(value, index, values) {

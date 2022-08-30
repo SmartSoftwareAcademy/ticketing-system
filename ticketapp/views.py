@@ -100,8 +100,12 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
                 # tags
                 context['urgent_tag_count'] = Ticket.objects.filter(
                     tags__tag_name='Urgent').count()
+                print(Ticket.objects.filter(
+                    tags__tag_name='Normal').count())
                 context['high_tag_count'] = Ticket.objects.filter(
                     tags__tag_name='High').count()
+                context['normal_tag_count'] = Ticket.objects.filter(
+                    tags__tag_name='Normal').count()
                 context['medium_tag_count'] = Ticket.objects.filter(
                     tags__tag_name='Medium').count()
                 context['low_tag_count'] = Ticket.objects.filter(
