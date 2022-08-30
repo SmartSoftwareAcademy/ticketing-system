@@ -1,5 +1,3 @@
-from tkinter import E
-from turtle import title
 from urllib import request
 from pytz import timezone
 from email import message
