@@ -31,9 +31,13 @@ class EmailDownload:
     #################################################################################################################################
     def __init__(self,request, email, password):
         """Yeah, initializing everything"""
+        imap_settings=ImapSettings.objects.all()[0]
         self.email = str(email)
         self.password = str(password)
         self.request=request
+        self.mail_server = imap_settings.imap_server
+
+
         #print('Checking mail...')
         try:
             #default admin
@@ -56,7 +60,6 @@ class EmailDownload:
     def send_email(self,subject, body, to,attachments):
         try:
             config = OutgoinEmailSettings.objects.all()[0]
-            #print(imap_settings.email_id, imap_settings.email_password)
             backend = EmailBackend(host=config.email_host, port=config.email_port, username=config.support_reply_email,
                                 password=config.email_password, use_tls=config.use_tls, fail_silently=config.fail_silently)
             message = re.sub(r'(?<!&nbsp;)&nbsp;', ' ',strip_tags(body))#replace &nbsp; with space
@@ -86,8 +89,7 @@ class EmailDownload:
         #print("Trying to connect to the server")
 
         try:
-            imapObj = imaplib.IMAP4_SSL(
-                'mail.tdbsoft.co.ke')  # outlook.office365.com
+            imapObj = imaplib.IMAP4_SSL(self.mail_server)  # outlook.office365.com
             #print("Successfully connected to the IMAP server...")
 
             # Try logging into gmail
@@ -214,7 +216,8 @@ class EmailDownload:
                 print("Paths=>{}".format(paths))
                 ############################################################################
             email_details = GetEmailDetails(message)
-            if config.support_reply_email in str(mail_to).lower():
+            print("Mail_to:{}".format(mail_to))
+            if str(config.support_reply_email).lower() in str(mail_to).lower():
                 mail_to = str(mail_to).strip(config.support_reply_email)
                 print("Mail_to:{}".format(mail_to))
                 if ',' in str(mail_to):
