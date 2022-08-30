@@ -269,7 +269,8 @@ class EmailDownload:
                 try:
                     recipient_list = [str(mail_from_).split('<')[1].strip('>'), ]
                     print("recipient_list:{}".format(recipient_list))
-                    subject = 'Ticket[#{}]:Issue recieved'
+                    subject = 'Ticket[#{}]:Issue recieved'.format(
+                        ticket.ticket_id)
                     message = config.code_for_automated_reply.replace(
                         '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]','None').replace('[date]',str(timezone.now()))
                     attachments = []#ticket.mediafiles_set.all()
