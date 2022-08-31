@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 #from ticketapp.models import *
+from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 import os
+import sys
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 #email_settings = OutgoinEmailSettings.objects.all()
@@ -21,13 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u9z&&4a0q%p^%+*^nnfmm(k6oqe1k%1i!p7@_k2kxv^8inq&i&'
-
+#SECRET_KEY = 'django-insecure-u9z&&4a0q%p^%+*^nnfmm(k6oqe1k%1i!p7@_k2kxv^8inq&i&'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ['support.tdbsoft.co.ke', 'localhost', '127.0.0.1']
-
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "True") == "True"
+#ALLOWED_HOSTS = ['support.tdbsoft.co.ke', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS",
+                          "127.0.0.1,localhost").split(",")
 
 # Application definition
 
@@ -95,12 +101,19 @@ WSGI_APPLICATION = 'ticket_system.wsgi.application'
 #         'PORT': 3307,
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'helpdesk.sqlite3',
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'helpdesk.sqlite3',
+        }
     }
-}
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 
 # Password validation
@@ -136,11 +149,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
-#STATIC_ROOT = os.path.join('static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 MEDIA_URL = '/media/'  # This is just for url i.e https://l.me/media/l.jpg
 # This is the folder the image will be uploaded
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
