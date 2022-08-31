@@ -21,6 +21,7 @@ from django.utils import timezone
 import re
 from django.core.mail.backends.smtp import EmailBackend
 from django.contrib import messages
+from django.contrib.sites.models import Site
 from django.contrib.auth.models import User, Group
 
 
@@ -194,25 +195,31 @@ class EmailDownload:
                     message = message.decode('utf-8', 'ignore')
                     break
             #####################download attachment####################################
-            att_path = "No attachment found."
-            download_folder = "media\\attachments"
-            paths = []
-            for part in email_message.walk():
-                if part.get_content_maintype() == 'multipart':
-                    continue
-                if part.get('Content-Disposition') is None:
-                    continue
+            try:
+                att_path = "No attachment found."
+                download_folder = "media\\attachments"
+                paths = []
+                for part in email_message.walk():
+                    if part.get_content_maintype() == 'multipart':
+                        continue
+                    if part.get('Content-Disposition') is None:
+                        continue
 
-                filename = part.get_filename()
-                att_path = os.path.join(download_folder, filename)
-
-                if not os.path.isfile(att_path):
-                    fp = open(att_path, 'wb')
-                    fp.write(part.get_payload(decode=True))
-                    fp.close()
-                    print('attachment downloaded')
-                    paths.append(att_path.strip())
-                print("Paths=>{}".format(paths))
+                    filename = part.get_filename()
+                    att_path = os.path.join(download_folder, filename)
+                    print(att_path)
+                    if 'outlook-logo' in str(att_path).lower():
+                        continue
+                    else:
+                        if not os.path.isfile(att_path):
+                            fp = open(att_path, 'wb')
+                            fp.write(part.get_payload(decode=True))
+                            fp.close()
+                            print('attachment downloaded')
+                            paths.append(str(att_path).strip())
+                    print("Paths=>{}".format(paths))
+            except Exception as e:
+                print("media error:{}".format(e))
                 ############################################################################
             email_details = GetEmailDetails(message)
             print("Mail_to:{}".format(mail_to))
@@ -259,8 +266,8 @@ class EmailDownload:
                 to_list = [assign_to.email, ]
             else:
                to_list = [str(mail_to).strip(config.support_reply_email),]
-            print(to_list)
-            # get attachments            
+            print(ticket)
+            # get attachments 
             if paths:
                 for path in paths:
                     attch, created = ticket.mediafiles_set.get_or_create(
@@ -284,9 +291,10 @@ class EmailDownload:
                 try:
                     # send mail to assignee
                     print("to list:{}".format(to_list))
-                    domain = self.request.META['HTTP_HOST']
-                    protocol = 'https' if self.request.is_secure() else 'http'
-                    ticket_url = protocol+"://"+domain+'/ticket-detail/{}/'.format(ticket.id)
+                    domain = Site.objects.get_current().domain
+                    # domain = self.request.META['HTTP_HOST']
+                    # protocol = 'https' if self.request.is_secure() else 'http'
+                    ticket_url = '{}/ticket-detail/{}/'.format(domain,ticket.id)
                     message = config.code_for_automated_assign.replace(
                         '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
                     subject = "[#{}]:Ticket assigned to you".format(ticket.ticket_id)
