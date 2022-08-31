@@ -35,10 +35,9 @@ class EmailDownload:
         self.email = str(email)
         self.password = str(password)
         self.request=request
-        self.mail_server = imap_settings.imap_server
-
-
-        #print('Checking mail...')
+        self.mail_server = str(imap_settings.imap_server).strip()
+        print('Checking mail...')
+        
         try:
             #default admin
             df_admin, created = User.objects.get_or_create(username="superadmin", email="info@tdbsoft.co.ke", password="@Admin123") 
@@ -90,19 +89,18 @@ class EmailDownload:
 
         try:
             imapObj = imaplib.IMAP4_SSL(self.mail_server)  # outlook.office365.com
-            #print("Successfully connected to the IMAP server...")
+                #print("Successfully connected to the IMAP server...")
 
-            # Try logging into gmail
-            #print("Trying to log in to gmail...")
+                # Try logging into gmail
+                #print("Trying to log in to gmail...")
 
             try:
-                imapObj.login(self.email, self.password)
-                #print("Logged in")
-                self.select_email_uids(imapObj)
+                    imapObj.login(self.email, self.password)
+                    #print("Logged in")
+                    self.select_email_uids(imapObj)
             except Exception as e:
-                print(e)
-                print("Failed to log you in, make sure your password and email are correct \nand that your have enabled non-google apps in the google settings")
-
+                    print(e)
+                    print("Failed to log you in, make sure your password and email are correct \nand that your have enabled non-google apps in the google settings")
         except:
             print("Failed to connect, probably some network error")
 
@@ -186,6 +184,7 @@ class EmailDownload:
             config = OutgoinEmailSettings.objects.all()[0]
             user,created=User.objects.get_or_create(username='chatbot',first_name='chatbot', last_name='chatbot', password="@User1234", is_staff=True, is_superuser=True)
             subject = email_message["subject"]
+            print(subject)
             mail_to = email_message["to"]
             mail_from_ = email_message["from"]
             date_ = email_message["date"]
