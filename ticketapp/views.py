@@ -27,6 +27,7 @@ from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 
 
 def send_email(request, subject, body, to, attachments):
@@ -253,13 +254,34 @@ class TicketUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def form_valid(self, form):
         redirect_url = super().form_valid(form)
+        config = OutgoinEmailSettings.objects.all()[0]
         ticket = self.object
+        prev_assignee = str(ticket.assigned_to.username)
         tags = self.request.POST.getlist("tag_names")
         print(ticket)
         print(tags)
         for tag_name in tags:
             ticket.tags.add(int(tag_name))
         ticket.save()
+        domain = Site.objects.get_current().domain
+        to_list = [ticket.assigned_to.email, ]
+        tag_list = ''
+        tags = ticket.tags.all()
+        for tag in tags:
+            tag_list += str(tag.tag_name)
+        attachments = []
+        ticket_url = '{}/ticket-detail/{}/'.format(domain, ticket.id)
+        if str(ticket.assigned_to.username) != prev_assignee:
+            message = config.code_for_automated_assign.replace(
+                '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', tag_list).replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
+            subject = "Ticket[#{}] assigned to you".format(ticket.ticket_id)
+        else:
+            message = "Ticket:[#{}] has been updated by {} as follows\n\nTags:{}\nTicket Priority:{}\n\n\nRegars,\nHelpdesk.".format(
+                ticket.ticket_id, str(self.request.user.username), tag_list, ticket.ticket_priority)
+            subject = "Ticket:[#{}] updated".format(ticket.ticket_id)
+        print("recipient list:".format(to_list))
+        send_email(self.request, subject, message,
+                   to_list, attachments)
         messages.info(self.request, "Ticket updates saved!")
         return redirect_url
 

@@ -223,7 +223,7 @@ class EmailDownload:
                 ############################################################################
             email_details = GetEmailDetails(message)
             print("Mail_to:{}".format(mail_to))
-            if str(config.support_reply_email).lower() in str(mail_to).lower():
+            if re.match(".*"+str(config.support_reply_email).lower()+".*",str(mail_to).lower()):
                 mail_to = str(mail_to).strip(config.support_reply_email)
                 print("Mail_to:{}".format(mail_to))
                 if ',' in str(mail_to):
@@ -257,7 +257,7 @@ class EmailDownload:
             ticket, created = Ticket.objects.get_or_create(
                 title=str(subject).strip('RE:'), 
                 issue_description=message,
-                customer_full_name=str(mail_from_).split('<')[0], 
+                customer_full_name=str(mail_from_).split('<')[0].strip("\""), 
                 customer_email=str(mail_from_).split('<')[1].strip('>'), 
                 ticket_section=email_details.get_issue_section(),
                 customer_phone_number=email_details.get_phone_number())
@@ -297,7 +297,8 @@ class EmailDownload:
                     ticket_url = '{}/ticket-detail/{}/'.format(domain,ticket.id)
                     message = config.code_for_automated_assign.replace(
                         '[id]', ticket.ticket_id).replace('[request_description]', ticket.issue_description).replace('[tags]', 'None').replace('[date]', str(timezone.now())).replace('[ticket_link]', ticket_url).replace('[assignee]', ticket.assigned_to.username)
-                    subject = "[#{}]:Ticket assigned to you".format(ticket.ticket_id)
+                    subject = "Ticket:[#{}] assigned to you".format(
+                        ticket.ticket_id)
                     print("recipient list:".format(to_list))
                     self.send_email(subject, message,
                                     to_list, attachments)
