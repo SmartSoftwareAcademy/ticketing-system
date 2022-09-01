@@ -208,7 +208,7 @@ class EmailDownload:
                     filename = part.get_filename()
                     att_path = os.path.join(download_folder, filename)
                     print(att_path)
-                    if 'outlook-logo' in str(att_path).lower():
+                    if ('outlook-logo' or 'outlook') in str(att_path).lower():
                         continue
                     else:
                         if not os.path.isfile(att_path):
@@ -223,41 +223,50 @@ class EmailDownload:
                 ############################################################################
             email_details = GetEmailDetails(message)
             print("Mail_to:{}".format(mail_to))
-            if re.match(".*"+str(config.support_reply_email).lower()+".*",str(mail_to).lower()):
-                mail_to = str(mail_to).strip(config.support_reply_email)
-                print("Mail_to:{}".format(mail_to))
-                if ',' in str(mail_to):
-                    assign_to, created = User.objects.get_or_create(
-                    username=str(mail_to).split(',')[0].split(' ')[0].strip('\"'), first_name=str(mail_to).split(',')[0].split(' ')[0], last_name=str(mail_to).split(',')[0].split(' ')[1], email=str(mail_to).split(',')[0].split('<')[1].strip('>'), password='@User1234')
-                elif '<' in str(mail_to):
-                    assign_to, created = User.objects.get_or_create(
-                        username=str(mail_to).split('<')[0].split(' ')[0].strip('\"'), first_name=str(mail_to).split('<')[0].split(' ')[0], last_name=str(mail_to).split('<')[0].split(' ')[1], email=str(mail_to).split('<')[1].strip('>'), password='@User1234')
+            if str(config.support_reply_email) in mail_to:
+                mail_to = re.sub(
+                    "(<"+str(config.support_reply_email)+">([r'\b ']|[r',\b']||[r';\b']))", '', str(mail_to))
+                mail_to = re.sub("Gokhanmasterspacejv Helpdesk",'',str(mail_to))
+            mail_to=str(mail_to)
+            print("Mail_to:{}".format(mail_to))
+            try:
+                if ',' in mail_to or ';' in mail_to:
+                    username=mail_to.split(',')[0].split(' ')[0].strip('\"')
+                    first_name=mail_to.split(',')[0].split(' ')[0]
+                    last_name=mail_to.split(',')[0].split(' ')[1]
+                    email=mail_to.split(',')[0].split('<')[1].strip('>')
+                elif '<' in mail_to:
+                    username=mail_to.split('<')[0].split(' ')[0].strip('\"')
+                    first_name=mail_to.split('<')[0].split(' ')[0]
+                    last_name=mail_to.split('<')[0].split(' ')[1]
+                    email=mail_to.split('<')[1].strip('>'), 
                 else:
-                    assign_to, created = User.objects.get_or_create(
-                        username=str(mail_to).strip('\"').strip(), email=str(mail_to).strip(), password='@User1234')
-                assign_to.is_staff = True
+                    username = mail_to.split(' ')[0].strip('\"').strip()
+                    email=mail_to.strip(' ')
+                    first_name = username
+                    last_name = mail_to.split('<')[0].split(' ')[1].strip('\"').strip()
+                password = '{}@1234'.format(username.strip('\"'))
+                email = str(email).strip(')(,\'')
                 group = Group.objects.get(name="Agents")
+                print("email:{}\nusername:{}\nfname:{}\nlname:{}".format(email,username,first_name,last_name))
+                if email != '':
+                    assign_to,created = User.objects.get_or_create(username=username.lower(), first_name=first_name, last_name=last_name, email=email, password=password)
+                else:
+                    assign_to = random.choice(User.objects.exclude(username='chatbot').exclude(
+                        username='superadmin').exclude(email='').exclude(groups__name='ExternalAdmins').exclude(email='helpdesk@gokhanmasterspacejv.co.ke'))
                 if assign_to not in group.user_set.all():
                     assign_to.groups.add(group)
+                assign_to.is_staff = True
                 assign_to.save()
-            else:
-                assign_to = random.choice(
-                    User.objects.exclude(username='chatbot').exclude(username='superadmin').exclude(email='').exclude(groups__name='ExternalAdmins'))
+                print("assigned to:{}".format(assign_to))
+            except Exception as e:
+                 print("assigned to create error:{}".format(e))
 
-            # ticket_object = Ticket.objects.create(
-            #     user=user,
-            #     title=subject,
-            #     customer_full_name=email_message['from'],
-            #     customer_phone_number=email_details.get_phone_number(),
-            #     customer_email=email_details.get_email(),
-            #     issue_description=email_details.get_issue_description(),
-            #     ticket_section=email_details.get_issue_section(),
-            #     created_date=date_
-            # )
-            ticket, created = Ticket.objects.get_or_create(
-                title=str(subject).strip('RE:'), 
+            ticket,created= Ticket.objects.get_or_create(
+                title=str(subject), 
                 issue_description=message,
-                customer_full_name=str(mail_from_).split('<')[0].strip("\""), 
+                customer_full_name=str(mail_from_).split('<')[
+                    0].strip("\"").strip("\""),
                 customer_email=str(mail_from_).split('<')[1].strip('>'), 
                 ticket_section=email_details.get_issue_section(),
                 customer_phone_number=email_details.get_phone_number())
@@ -265,7 +274,7 @@ class EmailDownload:
                 ticket.assigned_to = assign_to
                 to_list = [assign_to.email, ]
             else:
-               to_list = [str(mail_to).strip(config.support_reply_email),]
+               to_list = [mail_to,]
             print(ticket)
             # get attachments 
             if paths:
