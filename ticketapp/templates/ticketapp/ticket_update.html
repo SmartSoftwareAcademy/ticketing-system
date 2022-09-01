@@ -1,5 +1,4 @@
-{% extends 'ticketapp/base.html' %} {% block content %}
-
+{% extends 'ticketapp/base.html' %} {% block content %} {% if form %}
 <div class="col-12 overflow-auto">
   <div class="card">
     <div class="card-header py-3 d-flex">
@@ -72,6 +71,7 @@
       <input type="submit" class="btn btn-primary" />
     </form>
   </div>
-
-  {% endblock content %}
+  {% else %}
+  <div>{% include 'ticketapp/parts/403.html' %}</div>
+  {% endif %} {% endblock content %}
 </div>

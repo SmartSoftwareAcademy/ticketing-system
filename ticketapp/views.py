@@ -1,3 +1,4 @@
+from email.headerregistry import Group
 from urllib import request
 from pytz import timezone
 from email import message
@@ -65,7 +66,11 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         try:
             context = super().get_context_data(**kwargs)
-            if self.request.user.is_superuser or len(self.request.user.groups.filter(name='Admins')) > 0:
+            global all_permissions_in_groups
+            all_permissions_in_groups = self.request.user.get_group_permissions()
+            print(all_permissions_in_groups)
+            perm = 'ticketapp.view_ticket'
+            if perm in all_permissions_in_groups or self.request.user.is_superuser:
                 context['all_issues'] = Ticket.objects.all().count()
                 context['urgent_count'] = Ticket.objects.filter(
                     ticket_priority="Urgent").count()
@@ -115,10 +120,8 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
                 # first reply time
                 context['agents'] = [
                     user.username for user in User.objects.filter(groups__name='Agents')]
-
                 # no of tickets per day
-
-            elif self.request.user.is_staff:
+            else:
                 context['all_issues'] = Ticket.objects.filter(
                     assigned_to=self.request.user).count()
                 context['urgent_count'] = Ticket.objects.filter(
@@ -160,35 +163,55 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
     model = Ticket
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(
-            ticket=self.get_object()).order_by('-created_date')
-        ticket = self.get_object()
-        form = EmaiailAttachmentForm
-        context['email_form'] = form
-        context['users'] = User.objects.all().exclude(username='chatbot')
-        context['ticket_ids'] = Ticket.objects.all().exclude(
-            id=self.get_object().id)
-        context['days'] = timezone.now().day - ticket.created_date.day
-        context['hours'] = timezone.now().hour - ticket.created_date.hour
-        context['mins'] = timezone.now().minute - ticket.created_date.minute
-        context['agent_voice'] = Comment.objects.filter(
-            ticket=self.get_object()).count()
-        ticket_settings = TicketSettings.objects.all().first()
-        context['escallate_hours'] = ticket_settings.duration_before_escallation
-        if ticket_settings.enable_ticket_escalltion:
-            if len(ticket.assigned_to.groups.filter(name="Admins")) <= 0 and (ticket.ticket_status == "Unsolved" or ticket.ticket_status == "Pending"):
-                escallate_time = ticket.created_date
-                escallate_time += timedelta(
-                    hours=int(ticket_settings.duration_before_escallation))
-                now = timezone.now()
-                context['escallate_time'] = escallate_time-now
-        return context
+        perm = 'ticketapp.view_ticket'
+        delperm = 'ticketapp.delete_ticket'
+        context = {}
+        if perm not in all_permissions_in_groups:
+            return context
+        else:
+            context = super().get_context_data(**kwargs)
+            if delperm in all_permissions_in_groups:
+                context['delete_perm'] = True
+            else:
+                context['delete_perm'] = False
+            context['comments'] = Comment.objects.filter(
+                ticket=self.get_object()).order_by('-created_date')
+            ticket = self.get_object()
+            form = EmaiailAttachmentForm
+            context['email_form'] = form
+            context['users'] = User.objects.all().exclude(username='chatbot')
+            context['ticket_ids'] = Ticket.objects.all().exclude(
+                id=self.get_object().id)
+            context['days'] = timezone.now().day - ticket.created_date.day
+            context['hours'] = timezone.now().hour - ticket.created_date.hour
+            context['mins'] = timezone.now().minute - \
+                ticket.created_date.minute
+            context['agent_voice'] = Comment.objects.filter(
+                ticket=self.get_object()).count()
+            ticket_settings = TicketSettings.objects.all().first()
+            context['escallate_hours'] = ticket_settings.duration_before_escallation
+            if ticket_settings.enable_ticket_escalltion:
+                if len(ticket.assigned_to.groups.filter(name="Admins")) <= 0 and (ticket.ticket_status == "Unsolved" or ticket.ticket_status == "Pending"):
+                    escallate_time = ticket.created_date
+                    escallate_time += timedelta(
+                        hours=int(ticket_settings.duration_before_escallation))
+                    now = timezone.now()
+                    context['escallate_time'] = escallate_time-now
+            return context
 
 
 class TicketCreateView(LoginRequiredMixin, generic.CreateView):
     model = Ticket
     form_class = TicketForm
+
+    def get_context_data(self, **kwargs):
+        perm = 'ticketapp.add_ticket'
+        if perm not in all_permissions_in_groups:
+            context = {}
+        else:
+            context = super().get_context_data(**kwargs)
+            context['tags'] = Tags.objects.all()
+        return context
 
     def form_valid(self, form):
         try:
@@ -244,8 +267,12 @@ class TicketUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tags'] = Tags.objects.all()
+        perm = 'ticketapp.change_ticket'
+        if perm not in all_permissions_in_groups:
+            context = {}
+        else:
+            context = super().get_context_data(**kwargs)
+            context['tags'] = Tags.objects.all()
         return context
 
     def post(self, request, *args, **kwargs):
@@ -293,17 +320,19 @@ class TicketDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 @login_required
 def ticket_list(request):
-    if request.user.is_superuser:
-        tickets = Ticket.objects.all()
+    perm = 'ticketapp.view_ticket'
+    if request.user.is_superuser or perm in all_permissions_in_groups:
+        tickets = Ticket.objects.all().order_by('-created_date')
     else:
         tickets = Ticket.objects.filter(
-            assigned_to=request.user)
+            assigned_to=request.user).order_by('-created_date')
     return render(request, 'ticketapp/allissues.html', {'tickets': tickets})
 
 
 @login_required
 def urgent_ticket_list(request):
-    if request.user.is_superuser:
+    perm = 'ticketapp.view_ticket'
+    if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
             ticket_priority='Urgent')
     else:
@@ -314,7 +343,8 @@ def urgent_ticket_list(request):
 
 @login_required
 def pending_ticket_list(request):
-    if request.user.is_superuser:
+    perm = 'ticketapp.view_ticket'
+    if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
             ticket_priority='Pending')
     else:
@@ -325,7 +355,8 @@ def pending_ticket_list(request):
 
 @login_required
 def resolved_tickets(request):
-    if request.user.is_superuser:
+    perm = 'ticketapp.view_ticket'
+    if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
             ticket_status="Resolved")
     else:
@@ -336,7 +367,8 @@ def resolved_tickets(request):
 
 @login_required
 def unresolved_tickets(request):
-    if request.user.is_superuser:
+    perm = 'ticketapp.view_ticket'
+    if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
             ticket_status="Unsolved")
     else:
@@ -348,6 +380,10 @@ def unresolved_tickets(request):
 @login_required
 def mark_ticket_as_resolved(request, id):
     try:
+        perm = 'ticketapp.change_ticket'
+        if not request.user.is_superuser or perm not in all_permissions_in_groups:
+            messages.warning(request, 'Permission denied!')
+            return redirect('ticketapp:ticket-list')
         load_time_zone()
         if request.method == 'POST':
             comment = request.POST['subject']
@@ -366,7 +402,8 @@ def mark_ticket_as_resolved(request, id):
             message = config.code_for_agent_reply.replace(
                 '[id]', ticket.ticket_id).replace('[tags]', 'None').replace('[date]', str(datetime.now())).replace('[conversation_history]', conversion)
             subject = 'Ticket[#{}]: Updated'.format(ticket.ticket_id)
-            print("Close ticket:{}".format(request.POST.get('closeticket')))
+            print("Close ticket:{}".format(
+                request.POST.get('closeticket')))
             if request.POST.get('closeticket') == 'on':
                 Ticket.objects.filter(id=id).update(
                     ticket_status="Resolved", resolved_by=user, resolved_date=date_time)
@@ -388,6 +425,10 @@ def mark_ticket_as_resolved(request, id):
 
 @login_required
 def mark_ticket_as_unresolved(request, id):
+    perm = 'ticketapp.change_ticket'
+    if not request.user.is_superuser or perm not in all_permissions_in_groups:
+        messages.warning(request, 'Permission denied!')
+        return redirect('ticketapp:ticket-list')
     ticket = Ticket.objects.get(id=id)
     ticket.ticket_status = "Unresolved"
     ticket.save()
@@ -403,6 +444,10 @@ def mark_ticket_as_unresolved(request, id):
 
 @login_required
 def mark_ticket_as_pending(request, id):
+    perm = 'ticketapp.change_ticket'
+    if not request.user.is_superuser or perm not in all_permissions_in_groups:
+        messages.warning(request, 'Permission denied!')
+        return redirect('ticketapp:ticket-list')
     ticket = Ticket.objects.get(id=id)
     ticket.ticket_status = "Pending"
     ticket.save()
@@ -418,6 +463,10 @@ def mark_ticket_as_pending(request, id):
 
 @login_required
 def add_comment(request, ticket_id):
+    perm = 'ticketapp.change_ticket'
+    if not request.user.is_superuser or perm not in all_permissions_in_groups:
+        messages.warning(request, 'Permission denied!')
+        return redirect('ticketapp:ticket-list')
     if request.method == 'POST':
         comment = request.POST['comment']
         ticket = Ticket.objects.get(id=ticket_id)
@@ -602,6 +651,14 @@ class Escallate:
                             self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
                         # print("Escallate Ticket:[#{}] to {}".format(t.ticket_id, assignee.username))
 # Define function to download pdf file using template
+
+
+# def check_user_perm(request):
+#     from django.contrib.auth.models import Group
+#     permissions = []
+#     for group in Group.objects.all():
+#         permissions = group.permissions.all()
+#     print(permissions)
 
 
 def load_time_zone():

@@ -274,7 +274,7 @@ class EmailDownload:
                 ticket.assigned_to = assign_to
                 to_list = [assign_to.email, ]
             else:
-               to_list = [mail_to,]
+               to_list = [assign_to.email, ]
             print(ticket)
             # get attachments 
             if paths:

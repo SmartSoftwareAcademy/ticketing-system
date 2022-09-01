@@ -1,7 +1,6 @@
-{% extends 'ticketapp/base.html' %} {% block content %} {% block extra_head %}
-{{form.media}} {% endblock extra_head %}
-
+{% extends 'ticketapp/base.html' %} {% block content %}
 <!-- Page Heading -->
+{% if form %}
 <h1 class="h3 mb-2 text-gray-800">Add Ticket</h1>
 {{ form.media }}
 <form class="" method="POST" enctype="multipart/form-data">
@@ -66,5 +65,6 @@
 
   <hr class="my-4" />
 </form>
-
-{% endblock content %}
+{% else %}
+<div>{% include 'ticketapp/parts/403.html' %}</div>
+{% endif %} {% endblock content %}

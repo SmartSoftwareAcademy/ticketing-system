@@ -1,5 +1,5 @@
 {% extends 'ticketapp/base.html' %} {% block content %}
-
+{% if object %}
 <div class="col-12 overflow-auto">
   <div class="card">
       <div class="card-header py-3 d-flex">
@@ -54,6 +54,7 @@
             class="mx-2"
             ><i class="fa fa-edit text-primary"></i></a
           >
+          {% if delete_perm %}
           <a
             type="button"
             data-bs-toggle="modal"
@@ -61,6 +62,7 @@
             class="mx-2"
             ><i class="fa fa-trash text-danger"></i></a
           >
+          {% endif %}
           <a
             type="button"
             data-bs-toggle="modal"
@@ -299,6 +301,9 @@
     </div>
   </div>
 </div>
+{% else %}
+{% include 'ticketapp/parts/403.html' %}
+{% endif %}
 {% endblock content %}
 {% block extra_scripts %}
 <script>
