@@ -614,47 +614,47 @@ class Escallate:
 
     def ticket_escallation(self):
         from pytz import timezone
-
-        tickets = Ticket.objects.all()
-        top_assignees = User.objects.filter(groups__name='Admins')
-        # escallate after time specified
-        ticket_settings = TicketSettings.objects.all().first()
-        time_zone = str(ticket_settings.time_zone)
-        tz = timezone(time_zone)
-        for t in tickets:
-            if str(t.ticket_status).lower() == 'unsolved' or str(t.ticket_status).lower() == 'pending':
-                if len(t.assigned_to.groups.filter(name='Admins')) <= 0:
-                    time_to_escallate = t.created_date.astimezone(tz)
-                    time_to_escallate += timedelta(
-                        hours=int(ticket_settings.duration_before_escallation))
-                    today = datetime.now()
-                    # print(today)
-                    # print(time_to_escallate)
-                    second_diff = today.second - time_to_escallate.second
-                    if (today.day == time_to_escallate.day) and (today.hour == time_to_escallate.hour) and (today.minute == time_to_escallate.minute) and (second_diff >= 0 or second_diff <= 20):
-                        print("Escallation in progress...")
-                        prev_assignee = t.assigned_to
-                        assignee = random.choice(top_assignees)
-                        t.assigned_to = assignee
-                        t.save()
-                        attachments = []
-                        subject = "Ticket:[#{}] escallation".format(
-                            t.ticket_id)
-                        domain = Site.objects.get_current().domain
-                        # domain = self.request.META['HTTP_HOST']
-                        # protocol = 'https' if self.request.is_secure() else 'http'
-                        ticket_url = '{}/ticket-detail/{}/'.format(
-                            domain, ticket.id)
-                        receipient_list = [assignee.email, ]
-                        message = ticket_settings.code_for_automated_escallation_email.replace(
-                            '[id]', t.ticket_id).replace('[request_description]', t.issue_description).replace('[tags]', 'None').replace('[date]', str(datetime.now())).replace('[prev_assignee]', prev_assignee.username).replace('[asignee]', assignee.username).replace('[hours]', str(ticket_settings.duration_before_escallation)).replace('[ticket_link]', str(ticket_url))
-                        # send mail to assignee
-                        send_email(self.request,
-                                   subject, message, receipient_list, attachments)
-                        # send maill to client
-                        send_email(
-                            self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
-                    # print("Escallate Ticket:[#{}] to {}".format(t.ticket_id, assignee.username))
+        try:
+            tickets = Ticket.objects.all()
+            top_assignees = User.objects.filter(groups__name='Admins')
+            # escallate after time specified
+            ticket_settings = TicketSettings.objects.all().first()
+            time_zone = str(ticket_settings.time_zone)
+            tz = timezone(time_zone)
+            for t in tickets:
+                if str(t.ticket_status).lower() == 'unsolved' or str(t.ticket_status).lower() == 'pending':
+                    if len(t.assigned_to.groups.filter(name='Admins')) <= 0:
+                        time_to_escallate = t.created_date.astimezone(tz)
+                        time_to_escallate += timedelta(
+                            hours=int(ticket_settings.duration_before_escallation))
+                        today = datetime.now()
+                        # print(today)
+                        # print(time_to_escallate)
+                        second_diff = today.second - time_to_escallate.second
+                        if (today.day == time_to_escallate.day) and (today.hour == time_to_escallate.hour) and (today.minute == time_to_escallate.minute) and (second_diff >= 0 or second_diff <= 20):
+                            print("Escallation in progress...")
+                            prev_assignee = t.assigned_to
+                            assignee = random.choice(top_assignees)
+                            t.assigned_to = assignee
+                            t.save()
+                            attachments = []
+                            subject = "Ticket:[#{}] escallation".format(
+                                t.ticket_id)
+                            domain = Site.objects.get_current().domain
+                            # domain = self.request.META['HTTP_HOST']
+                            # protocol = 'https' if self.request.is_secure() else 'http'
+                            ticket_url = '{}/ticket-detail/{}/'.format(
+                                domain, ticket.id)
+                            receipient_list = [assignee.email, ]
+                            message = ticket_settings.code_for_automated_escallation_email.replace('[id]', t.ticket_id).replace('[request_description]', t.issue_description).replace('[tags]', 'None').replace('[date]', str(datetime.now())).replace('[prev_assignee]', prev_assignee.username).replace('[asignee]', assignee.username).replace('[hours]', str(ticket_settings.duration_before_escallation)).replace('[ticket_link]', str(ticket_url))
+                            # send mail to assignee
+                            send_email(self.request,
+                                       subject, message, receipient_list, attachments)
+                            # send maill to client
+                            send_email(self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
+        except Exception as e:
+            print(e)
+        # print("Escallate Ticket:[#{}] to {}".format(t.ticket_id, assignee.username))
 # Define function to download pdf file using template
 
 
