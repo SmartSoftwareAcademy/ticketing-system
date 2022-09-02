@@ -251,7 +251,7 @@ class EmailDownload:
                         email=mail_to.strip(' ')
                         first_name = username
                         last_name = mail_to.split('<')[0].split(' ')[1].strip('\"').strip()
-                    password = '{}@1234'.format(username.strip('\"'))
+                    password = 'User@1234'
                     email = str(email).strip(')(,\'')
                     group = Group.objects.get(name="Agents")
                     print("email:{}\nusername:{}\nfname:{}\nlname:{}".format(email,username,first_name,last_name))
