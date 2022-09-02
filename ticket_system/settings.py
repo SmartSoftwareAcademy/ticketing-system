@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django_apscheduler',
     'tinymce',
     'accounts',
     'resource_center',
@@ -56,14 +55,14 @@ INSTALLED_APPS = [
 # This scheduler config will:
 # - Store jobs in the project database
 # - Execute jobs in threads inside the application process
-SCHEDULER_CONFIG = {
-    "apscheduler.jobstores.default": {
-        "class": "django_apscheduler.jobstores:DjangoJobStore"
-    },
-    'apscheduler.executors.processpool': {
-        "type": "threadpool"
-    },
-}
+# SCHEDULER_CONFIG = {
+#     "apscheduler.jobstores.default": {
+#         "class": "django_apscheduler.jobstores:DjangoJobStore"
+#     },
+#     'apscheduler.executors.processpool': {
+#         "type": "threadpool"
+#     },
+# }
 SCHEDULER_AUTOSTART = True
 
 SITE_ID = 1
