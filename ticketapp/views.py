@@ -346,7 +346,7 @@ def pending_ticket_list(request):
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
-            ticket_priority='Pending')
+            ticket_priority='Pending').order_by('-created_date')
     else:
         tickets = Ticket.objects.filter(
             assigned_to=request.user, ticket_priority='Pending')
@@ -358,10 +358,10 @@ def resolved_tickets(request):
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
-            ticket_status="Resolved")
+            ticket_status="Resolved").order_by('-created_date')
     else:
         tickets = Ticket.objects.filter(
-            assigned_to=request.user,  ticket_status="Resolved")
+            assigned_to=request.user,  ticket_status="Resolved").order_by('-created_date')
     return render(request, 'ticketapp/closed.html', {'tickets': tickets})
 
 
@@ -370,10 +370,10 @@ def unresolved_tickets(request):
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
-            ticket_status="Unsolved")
+            ticket_status="Unsolved").order_by('-created_date')
     else:
         tickets = Ticket.objects.filter(
-            assigned_to=request.user, ticket_status="Unsolved")
+            assigned_to=request.user, ticket_status="Unsolved").order_by('-created_date')
     return render(request, 'ticketapp/open.html', {'tickets': tickets})
 
 

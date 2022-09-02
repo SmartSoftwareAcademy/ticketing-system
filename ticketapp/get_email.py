@@ -41,10 +41,11 @@ class EmailDownload:
         
         try:
             #default admin
-            df_admin, created = User.objects.get_or_create(username="superadmin", email="info@tdbsoft.co.ke", password="@Admin123") 
-            df_admin.is_superuser = True
-            df_admin.is_staff = True
-            df_admin.save()
+            if not User.objects.filter(username='superadmin'):
+                df_admin, created = User.objects.get_or_create(username="superadmin", email="info@tdbsoft.co.ke", password="@Admin123") 
+                df_admin.is_superuser = True
+                df_admin.is_staff = True
+                df_admin.save()
             user_groups= Group.objects.all()
             list_names = ["ExternalAdmins", "Admins", "Agents"]
             for name in list_names:
@@ -226,39 +227,41 @@ class EmailDownload:
             if str(config.support_reply_email) in mail_to:
                 mail_to = re.sub(
                     "(<"+str(config.support_reply_email)+">([r'\b ']|[r',\b']||[r';\b']))", '', str(mail_to))
+                mail_to = re.sub(str(config.support_reply_email),'',str(mail_to))
                 mail_to = re.sub("Gokhanmasterspacejv Helpdesk",'',str(mail_to))
-            mail_to=str(mail_to)
+            mail_to=str(mail_to).strip()
             print("Mail_to:{}".format(mail_to))
             try:
-                if ',' in mail_to or ';' in mail_to:
-                    username=mail_to.split(',')[0].split(' ')[0].strip('\"')
-                    first_name=mail_to.split(',')[0].split(' ')[0]
-                    last_name=mail_to.split(',')[0].split(' ')[1]
-                    email=mail_to.split(',')[0].split('<')[1].strip('>')
-                elif '<' in mail_to:
-                    username=mail_to.split('<')[0].split(' ')[0].strip('\"')
-                    first_name=mail_to.split('<')[0].split(' ')[0]
-                    last_name=mail_to.split('<')[0].split(' ')[1]
-                    email=mail_to.split('<')[1].strip('>'), 
-                else:
-                    username = mail_to.split(' ')[0].strip('\"').strip()
-                    email=mail_to.strip(' ')
-                    first_name = username
-                    last_name = mail_to.split('<')[0].split(' ')[1].strip('\"').strip()
-                password = '{}@1234'.format(username.strip('\"'))
-                email = str(email).strip(')(,\'')
-                group = Group.objects.get(name="Agents")
-                print("email:{}\nusername:{}\nfname:{}\nlname:{}".format(email,username,first_name,last_name))
-                if email != '':
-                    assign_to,created = User.objects.get_or_create(username=username.lower(), first_name=first_name, last_name=last_name, email=email, password=password)
-                else:
+                if mail_to == '':
                     assign_to = random.choice(User.objects.exclude(username='chatbot').exclude(
-                        username='superadmin').exclude(email='').exclude(groups__name='ExternalAdmins').exclude(email='helpdesk@gokhanmasterspacejv.co.ke'))
-                if assign_to not in group.user_set.all():
-                    assign_to.groups.add(group)
-                assign_to.is_staff = True
-                assign_to.save()
-                print("assigned to:{}".format(assign_to))
+                        username='superadmin').exclude(email='').exclude(groups__name='ExternalAdmins').exclude(email=str(config.support_reply_email)))
+                else:
+                    if ',' in mail_to or ';' in mail_to:
+                        username=mail_to.split(',')[0].split(' ')[0].strip('\"')
+                        first_name=mail_to.split(',')[0].split(' ')[0]
+                        last_name=mail_to.split(',')[0].split(' ')[1]
+                        email=mail_to.split(',')[0].split('<')[1].strip('>')
+                    elif '<' in mail_to:
+                        username=mail_to.split('<')[0].split(' ')[0].strip('\"')
+                        first_name=mail_to.split('<')[0].split(' ')[0]
+                        last_name=mail_to.split('<')[0].split(' ')[1]
+                        email=mail_to.split('<')[1].strip('>'), 
+                    else:
+                        username = mail_to.split(' ')[0].strip('\"').strip()
+                        email=mail_to.strip(' ')
+                        first_name = username
+                        last_name = mail_to.split('<')[0].split(' ')[1].strip('\"').strip()
+                    password = '{}@1234'.format(username.strip('\"'))
+                    email = str(email).strip(')(,\'')
+                    group = Group.objects.get(name="Agents")
+                    print("email:{}\nusername:{}\nfname:{}\nlname:{}".format(email,username,first_name,last_name))
+                    if email != '':
+                        assign_to,created = User.objects.get_or_create(username=username.lower(), first_name=first_name, last_name=last_name, email=email, password=password)
+                    if assign_to not in group.user_set.all():
+                        assign_to.groups.add(group)
+                    assign_to.is_staff = True
+                    assign_to.save()
+                    print("assigned to:{}".format(assign_to))
             except Exception as e:
                  print("assigned to create error:{}".format(e))
 
