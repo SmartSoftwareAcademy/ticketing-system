@@ -648,12 +648,12 @@ class Escallate:
                         receipient_list = [assignee.email, ]
                         message = ticket_settings.code_for_automated_escallation_email.replace(
                             '[id]', t.ticket_id).replace('[request_description]', t.issue_description).replace('[tags]', 'None').replace('[date]', str(datetime.now())).replace('[prev_assignee]', prev_assignee.username).replace('[asignee]', assignee.username).replace('[hours]', str(ticket_settings.duration_before_escallation)).replace('[ticket_link]', str(ticket_url))
-                    # send mail to assignee
-                    send_email(self.request,
-                               subject, message, receipient_list, attachments)
-                    # send maill to client
-                    send_email(
-                        self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
+                        # send mail to assignee
+                        send_email(self.request,
+                                   subject, message, receipient_list, attachments)
+                        # send maill to client
+                        send_email(
+                            self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
                     # print("Escallate Ticket:[#{}] to {}".format(t.ticket_id, assignee.username))
 # Define function to download pdf file using template
 
