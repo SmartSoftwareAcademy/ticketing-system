@@ -65,6 +65,7 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         try:
+            global context
             context = super().get_context_data(**kwargs)
             global all_permissions_in_groups
             all_permissions_in_groups = self.request.user.get_group_permissions()
@@ -72,6 +73,10 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
             perm = 'ticketapp.view_ticket'
             if perm in all_permissions_in_groups or self.request.user.is_superuser:
                 context['all_issues'] = Ticket.objects.all().count()
+                if len(self.request.user.groups.filter(name='Admins')) > 0 or self.request.user.is_superuser:
+                    context['is_admin'] = True
+                else:
+                    context['is_admin'] = False
                 context['urgent_count'] = Ticket.objects.filter(
                     ticket_priority="Urgent").count()
                 context['resolved_count'] = Ticket.objects.filter(
@@ -646,12 +651,14 @@ class Escallate:
                             ticket_url = '{}/ticket-detail/{}/'.format(
                                 domain, ticket.id)
                             receipient_list = [assignee.email, ]
-                            message = ticket_settings.code_for_automated_escallation_email.replace('[id]', t.ticket_id).replace('[request_description]', t.issue_description).replace('[tags]', 'None').replace('[date]', str(datetime.now())).replace('[prev_assignee]', prev_assignee.username).replace('[asignee]', assignee.username).replace('[hours]', str(ticket_settings.duration_before_escallation)).replace('[ticket_link]', str(ticket_url))
+                            message = ticket_settings.code_for_automated_escallation_email.replace('[id]', t.ticket_id).replace('[request_description]', t.issue_description).replace('[tags]', 'None').replace('[date]', str(datetime.now(
+                            ))).replace('[prev_assignee]', prev_assignee.username).replace('[asignee]', assignee.username).replace('[hours]', str(ticket_settings.duration_before_escallation)).replace('[ticket_link]', str(ticket_url))
                             # send mail to assignee
                             send_email(self.request,
                                        subject, message, receipient_list, attachments)
                             # send maill to client
-                            send_email(self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
+                            send_email(self.request, subject, "Your Ticket:[{}] has been escallated to Top Helpdesk Officials due to possible delay in reply within {} hours.".format(
+                                t.ticket_id, str(ticket_settings.duration_before_escallation)), [t.customer_email, ], attachments)
         except Exception as e:
             print(e)
         # print("Escallate Ticket:[#{}] to {}".format(t.ticket_id, assignee.username))
