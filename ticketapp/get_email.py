@@ -256,10 +256,11 @@ class EmailDownload:
                     group = Group.objects.get(name="Agents")
                     print("email:{}\nusername:{}\nfname:{}\nlname:{}".format(email,username,first_name,last_name))
                     if email != '':
-                        filtered_user=User.objects.get(email=email)
-                        if filtered_user:
-                           assign_to = filtered_user
-                        else:
+                        try:
+                           filtered_user=User.objects.get(email=email)
+                           if filtered_user:
+                               assign_to = filtered_user
+                        except Exception as e:
                             assign_to,created = User.objects.get_or_create(username=username.lower(), first_name=first_name, last_name=last_name, email=email, password=password)
                     if assign_to not in group.user_set.all():
                         assign_to.groups.add(group)
