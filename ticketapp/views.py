@@ -382,18 +382,42 @@ def unresolved_tickets(request):
 @login_required
 def ticket_bulk_edit(request):
     try:
+        perm = 'ticketapp.change_ticket'
+        if not request.user.is_superuser or perm not in all_permissions_in_groups:
+            messages.warning(request, 'Permission denied!')
+            return redirect('ticketapp:ticket-list')
         mark_as = request.POST.get('hiddenfield')
         ticket_ids = request.POST.getlist('check[]')
         message=""
         print(mark_as)
         for id in ticket_ids:
             if mark_as == 'pending':
-               Ticket.objects.filter(id=int(id)).update(
-                   ticket_status="Pending", updated_by=request.user, last_updated=timezone.now())
+               ticket = Ticket.objects.get(id=int(id))
+               ticket.ticket_status="Pending"
+               ticket.updated_by = request.user
+               ticket.last_updated = timezone.now()
+               ticket.save()
+               content = 'Your ticket (#({}) has been marked PENDING by {}.'.format(
+                   ticket.ticket_id, request.user)
+               subject = 'Ticket:(#{}) Updated'.format(ticket.ticket_id)
+               recipient_list = []
+               recipient_list.append(ticket.customer_email)
+               send_email(request,subject, content, recipient_list, [])
                message = "Ticket(s) marked as pending successfully!"
             elif mark_as == 'solved':
-                Ticket.objects.filter(id=int(id)).update(
-                    ticket_status="Resolved", updated_by=request.user, resolved_by=request.user, resolved_date=timezone.now(), last_updated=timezone.now())
+                ticket = Ticket.objects.get(id=int(id))
+                ticket.ticket_status = "Resolved"
+                ticket.updated_by = request.user
+                ticket.last_updated = timezone.now()
+                ticket.resolved_by = request.user 
+                ticket.resolved_date = timezone.now() 
+                ticket.save()
+                content = 'Your ticket (#({}) has been closed by {}.\nIf you are not fully satisfied with the issue,submit another ticket to Helpdesk'.format(
+                   ticket.ticket_id, request.user)
+                subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
+                recipient_list = []
+                recipient_list.append(ticket.customer_email)
+                send_email(request,subject, content, recipient_list, [])
                 message = "Ticket(s) marked as Solved successfully!"
             elif mark_as == 'unsolved':
                 Ticket.objects.filter(id=int(id)).update(
