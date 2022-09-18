@@ -106,19 +106,17 @@ class TicketListView(LoginRequiredMixin, generic.ListView):
                 context['general_tickets'] = Ticket.objects.filter(
                     ticket_section='General').count()
 
-                # tags
+                # priority
                 context['urgent_tag_count'] = Ticket.objects.filter(
-                    tags__tag_name='Urgent').count()
-                print(Ticket.objects.filter(
-                    tags__tag_name='Normal').count())
+                    ticket_priority='Urgent').count()
                 context['high_tag_count'] = Ticket.objects.filter(
-                    tags__tag_name='High').count()
+                    ticket_priority='High').count()
                 context['normal_tag_count'] = Ticket.objects.filter(
-                    tags__tag_name='Normal').count()
+                    ticket_priority='Normal').count()
                 context['medium_tag_count'] = Ticket.objects.filter(
-                    tags__tag_name='Medium').count()
+                    ticket_priority='Medium').count()
                 context['low_tag_count'] = Ticket.objects.filter(
-                    tags__tag_name='Low').count()
+                    ticket_priority='Low').count()
 
                 # avg time taken to ressolve
 
