@@ -36,4 +36,5 @@ urlpatterns = [
 
     path("get-emails/", views.get_emails, name="get-emails"),
     path('download/<str:filename>/', views.download_file, name='downloadfile'),
+    path('ticket_bulk_edit/', views.ticket_bulk_edit, name='ticket_bulk_edit'),
 ]

@@ -60,6 +60,9 @@ class Ticket(models.Model):
         User, on_delete=models.CASCADE, related_name='resolved_by', null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     resolved_date = models.DateTimeField(null=True, blank=True)
+    updated_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='updated_by', null=True, blank=True)
+    last_updated = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.title

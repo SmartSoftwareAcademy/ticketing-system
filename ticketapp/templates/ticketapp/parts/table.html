@@ -1,7 +1,8 @@
 <div class="card shadow mb-4">
       <div class="card-body">
         <div class="table-responsive">
-        <form>
+        <form method="post" action="{% url 'ticketapp:ticket_bulk_edit' %}" id="ticket-form">
+          {% csrf_token %}
           <div class="d-flex flex-row">
           <div class="table-responsive-sm col-sm-1">
           <table class="table table-bordered" width="50%"
@@ -12,10 +13,10 @@
                     <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-sync"></i></a>
                   </td>
                   <td> 
-                    <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-trash-alt"></i></a>
+                    <a onClick="deleteTickets()"><i class="fa fa-trash-alt"></i></a>
                   </td>
                   <td> 
-                    <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-edit"></i></a>
+                    <a onClick="editTicket()"><i class="fa fa-edit"></i></a>
                   </td>
                   <td> 
                     <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-filter"></i></a>
@@ -31,9 +32,9 @@
               Action
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><button class="dropdown-item" type="button">Mark as Pending</button></li>
-              <li><button class="dropdown-item" type="button">Mark as Unsolved</button></li>
-              <li><button class="dropdown-item" type="button">Mark as Solved</button></li>
+              <li><button class="dropdown-item" type="button" onClick="markPending()">Mark as Pending</button></li>
+              <li><button class="dropdown-item" type="button" onClick="markUnsolved()">Mark as Unsolved</button></li>
+              <li><button class="dropdown-item" type="button" onClick="markSolved()">Mark as Solved</button></li>
             </ul>
           </div>
         </div>
@@ -60,8 +61,7 @@
                 <th>Client Name</th>
                 <th>Email</th>
                 <th>Priority</th>
-                <th>Resolved</th>
-
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -72,7 +72,7 @@
                     <input
                       type="checkbox"
                       class="form-check-input"
-                      id="check-all"
+                      id="check-all-bottom"
                     />
                   </div>
                 </th>
@@ -81,8 +81,7 @@
                 <th>Client Name</th>
                 <th>Email</th>
                 <th>Priority</th>
-                <th>Resolved</th>
-
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </tfoot>
@@ -90,38 +89,37 @@
               {% for ticket in tickets %}
               <tr>
                 <td>
-                  <div class="form-check m-auto">
+                  <div class="form-check m-auto" id="checkArray">
                     <input
                       type="checkbox"
                       class="form-check-input"
-                      id="check-{{ticket.id}}"
+                      name="check[]"
                       value="{{ticket.id}}"
                     />
                   </div>
                 </td>
-                <td>{{ticket.id}}</td>
+                <td name="ticket_id">{{ticket.id}}</td>
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.customer_full_name }}</td>
                 <td>{{ ticket.customer_email }}</td>
-                <td>{{ ticket.ticket_priority }}</td>
+                <td> {% if ticket.ticket_priority == 'Urgent' %}
+                  <span class="badge badge-pill badge-danger">urgent</span>
+                  {% elif ticket.ticket_priority == 'High' %}
+                  <span class="badge badge-pill badge-warning">high</span>
+                  {% elif ticket.ticket_priority == 'Medium' %}
+                  <span class="badge badge-pill badge-info">medium</span>
+                  {% elif  ticket.ticket_priority == 'Normal' %}
+                   <span class="badge badge-pill badge-success">normal</span>
+                   {% else %}
+                   <span class="badge badge-pill badge-primary">low</span>
+                  {% endif %}</td>
                 <td>
-                  {% if ticket.ticket_status == 'Solved' %}
-                  <div class="form-check m-auto">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="exampleCheck1"
-                      checked
-                    />
-                  </div>
+                  {% if ticket.ticket_status == 'Resolved' %}
+                  <span class="badge badge-pill badge-success">solved</span>
+                  {% elif ticket.ticket_status == 'Unsolved' %}
+                  <span class="badge badge-pill badge-warning">unsolved</span>
                   {% else %}
-                  <div class="form-check m-auto">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="exampleCheck1"
-                    />
-                  </div>
+                   <span class="badge badge-pill badge-danger">pending</span>
                   {% endif %}
                 </td>
 
@@ -145,9 +143,55 @@
               {% endfor %}
             </tbody>
           </table>
+          <input type="hidden" value="" name="hiddenfield" id="hiddenfield">
         </form>
         </div>
       </div>
     </div>
   <!-- /.container-fluid -->
   </div>
+  {% block extra_scripts %}
+  <script language="javascript" type="text/javascript">
+   $(document).ready(function () {
+    $("#check-all").change(function () {
+        toggleFields();
+    });
+    $("#check-all-bottom").change(function () {
+       toggleFields();
+    });
+});
+//toggle fields
+function toggleFields() {
+    if ($("#check-all").prop('checked') || $("#check-all-bottom").prop('checked'))
+    {
+      $('input[name="check[]"]').prop('checked', true);
+    }else{
+    $('input[name="check[]"]').prop('checked', false);
+    }
+}
+//mark as Pending
+function markPending() {
+       $("#hiddenfield").prop("value",'pending');
+       console.log( $("#hiddenfield").prop("value"))
+       $("#ticket-form").submit();
+    }
+//mark as Pending
+function markSolved() {
+    $("#hiddenfield").prop("value",'solved');
+    $("#ticket-form").submit();
+    }
+//mark as Pending
+function markUnsolved() {
+       $("#hiddenfield").prop("value",'unsolved');
+       $("#ticket-form").submit();
+    }
+function deleteTickets(){
+   $("#hiddenfield").prop("value",'delete');
+   $("#ticket-form").submit();
+}
+function editTicket(){
+   $("#hiddenfield").prop("value",'edit');
+   $("#ticket-form").submit();
+}
+  </script>
+    {% endblock extra_scripts %}

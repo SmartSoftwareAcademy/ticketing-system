@@ -351,7 +351,7 @@ def pending_ticket_list(request):
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
-            ticket_priority='Pending').order_by('-created_date')
+            ticket_status='Pending').order_by('-created_date')
     else:
         tickets = Ticket.objects.filter(
             assigned_to=request.user, ticket_priority='Pending')
@@ -381,7 +381,37 @@ def unresolved_tickets(request):
             assigned_to=request.user, ticket_status="Unsolved").order_by('-created_date')
     return render(request, 'ticketapp/open.html', {'tickets': tickets})
 
-
+@login_required
+def ticket_bulk_edit(request):
+    try:
+        mark_as = request.POST.get('hiddenfield')
+        ticket_ids = request.POST.getlist('check[]')
+        message=""
+        print(mark_as)
+        for id in ticket_ids:
+            if mark_as == 'pending':
+               Ticket.objects.filter(id=int(id)).update(
+                   ticket_status="Pending", updated_by=request.user, last_updated=timezone.now())
+               message = "Ticket(s) marked as pending successfully!"
+            elif mark_as == 'solved':
+                Ticket.objects.filter(id=int(id)).update(
+                    ticket_status="Resolved", updated_by=request.user, resolved_by=request.user, resolved_date=timezone.now(), last_updated=timezone.now())
+                message = "Ticket(s) marked as Solved successfully!"
+            elif mark_as == 'unsolved':
+                Ticket.objects.filter(id=int(id)).update(
+                    ticket_status="Unsolved", updated_by=request.user, last_updated=timezone.now())
+                message = "Ticket(s) marked as Unsolved successfully!"
+            elif mark_as == 'delete':
+                Ticket.objects.filter(id=int(id)).delete()
+                message = "Ticket(s) deleted successfully!"
+        messages.success(request, message)
+        if mark_as == 'edit':
+            id = int(ticket_ids[0])
+            return HttpResponseRedirect(reverse("ticketapp:update-ticket", kwargs={'pk': id}))
+    except Exception as e:
+        print("Bulk edit error:{}".format(e))
+    return redirect("ticketapp:ticket-list")
+    
 @login_required
 def mark_ticket_as_resolved(request, id):
     try:
