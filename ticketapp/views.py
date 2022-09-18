@@ -354,7 +354,7 @@ def pending_ticket_list(request):
             ticket_status='Pending').order_by('-created_date')
     else:
         tickets = Ticket.objects.filter(
-            assigned_to=request.user, ticket_priority='Pending')
+            assigned_to=request.user, ticket_status='Pending')
     return render(request, 'ticketapp/pending.html', {'tickets': tickets})
 
 
