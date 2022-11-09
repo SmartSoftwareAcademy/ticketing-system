@@ -1,0 +1,253 @@
+{% extends 'ticketapp/base.html' %}
+{% block content %}
+
+          <!-- Begin Page Content -->
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">General Ticket Reports</h1>
+             <div class="table-responsive-sm col-sm-1">
+           <table class="table table-bordered" width="50%"
+            cellspacing="0">
+            <tbody>
+                <tr>
+                  <td> 
+                    <a href="{% url 'ticketapp:reports' %}"><i class="fa fa-sync fa-3x m-auto"></i></a>
+                  </td>
+                  <td> 
+                    <a href="{% url 'ticketapp:export_excel' %}"><i class="fa fa-file-excel-o" style="font-size:48px;color:green"></i></a>
+                  </td>
+                  <td> 
+                    <a href="{% url 'ticketapp:export_pdf' %}"><i class="fa fa-file-pdf-o" style="font-size:48px;color:red"></i></a>
+                  </td>
+                  <td> 
+                    <a onClick="toggleActive" id="activate"><i class="fa fa-filter fa-3x"></i></a>
+                  </td>
+                </tr>
+              </div>
+            </tbody>
+          </table>
+        </div>
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+               <h1 class="h3 mb-2 text-gray-800 p-2">Customized Ticket Reports</h1>
+              <div class="card-header py-3">
+                <p class="h3 mb-2 text-gray-800 p-2">Select Filters</p>
+                <div class="row d-flex flex-row">
+                  <div class="col-md-3">
+                    <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="staffmail"  disabled>
+                    <label class="form-check-label" for="staffmail">Staff Email</label>
+                    </div>
+                  </div>
+                  <div class="col-md-3"> 
+                    <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="cemail" disabled>
+                    <label class="form-check-label" for="cemail">Client Email</label>
+                    </div>
+                  </div>
+                    <div class="col-md-3"> 
+                    <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="daterange"  disabled>
+                    <label class="form-check-label" for="daterange">Date Range</label>
+                    </div>
+                  </div>
+                </div>
+                <form id="form" method="post" action="{% url 'ticketapp:export_excel' %}">
+                    {% csrf_token %}
+                <div class="form-group" id="cemail_div">
+                    <label>Select Client</label>
+                  <select
+                    class="form-control select2"
+                    name="client_mails"
+                    id="input-select"
+                    data-placeholder="Select a client"
+                    style="width: 50%"
+                  >
+                    {% for client in clients %}
+                    <option value="{{client}}">{{client}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group" id="semail_div">
+                  <label>Select Staff</label>
+                  <select
+                    class="form-control select2"
+                    name="staff_mails"
+                    id="input-select"
+                    data-placeholder="Select a staff"
+                    style="width: 50%"
+                  >
+                    {% for staff in staffs %}
+                    <option value="{{staff}}">{{staff}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                </div>
+                <div class="form-group" id="daterange_div">
+                    <label for="datefrom"  class="ml-4">From Date:</label>
+                    <input class="form-control ml-4" id="datefrom" name="datefrom" type="date" disabled  style="width: 50%"/>
+                    <label for="dateto" class="ml-4">To Date:</label>
+                    <input class="form-control ml-4" id="dateto" name="dateto" type="date" disabled  style="width: 50%"/>
+                </div>
+                <div class="row d-flex flex-row ml-4">
+                  <h5 class="">Filter by Ticket Status</h5>
+                  <div class="col-md-3 form-check">
+                    <input class="form-check-input" type="radio" name="ressolved" value="Resolved" id="ressolved" disabled>
+                    <label class="form-check-label" for="ressolved">
+                        Resolved
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-check">
+                    <input class="form-check-input" type="radio" name="unsolved" value="Unsolved" id="unsolved" disabled>
+                    <label class="form-check-label" for="unsolved">
+                        Unresolved
+                    </label>
+                  </div>
+                    <div class="col-md-3 form-check">
+                    <input class="form-check-input" type="radio" name="urgent" value="Urgent" id="urgent" disabled>
+                    <label class="form-check-label" for="urgent">
+                        Urgent
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-check">
+                    <input class="form-check-input" type="radio" name="pending" value="Pending" id="pending" disabled>
+                    <label class="form-check-label" for="pending">
+                      Pending
+                    </label>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h5 class="my-5 ml-5">Select Report Type</div>
+                    <div class="row d-flex flex-row">
+                      <div class="col-md-3 form-check">
+                          <input class="form-check-input ml-4" type="checkbox" name="excel" id="excel" disabled>
+                          <i class="fa fa-file-excel-o fa-2x text-success ml-5" for="excel">
+                          </i>
+                        </div>
+                        <div class="col-md-3 form-check">
+                          <input class="form-check-input ml-4" type="checkbox" name="pdf" id="pdf" disabled>
+                          <i class="fa fa-file-pdf-o fa-2x text-danger ml-5" for="pdf">
+                          </i>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <button type="submit" class="btn btn-secondary rounded" disabled>Generate</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        <!-- End of Main Content -->
+
+       {% endblock content %}
+        {% block extra_scripts %}
+  <script language="javascript" type="text/javascript">
+   $(document).ready(function () {
+      $("#semail_div").hide();
+      $("#cemail_div").hide();
+      $("#daterange_div").hide();
+    $("#activate").click(function () {
+        toggleActive();
+    });
+    $("#staffmail").change(function(){
+        toggleFileds();
+    })
+    $("#cemail").change(function(){
+        toggleFileds();
+    })
+     $("#daterange").change(function(){
+        toggleFileds();
+    })
+     $("#pdf").change(function(){
+        toggleFileds();
+    })
+     $("#excel").change(function(){
+        toggleFileds();
+    })
+});
+//toggle fields
+function toggleActive() {
+    var inputs = document.getElementsByTagName("input"); 
+    for (var i = 0; i < inputs.length; i++) { 
+        inputs[i].disabled = false;
+    } 
+    var buttons = document.getElementsByTagName("button");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+    }
+}
+//toggle search fields
+function toggleFileds() {
+    if ($("#staffmail").prop('checked'))
+    {
+        $("#semail_div").show();
+    }else{
+       $("#semail_div").hide();
+    }
+     if ($("#cemail").prop('checked'))
+    {
+        $("#cemail_div").show();
+    }else{
+       $("#cemail_div").hide();
+    }
+     if ($("#daterange").prop('checked'))
+    {
+        $("#daterange_div").show();
+    }else{
+       $("#daterange_div").hide();
+    }
+    if ($("#excel").prop('checked'))
+    {
+      $("#pdf").hide();
+    }else{
+        $("#pdf").show();
+    }
+    if($("#pdf").prop('checked')){
+       $("#excel").hide();
+    }else{
+       $("#excel").show();
+    }
+}
+//submit form
+ $("#filter-form").submit(function (e) {
+        // preventing from page reload and default actions
+        e.preventDefault();
+        // serialize the data for sending the form data.
+        var serializedData = $(this).serialize();
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+          url: "{% url 'ticketapp:export_excel' %}",
+          data: serializedData,
+            success: function (response) {
+                // on successfull creating object
+                // 1. clear the form.
+                $("#filter-form").trigger('reset');
+                // display the newly friend to table.
+                var res = JSON.parse(response['resdata']);
+                console.log(res)
+                var fields = res[0][0];
+                 console.log(fields)
+                $("#res_table tbody").prepend(
+                    `<tr>
+                    <td>${fields["title"]||""}</td>
+                    <td>${fields["customer_email"]||""}</td>
+                    <td>${fields["resolved_by__email"]||""}</td>
+                    <td>${fields["create_date"]||""}</td>
+                    <td>${fields["resolved_date"]||""}</td>
+                    <td>${fields["issue_description"]||""}</td>
+                    </tr>`
+                )
+            },
+            error: function (response) {
+                // alert the error if any error occured
+                alert(response["responseJSON"]["error"]);
+            }
+        })
+    })
+</script>
+{% endblock extra_scripts %}

@@ -11,7 +11,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ICT Helpdesk</title>
+    <title>Helpdesk</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -127,7 +127,12 @@
             <span>Statistics</span></a
           >
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ticketapp:reports' %}">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Reports</span></a
+          >
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'accounts:logout' %}">
             <i class="fas fa-fw fa-sign-out-alt"></i>
@@ -307,7 +312,10 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2020</span>
+              <span
+                >Copyright &copy; {% now "Y %} Gokhanmasterspace JV
+                Limited</span
+              >
             </div>
           </div>
         </footer>

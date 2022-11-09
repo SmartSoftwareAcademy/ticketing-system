@@ -45,7 +45,7 @@ idna==3.3
 IMAPClient==2.2.0
 importlib-metadata==1.7.0
 importlib-resources==5.7.1
-mysql-connector-python==8.0.30
+mysql-connector-python==8.0.29
 mysqlclient==2.1.0
 oauthlib==3.2.0
 phonenumbers==8.12.50
@@ -83,4 +83,7 @@ wcwidth==0.2.5
 webencodings==0.5.1
 whitenoise==6.1.0
 widgetsnbextension==3.5.2
+xlwt
+xlutils 
+xlrd 
 zipp==3.7.0

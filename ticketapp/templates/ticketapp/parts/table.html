@@ -3,23 +3,23 @@
         <div class="table-responsive">
         <form method="post" action="{% url 'ticketapp:ticket_bulk_edit' %}" id="ticket-form">
           {% csrf_token %}
-          <div class="d-flex flex-row">
+         <div class="d-flex flex-row">
           <div class="table-responsive-sm col-sm-1">
-          <table class="table table-bordered" width="50%"
+           <table class="table table-bordered" width="50%"
             cellspacing="0">
             <tbody>
                 <tr>
                   <td> 
-                    <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-sync"></i></a>
+                    <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-sync text-warning"></i></a>
                   </td>
                   <td> 
-                    <a onClick="deleteTickets()"><i class="fa fa-trash-alt"></i></a>
+                    <a onClick="deleteTickets()"><i class="fa fa-trash text-danger"></i></a>
                   </td>
                   <td> 
-                    <a onClick="editTicket()"><i class="fa fa-edit"></i></a>
+                    <a onClick="editTicket()"><i class="fa fa-edit text-success"></i></a>
                   </td>
                   <td> 
-                    <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-filter"></i></a>
+                    <a href="{% url 'ticketapp:get-emails' %}"><i class="fa fa-filter text-primary"></i></a>
                   </td>
                 </tr>
               </div>

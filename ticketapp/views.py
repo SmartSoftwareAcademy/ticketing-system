@@ -166,6 +166,8 @@ class TicketDetailView(LoginRequiredMixin, generic.DetailView):
     model = Ticket
 
     def get_context_data(self, **kwargs):
+        global all_permissions_in_groups
+        all_permissions_in_groups = self.request.user.get_group_permissions()
         perm = 'ticketapp.view_ticket'
         delperm = 'ticketapp.delete_ticket'
         context = {}
@@ -208,6 +210,8 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = TicketForm
 
     def get_context_data(self, **kwargs):
+        global all_permissions_in_groups
+        all_permissions_in_groups = self.request.user.get_group_permissions()
         perm = 'ticketapp.add_ticket'
         if perm not in all_permissions_in_groups:
             context = {}
@@ -270,6 +274,8 @@ class TicketUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
+        global all_permissions_in_groups
+        all_permissions_in_groups = self.request.user.get_group_permissions()
         perm = 'ticketapp.change_ticket'
         if perm not in all_permissions_in_groups:
             context = {}
@@ -323,6 +329,8 @@ class TicketDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 @login_required
 def ticket_list(request):
+    global all_permissions_in_groups
+    all_permissions_in_groups = request.user.get_group_permissions()
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.all().order_by('-created_date')
@@ -334,6 +342,8 @@ def ticket_list(request):
 
 @login_required
 def urgent_ticket_list(request):
+    global all_permissions_in_groups
+    all_permissions_in_groups = request.user.get_group_permissions()
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
@@ -346,6 +356,8 @@ def urgent_ticket_list(request):
 
 @login_required
 def pending_ticket_list(request):
+    global all_permissions_in_groups
+    all_permissions_in_groups = request.user.get_group_permissions()
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
@@ -358,6 +370,8 @@ def pending_ticket_list(request):
 
 @login_required
 def resolved_tickets(request):
+    global all_permissions_in_groups
+    all_permissions_in_groups = request.user.get_group_permissions()
     perm = 'ticketapp.view_ticket'
     if request.user.is_superuser or perm in all_permissions_in_groups:
         tickets = Ticket.objects.filter(
@@ -379,45 +393,49 @@ def unresolved_tickets(request):
             assigned_to=request.user, ticket_status="Unsolved").order_by('-created_date')
     return render(request, 'ticketapp/open.html', {'tickets': tickets})
 
+
 @login_required
 def ticket_bulk_edit(request):
     try:
+        global all_permissions_in_groups
+        all_permissions_in_groups = request.user.get_group_permissions()
         perm = 'ticketapp.change_ticket'
-        if not request.user.is_superuser or perm not in all_permissions_in_groups:
-            messages.warning(request, 'Permission denied!')
+        if perm not in all_permissions_in_groups:
+            if not request.user.is_superuser:
+                messages.warning(request, 'Permission denied!')
             return redirect('ticketapp:ticket-list')
         mark_as = request.POST.get('hiddenfield')
         ticket_ids = request.POST.getlist('check[]')
-        message=""
+        message = ""
         print(mark_as)
         for id in ticket_ids:
             if mark_as == 'pending':
-               ticket = Ticket.objects.get(id=int(id))
-               ticket.ticket_status="Pending"
-               ticket.updated_by = request.user
-               ticket.last_updated = timezone.now()
-               ticket.save()
-               content = 'Your ticket (#({}) has been marked PENDING by {}.'.format(
-                   ticket.ticket_id, request.user)
-               subject = 'Ticket:(#{}) Updated'.format(ticket.ticket_id)
-               recipient_list = []
-               recipient_list.append(ticket.customer_email)
-               send_email(request,subject, content, recipient_list, [])
-               message = "Ticket(s) marked as pending successfully!"
+                ticket = Ticket.objects.get(id=int(id))
+                ticket.ticket_status = "Pending"
+                ticket.updated_by = request.user
+                ticket.last_updated = timezone.now()
+                ticket.save()
+                content = 'Your ticket (#({}) has been marked PENDING by {}.'.format(
+                    ticket.ticket_id, request.user)
+                subject = 'Ticket:(#{}) Updated'.format(ticket.ticket_id)
+                recipient_list = []
+                recipient_list.append(ticket.customer_email)
+                send_email(request, subject, content, recipient_list, [])
+                message = "Ticket(s) marked as pending successfully!"
             elif mark_as == 'solved':
                 ticket = Ticket.objects.get(id=int(id))
                 ticket.ticket_status = "Resolved"
                 ticket.updated_by = request.user
                 ticket.last_updated = timezone.now()
-                ticket.resolved_by = request.user 
-                ticket.resolved_date = timezone.now() 
+                ticket.resolved_by = request.user
+                ticket.resolved_date = timezone.now()
                 ticket.save()
                 content = 'Your ticket (#({}) has been closed by {}.\nIf you are not fully satisfied with the issue,submit another ticket to Helpdesk'.format(
-                   ticket.ticket_id, request.user)
+                    ticket.ticket_id, request.user)
                 subject = 'Ticket:(#{}) Closed'.format(ticket.ticket_id)
                 recipient_list = []
                 recipient_list.append(ticket.customer_email)
-                send_email(request,subject, content, recipient_list, [])
+                send_email(request, subject, content, recipient_list, [])
                 message = "Ticket(s) marked as Solved successfully!"
             elif mark_as == 'unsolved':
                 Ticket.objects.filter(id=int(id)).update(
@@ -433,7 +451,8 @@ def ticket_bulk_edit(request):
     except Exception as e:
         print("Bulk edit error:{}".format(e))
     return redirect("ticketapp:ticket-list")
-    
+
+
 @login_required
 def mark_ticket_as_resolved(request, id):
     try:

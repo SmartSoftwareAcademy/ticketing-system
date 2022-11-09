@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .reports import ReportView, export_tickets_xls, export_pdf
 
 app_name = 'ticketapp'
 
@@ -37,4 +38,9 @@ urlpatterns = [
     path("get-emails/", views.get_emails, name="get-emails"),
     path('download/<str:filename>/', views.download_file, name='downloadfile'),
     path('ticket_bulk_edit/', views.ticket_bulk_edit, name='ticket_bulk_edit'),
+
+    # reporting
+    path('reporting/', ReportView, name='reports'),
+    path('export/excel', export_tickets_xls, name='export_excel'),
+    path('export/pdf', export_pdf, name='export_pdf'),
 ]
