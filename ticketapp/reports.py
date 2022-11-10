@@ -21,7 +21,7 @@ from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT, TA_CENTER, TA_RIGHT
 from django.contrib.auth.models import User
 from django.db.models import Q
 import pdb
-
+import urllib
 
 def ReportView(request):
     staff = User.objects.all().values_list('email')
@@ -35,7 +35,8 @@ def ABSOLUTE_PATH():
 
 def export_tickets_xls(request):
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="Tickets.xls"'
+    file_name=f'tickets_{datetime.now().day}_{datetime.now().hour}_{datetime.now().minute}_{datetime.now().second}.xls'
+    response['Content-Disposition'] = f'attachment; filename="{file_name}"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     # this will make a sheet named Users Data
@@ -47,8 +48,8 @@ def export_tickets_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Subject', 'Client Name', 'Client Email', 'Created',
-               'Resolved', 'Ressolved By', 'Issue Description', ]
+    columns = ['Ticket Issue','Raised BY', 'Date Raised',
+               'Date Ressolved', 'Ressolved By', 'Issue Description', ]
 
     for col_num in range(len(columns)):
         # at 0 row 0 column
@@ -57,7 +58,7 @@ def export_tickets_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
     rows = []
-    if request.POST != None:
+    if request.POST != None or '':
         print(request.POST)
         resolved = ""
         unsolved = ""
@@ -65,33 +66,58 @@ def export_tickets_xls(request):
         pending = ""
         datefrom = request.POST['datefrom']
         dateto = request.POST['dateto']
-        cemail = ""
-        semail = ""
+        cemail = request.POST.getlist('client_mails')[0]
+        semail = request.POST.getlist('staff_mails')[0]
+        rows = []
         if 'pending' in request.POST:
             pending = request.POST['pending']
-        elif 'unsolved' in request.POST:
+            tckts=Ticket.objects.filter(Q(ticket_status__contains=pending)).values_list(
+            'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
+            if tckts:
+                for tckt in tckts:
+                    rows.append(tckt)
+        if 'unsolved' in request.POST:
             unsolved = request.POST['unsolved']
-        elif 'urgent' in request.POST:
+            tckts=Ticket.objects.filter(Q(ticket_status__contains=unsolved)).values_list(
+            'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
+            if tckts:
+                for tckt in tckts:
+                    rows.append(tckt)
+        if 'urgent' in request.POST:
             urgent = request.POST['urgent']
-        elif 'resolved' in request.POST:
-            resolved = request.POST['resolved']
+            tckts=Ticket.objects.filter(Q(ticket_status__contains=urgent)).values_list(
+            'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
+            if tckts:
+                for tckt in tckts:
+                    rows.append(tckt)
+        if 'ressolved' in request.POST:
+            resolved = request.POST['ressolved']
+            tckts=Ticket.objects.filter(Q(ticket_status__contains=resolved)).values_list(
+            'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
+            if tckts:
+                for tckt in tckts:
+                    rows.append(tckt)
         if datefrom != '' and dateto != '':
             datefrom = request.POST['datefrom']
             dateto = request.POST['dateto']
-        if semail != '':
-            semail = str(request.POST.getlist('staff_mails')[0])[1:-2]
-        if cemail != '':
-            cemail = str(request.POST.getlist('client_mails')[0])[1:-2]
-        print(datefrom)
-        print(dateto)
-        # pdb.set_trace()
-        # Q(ticket_status__icontains=pending) | Q(ticket_status__icontains=unsolved) | Q(ticket_status__icontains=resolved) | Q#(ticket_status__icontains=urgent) |  | Q(customer_email__icontains=cemail) | Q(resolved_by__email__icontains=semail)
-        rows = Ticket.objects.filter(Q(created_date__range=[datefrom, dateto]) | Q(resolved_by__email__contains=semail) | Q(customer_email__contains=cemail) | Q(ticket_status__contains=resolved) | Q(ticket_status__contains=unsolved) | Q(ticket_status__contains=pending) | Q(ticket_status__contains=urgent)).values_list(
+            tckts=Ticket.objects.filter(created_date__range=[datefrom,dateto]).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
+            if tckts:
+                for tckt in tckts:
+                    rows.append(tckt)
+        if semail != 'select staff' or  cemail != 'select client':
+            semail = semail[2:-3]
+            cemail = cemail[2:-3]
+            tckts=Ticket.objects.filter(Q(resolved_by__email__contains=semail) | Q(customer_email__contains=cemail)).values_list(
+            'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
+            if tckts:
+                for tckt in tckts:
+                    rows.append(tckt)
     else:
         rows = Ticket.objects.all().values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
-    print(rows)
+        pdb.set_trace()
+    #print(rows)
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):
@@ -138,7 +164,8 @@ class MyCanvas(canvas.Canvas):
 
 def export_pdf(request):
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="out.pdf"'
+    file_name=f'tickets_{datetime.now().day}_{datetime.now().hour}_{datetime.now().minute}_{datetime.now().second}.pdf'
+    response['Content-Disposition'] = f'attachment; filename="{file_name}"'
     styles = getSampleStyleSheet()
 
     PAGESIZE = pagesizes.landscape(pagesizes.A3)
@@ -194,7 +221,12 @@ def export_pdf(request):
     header_l5 = Paragraph("P.O Box: 36779-00200", styles['Normal_CENTER'])
     header_l6 = Paragraph("Ticket Reports as at {}".format(
         datetime.now()), styles['Normal_LEFT'])
-    logo = os.path.join(ABSOLUTE_PATH(), "static", "img", "logo.png")
+
+    setup=System_Settings.objects.first()
+    if setup != None:
+        logo= str(ABSOLUTE_PATH())+str(setup.logo.url)
+    else:
+        logo = os.path.join(ABSOLUTE_PATH(), "static", "img", "logo.png")
     im = Image(logo, 2 * inch, 2 * inch)
 
     rows = []

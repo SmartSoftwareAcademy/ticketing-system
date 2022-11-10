@@ -12,6 +12,7 @@
     <meta name="author" content="" />
 
     <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" type="image/x-icon" href="{{setup.logo.url}}">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -76,15 +77,16 @@
         id="accordionSidebar"
       >
         <!-- Sidebar - Brand -->
-        <a
-          class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="/"
-        >
-          <div class="sidebar-brand-icon">
-            <i class="fas fa-home"></i>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center bg-{{setup.logo_bg}}" href="/">
+          <div class="sidebar-brand-icon ">
+              {% if setup %}
+      <img src="{{setup.logo.url}}" class="img-fluid brand-image img-circle elevation-3" alt="logo">
+      {% else %}
+      <i class="fa fa-home"></i>
+      {% endif %}
           </div>
-          <div class="sidebar-brand-text mx-3">Helpdesk</div>
-        </a>
+          <div class="sidebar-brand-text mx-3 text-{{setup.title_text_color}}">{{setup.site_title}}</div>
+      </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0" />
         <!-- Nav Item - Dashboard -->
@@ -97,7 +99,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider" />
         <!-- Heading -->
-        <div class="sidebar-heading">Helpdesk</div>
+        <div class="sidebar-heading">{{setup.site_title}}</div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">

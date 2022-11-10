@@ -1,0 +1,12 @@
+{% extends 'adminlte/lib/_main_footer.html' %}
+
+<!-- Set version to be shown in lower right -->
+{% block version %}1.0{% endblock %}
+{% block legal %}
+    <strong>Copyright &copy; {% now "Y" %}{% if not site %}. {{setup.site_title}} {% endif %}
+        {% if site %}
+            <a href="https://{{ site.domain }}">{{ site.name }}</a>
+        {% endif %}
+    </strong> All rights
+    reserved.
+    {% endblock %}

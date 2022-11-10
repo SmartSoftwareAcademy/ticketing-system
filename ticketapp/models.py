@@ -196,3 +196,23 @@ class TicketSettings(models.Model):
 
     class Meta:
         verbose_name_plural = 'Ticket Settings'
+
+class System_Settings(models.Model):
+    COLORS=(
+        ('light', 'light'),
+        ('primary', 'primary'),
+        ('secondary', 'secondary'),
+        ('success', 'success'),
+         ('dark', 'dark'),
+        ('default', 'default'),
+    )
+    logo=models.ImageField(upload_to='logos/')
+    site_title=models.CharField(max_length=100)
+    title_text_color=models.CharField(choices=COLORS,default="primary",max_length=10,null=True,blank=True)
+    logo_bg=models.CharField(choices=COLORS,max_length=10,default="light",null=True,blank=True)
+
+    def __str__(self):
+        return "System Settings"
+
+    class Meta:
+        verbose_name_plural = 'Site Settings'

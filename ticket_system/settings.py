@@ -15,6 +15,7 @@ from pathlib import Path
 import os
 import sys
 import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 #email_settings = OutgoinEmailSettings.objects.all()
@@ -38,6 +39,12 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS",
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
+    'resource_center',
+    'ticketapp',
+    'adminlte3',
+     # Optional: Django admin theme (must be before django.contrib.admin)
+    'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,9 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'tinymce',
-    'accounts',
-    'resource_center',
-    'ticketapp',
+    
 ]
 
 # This scheduler config will:
@@ -93,6 +98,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'ticketapp.context_processors.get_site_setup',
             ],
         },
     },

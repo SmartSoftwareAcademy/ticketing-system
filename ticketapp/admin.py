@@ -71,7 +71,7 @@ class TicketSettingAdmin(admin.ModelAdmin):
 class ImapAdmin(admin.ModelAdmin):
     form = ImapForm
 
-
+admin.site.register(System_Settings)
 admin.site.register(Ticket, TicketAdmin)
 admin.site.register(OutgoinEmailSettings, OutgoinEmailSettingsAdmin)
 admin.site.register(ImapSettings, ImapAdmin)

@@ -1,0 +1,39 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+{% load static %}
+
+<!-- Set upper left corner logo -->
+{% block logo %}
+    <a href="/" class="brand-link">
+        {% if setup %}
+        <img src="{{setup.logo.url}}" class="brand-image img-circle elevation-3" alt="logo">
+        {% else %}
+        <i class="fa fa-home"></i>
+        {% endif %}
+        {% block logo_text %}<span class="brand-text font-weight-light">{{setup.site_title}}</span>{% endblock %}
+    </a>
+{% endblock logo %}
+
+<!-- Remove user panel from left sidebar -->
+{% block user_panel %}
+{% endblock user_panel %}
+
+<!-- Set header for side navbar -->
+{% block nav_heading %}
+WHERE TO GO
+{% endblock nav_heading %}
+
+<!-- Define navbar links -->
+{% block nav_links %}
+    <li>
+        <a href="/">
+            <i class="fa fa-home"></i>
+            <span>Home</span>
+        </a>
+    </li>
+    <li>
+        <a href="/admin">
+            <i class="fa fa-cog"></i>
+            <span>Admin</span>
+        </a>
+    </li>
+{% endblock nav_links %}

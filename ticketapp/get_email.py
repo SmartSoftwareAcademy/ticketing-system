@@ -87,18 +87,18 @@ class EmailDownload:
         """Log in to the imap server"""
 
         # connecting to the server
-        #print("Trying to connect to the server")
+        print("Trying to connect to the server")
 
         try:
             imapObj = imaplib.IMAP4_SSL(self.mail_server)  # outlook.office365.com
                 #print("Successfully connected to the IMAP server...")
 
                 # Try logging into gmail
-                #print("Trying to log in to gmail...")
+            print("Trying to log in to mail...")
 
             try:
                     imapObj.login(self.email, self.password)
-                    #print("Logged in")
+                    print("Logged in")
                     self.select_email_uids(imapObj)
             except Exception as e:
                     print(e)
@@ -154,7 +154,7 @@ class EmailDownload:
                 except Exception as e:
                     print(e)
 
-        #print("saving counter")
+        print("saving counter")
         with shelve.open('data') as db:
             db['counter'] = counter
 
@@ -229,10 +229,14 @@ class EmailDownload:
                     "(<"+str(config.support_reply_email)+">([r'\b ']|[r',\b']||[r';\b']))", '', str(mail_to))
                 mail_to = re.sub(str(config.support_reply_email),'',str(mail_to))
                 mail_to = re.sub("Gokhanmasterspacejv Helpdesk",'',str(mail_to))
+                mail_to = re.sub("Helpdesk",'',str(mail_to))
             mail_to=str(mail_to).strip()
-            print("Mail_to:{}".format(mail_to))
+            print("Mail_to:{}".format(mail_to)) 
+            if mail_to != '':
+                assign_to = random.choice(User.objects.exclude(username='chatbot').exclude(
+                        username='superadmin').exclude(email='').exclude(groups__name='ExternalAdmins').exclude(email=str(config.support_reply_email)))
             try:
-                if mail_to == '':
+                if mail_to == '' or ',' not in mail_to:
                     assign_to = random.choice(User.objects.exclude(username='chatbot').exclude(
                         username='superadmin').exclude(email='').exclude(groups__name='ExternalAdmins').exclude(email=str(config.support_reply_email)))
                 else:

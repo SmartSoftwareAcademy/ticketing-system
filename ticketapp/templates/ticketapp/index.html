@@ -10,8 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Helpdesk</title>
-
+    <title>{{setup.site_title}}</title>
+    <link rel="icon" type="image/x-icon" href="{{setup.logo.url}}">
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link
@@ -35,11 +35,15 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center bg-{{setup.logo_bg}}" href="/">
                 <div class="sidebar-brand-icon ">
-                    <i class="fas fa-home"></i>
+                    {% if setup %}
+            <img src="{{setup.logo.url}}" class="img-fluid brand-image img-circle elevation-3" alt="logo">
+            {% else %}
+            <i class="fa fa-home"></i>
+            {% endif %}
                 </div>
-                <div class="sidebar-brand-text mx-3">Helpdesk</div>
+                <div class="sidebar-brand-text mx-3 text-{{setup.title_text_color}}">{{setup.site_title}}</div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -56,7 +60,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Helpdesk
+                {{setup.site_title}}
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->

@@ -62,6 +62,7 @@
                     data-placeholder="Select a client"
                     style="width: 50%"
                   >
+                  <option value="select client">Select Client</option>
                     {% for client in clients %}
                     <option value="{{client}}">{{client}}</option>
                     {% endfor %}
@@ -76,6 +77,7 @@
                     data-placeholder="Select a staff"
                     style="width: 50%"
                   >
+                  <option value="select staff">Select Staff</option>
                     {% for staff in staffs %}
                     <option value="{{staff}}">{{staff}}</option>
                     {% endfor %}
@@ -91,25 +93,25 @@
                 <div class="row d-flex flex-row ml-4">
                   <h5 class="">Filter by Ticket Status</h5>
                   <div class="col-md-3 form-check">
-                    <input class="form-check-input" type="radio" name="ressolved" value="Resolved" id="ressolved" disabled>
+                    <input class="form-check-input" type="checkbox" name="ressolved" value="Resolved" id="ressolved" disabled>
                     <label class="form-check-label" for="ressolved">
                         Resolved
                     </label>
                   </div>
                   <div class="col-md-3 form-check">
-                    <input class="form-check-input" type="radio" name="unsolved" value="Unsolved" id="unsolved" disabled>
+                    <input class="form-check-input" type="checkbox" name="unsolved" value="Unsolved" id="unsolved" disabled>
                     <label class="form-check-label" for="unsolved">
                         Unresolved
                     </label>
                   </div>
                     <div class="col-md-3 form-check">
-                    <input class="form-check-input" type="radio" name="urgent" value="Urgent" id="urgent" disabled>
+                    <input class="form-check-input" type="checkbox" name="urgent" value="Urgent" id="urgent" disabled>
                     <label class="form-check-label" for="urgent">
                         Urgent
                     </label>
                   </div>
                   <div class="col-md-3 form-check">
-                    <input class="form-check-input" type="radio" name="pending" value="Pending" id="pending" disabled>
+                    <input class="form-check-input" type="checkbox" name="pending" value="Pending" id="pending" disabled>
                     <label class="form-check-label" for="pending">
                       Pending
                     </label>

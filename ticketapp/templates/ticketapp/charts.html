@@ -11,9 +11,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Helpdesk</title>
+    <title>{{setup.site_title}}</title>
 
     <!-- Custom fonts for this template-->
+    <link rel="icon" type="image/x-icon" href="{{setup.logo.url}}">
     <link
       href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"
       rel="stylesheet"
@@ -37,15 +38,16 @@
         id="accordionSidebar"
       >
         <!-- Sidebar - Brand -->
-        <a
-          class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
-        >
-          <div class="sidebar-brand-icon">
-            <i class="fas fa-home"></i>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center bg-{{setup.logo_bg}}" href="/">
+          <div class="sidebar-brand-icon ">
+              {% if setup %}
+      <img src="{{setup.logo.url}}" class="img-fluid brand-image img-circle elevation-3" alt="logo">
+      {% else %}
+      <i class="fa fa-home"></i>
+      {% endif %}
           </div>
-          <div class="sidebar-brand-text mx-3">ICT Helpdesk</div>
-        </a>
+          <div class="sidebar-brand-text mx-3 text-{{setup.title_text_color}}">{{setup.site_title}}</div>
+      </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0" />
@@ -62,7 +64,7 @@
         <hr class="sidebar-divider" />
 
         <!-- Heading -->
-        <div class="sidebar-heading">Helpdesk</div>
+        <div class="sidebar-heading">{{setup.site_title}}</div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
