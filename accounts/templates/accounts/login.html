@@ -11,8 +11,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Login</title>
-
+    <title>Helpdesk - Login</title>
+    {% if setup.logo %}
+    <link rel="icon" type="image/x-icon" href="{{setup.logo.url}}">    
+    {% endif %}
     <!-- Custom fonts for this template-->
     <link
       href="{% static 'vendor/fontawesome-free/css/all.min.css'%}"
@@ -38,11 +40,11 @@
               <!-- Nested Row within Card Body -->
               <div class="row">
                 <div class="col-lg-6 d-none d-lg-block">
-                  <img
-                    src="{% static 'img/logo.png' %}"
-                    alt="logo"
-                    class="img-fluid"
-                  />
+                  {% if setup.logo %}
+                  <img src="{{setup.logo.url}}" class="img-fluid brand-image img-circle elevation-3" alt="logo">
+                  {% else %}
+                  <i class="fa fa-home"></i>
+                  {% endif %}
                 </div>
                 <div class="col-lg-6">
                   <div class="p-5">

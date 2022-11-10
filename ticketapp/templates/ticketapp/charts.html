@@ -14,7 +14,9 @@
     <title>{{setup.site_title}}</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="icon" type="image/x-icon" href="{{setup.logo.url}}">
+    {% if setup.logo %}
+    <link rel="icon" type="image/x-icon" href="{{setup.logo.url}}">    
+    {% endif %}
     <link
       href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"
       rel="stylesheet"
@@ -40,7 +42,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center bg-{{setup.logo_bg}}" href="/">
           <div class="sidebar-brand-icon ">
-              {% if setup %}
+              {% if setup.logo %}
       <img src="{{setup.logo.url}}" class="img-fluid brand-image img-circle elevation-3" alt="logo">
       {% else %}
       <i class="fa fa-home"></i>

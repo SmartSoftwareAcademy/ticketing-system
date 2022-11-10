@@ -145,9 +145,10 @@ class MyCanvas(canvas.Canvas):
         self._startPage()
 
     def draw_page_number(self, page_count):
+        #load site setups
+        setup=System_Settings.objects.first()
         # Modify the content and styles according to the requirement
-        page = "Copyright © {} Gokhanmasterspace JV Limited. All Rights Reserved. Page {curr_page} of {total_pages}".format(datetime.now(
-        ).year, curr_page=self._pageNumber, total_pages=page_count)
+        page = f"Copyright © {datetime.now().year} {setup.company}. All Rights Reserved. Page {self._pageNumber} of {page_count}"
         self.setFont("Helvetica", 12)
         self.drawRightString(250*mm, 8*mm, page)
 
@@ -169,6 +170,8 @@ def export_pdf(request):
     styles = getSampleStyleSheet()
 
     PAGESIZE = pagesizes.landscape(pagesizes.A3)
+    #load site setups
+    setup=System_Settings.objects.first()
 
     doc = SimpleDocTemplate(response, pagesize=PAGESIZE,
                             leftMargin=1 * cm,
@@ -209,25 +212,23 @@ def export_pdf(request):
                               splitLongWords=True,
                               spaceShrinkage=0.05,
                               ))
-    header_l0 = Paragraph(
-        "Gokhanmasterspace JV Limited", styles['Normal_CENTER'])
-    header_l1 = Paragraph(
-        "First Floor,Birdi Complex,", styles['Normal_CENTER'])
-    header_l2 = Paragraph("Mombasa Road-Nairobi,Kenya",
+    header_l0 = Paragraph(setup.company, styles['Normal_CENTER'])
+    header_l1 = Paragraph(setup.suite, styles['Normal_CENTER'])
+    header_l2 = Paragraph(f"{setup.road}-{setup.city},{setup.country}",
                           styles['Normal_CENTER'])
-    header_l3 = Paragraph("Phone:+254-715-837-832", styles['Normal_CENTER'])
-    header_l4 = Paragraph("Email: info@masterspace.co.ke",
+    header_l3 = Paragraph(f"Phone:{setup.tel}", styles['Normal_CENTER'])
+    header_l4 = Paragraph(f"Email: {setup.email}",
                           styles['Normal_CENTER'])
-    header_l5 = Paragraph("P.O Box: 36779-00200", styles['Normal_CENTER'])
+    header_l5 = Paragraph(f"P.O Box: {setup.address}", styles['Normal_CENTER'])
     header_l6 = Paragraph("Ticket Reports as at {}".format(
         datetime.now()), styles['Normal_LEFT'])
 
-    setup=System_Settings.objects.first()
-    if setup != None:
+   
+    if setup.logo:
         logo= str(ABSOLUTE_PATH())+str(setup.logo.url)
     else:
         logo = os.path.join(ABSOLUTE_PATH(), "static", "img", "logo.png")
-    im = Image(logo, 2 * inch, 2 * inch)
+    im = Image(logo, 3 * inch, 2 * inch)
 
     rows = []
     data = []

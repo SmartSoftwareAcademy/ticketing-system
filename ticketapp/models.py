@@ -206,13 +206,22 @@ class System_Settings(models.Model):
          ('dark', 'dark'),
         ('default', 'default'),
     )
-    logo=models.ImageField(upload_to='logos/')
-    site_title=models.CharField(max_length=100)
+    logo=models.ImageField(upload_to='logos/',null=True,blank=True)
+    site_title=models.CharField(max_length=100,null=True,blank=True)
     title_text_color=models.CharField(choices=COLORS,default="primary",max_length=10,null=True,blank=True)
     logo_bg=models.CharField(choices=COLORS,max_length=10,default="light",null=True,blank=True)
+    email=models.EmailField(max_length=100,default="info@masterspace.co.ke",null=True,blank=True)
+    address=models.CharField(max_length=100,default="36779-00200",null=True,blank=True)
+    company=models.CharField(max_length=100,default="Gokhan Masterspace JV Limited",null=True,blank=True)
+    tel=models.CharField(max_length=15,default="+254743793901",null=True,blank=True)
+    suite=models.CharField(max_length=100,default="First Floor Birdir Complex,",null=True,blank=True)
+    road=models.CharField(max_length=100,default="Mombasa Road",null=True,blank=True)
+    city=models.CharField(max_length=100,default="Nairobi",null=True,blank=True)
+    state=models.CharField(max_length=100,default="Kenya",null=True,blank=True)
+    country=models.CharField(max_length=100,default="Kenya",null=True,blank=True)
 
     def __str__(self):
         return "System Settings"
 
     class Meta:
-        verbose_name_plural = 'Site Settings'
+        verbose_name_plural = 'System Settings'
