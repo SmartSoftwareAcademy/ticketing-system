@@ -21,9 +21,9 @@ blocks:
       jobs:
         - name: Deploy Checklist
           commands:
-            - ls
+            - cd ticketing-system
             - python manage.py check --deploy
         - name: Check Style
           commands:
             - pip install flake8
-            - flake8 martor_demo/ --max-line-length=127
+            - flake8 ticketing-system/ --max-line-length=127
