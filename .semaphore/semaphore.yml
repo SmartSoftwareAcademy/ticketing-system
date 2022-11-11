@@ -1,0 +1,29 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: Pip
+          commands:
+            - sem-version python 3.9
+            - checkout
+            - mkdir .pip_cache
+            - cache restore
+            - pip install --cache-dir .pip_cache -r requirements.txt
+            - cache store
+  - name: Test
+    task:
+      jobs:
+        - name: Deploy Checklist
+          commands:
+            - cd ticketing-system/
+            - python manage.py check --deploy
+        - name: Check Style
+          commands:
+            - pip install flake8
+            - flake8 ticketing-system/ --max-line-length=127
