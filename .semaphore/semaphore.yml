@@ -21,7 +21,7 @@ blocks:
       jobs:
         - name: Deploy Checklist
           commands:
-            - cd ticketing-system
+            - ls
             - python manage.py check --deploy
         - name: Check Style
           commands:
