@@ -78,7 +78,7 @@
         id="accordionSidebar"
       >
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center bg-{{setup.logo_bg}}" href="/">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center bg-{{setup.logo_bg}}" href="{% url 'ticketapp:ticket-list' %}">
           <div class="sidebar-brand-icon ">
               {% if setup.logo %}
       <img src="{{setup.logo.url}}" class="img-fluid brand-image img-circle elevation-3" alt="logo">

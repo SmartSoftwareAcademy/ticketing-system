@@ -19,9 +19,9 @@ urlpatterns = [
          name='unresolved-tickets'),
     path('urgent-tickets/', views.urgent_ticket_list, name='urgent-tickets'),
     path('pending-tickets/', views.pending_ticket_list, name='pending-tickets'),
-    path('mark-resolved/<int:id>',
+    path('mark-resolved/<int:id>/',
          views.mark_ticket_as_resolved, name='mark-resolved'),
-    path('mark-unresolved/<int:id>',
+    path('mark-unresolved/<int:id>/',
          views.mark_ticket_as_unresolved, name='mark-unresolved'),
     path('add-comment/<int:ticket_id>/', views.add_comment, name='add-comment'),
     path('search/', views.SearchResultView.as_view(), name='search'),
@@ -41,6 +41,6 @@ urlpatterns = [
 
     # reporting
     path('reporting/', ReportView, name='reports'),
-    path('export/excel', export_tickets_xls, name='export_excel'),
-    path('export/pdf', export_pdf, name='export_pdf'),
+    path('export/excel/', export_tickets_xls, name='export_excel'),
+    path('export/pdf/', export_pdf, name='export_pdf'),
 ]
