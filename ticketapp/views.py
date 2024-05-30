@@ -720,7 +720,7 @@ class Escallate:
                             # domain = self.request.META['HTTP_HOST']
                             # protocol = 'https' if self.request.is_secure() else 'http'
                             ticket_url = '{}/ticket-detail/{}/'.format(
-                                domain, ticket.id)
+                                domain, t.ticket_id)
                             receipient_list = [assignee.email, ]
                             message = ticket_settings.code_for_automated_escallation_email.replace('[id]', t.ticket_id).replace('[request_description]', t.issue_description).replace('[tags]', 'None').replace('[date]', str(datetime.now(
                             ))).replace('[prev_assignee]', prev_assignee.username).replace('[asignee]', assignee.username).replace('[hours]', str(ticket_settings.duration_before_escallation)).replace('[ticket_link]', str(ticket_url))

@@ -5,6 +5,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import ImapSettings, Tags, Ticket
 from tinymce.widgets import TinyMCE
+from .custom_widgets import MultipleFileInput
 
 TICKET_SECTIONS = (
     ('Software', 'Software'),
@@ -49,8 +50,9 @@ class TicketForm(forms.ModelForm):
         choices=TICKET_PRIORITIES, widget=forms.Select(attrs={'class': 'form-control'}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
-    attach = forms.FileField(required=False,
-                             widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    # attach = forms.FileField(required=False,
+    #                          widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    attach = forms.FileField(widget=MultipleFileInput(), required=False)
 
     class Meta:
         model = Ticket
@@ -77,8 +79,10 @@ class TicketUpdateForm(forms.ModelForm):
                                       choices=TICKET_STATUSES, widget=forms.Select(attrs={'class': 'form-control', 'type': 'hidden'}))
     assigned_to = forms.ModelChoiceField(required=False,
                                          queryset=User.objects.all(), empty_label='Select User', widget=forms.Select(attrs={'class': 'form-control'}))
-    attach = forms.FileField(required=False,
-                             widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    # attach = forms.FileField(required=False,
+    #                          widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    attach = forms.FileField(widget=MultipleFileInput(), required=False)
+
 
     class Meta:
         model = Ticket
@@ -89,8 +93,9 @@ class TicketUpdateForm(forms.ModelForm):
 class EmaiailAttachmentForm(forms.Form):
     subject = forms.CharField(required=False,
                               max_length=25000, widget=TinyMCE(attrs={'cols': 40, 'rows': 30, 'class': 'tinymce', 'placeholder': 'Add note on how issue was solved'}))
-    attach = forms.FileField(required=False,
-                             widget=forms.ClearableFileInput(attrs={'multiple': True, 'name': 'attach'}))
+    # attach = forms.FileField(required=False,
+    #                          widget=forms.ClearableFileInput(attrs={'multiple': True, 'name': 'attach'}))
+    attach = forms.FileField(widget=MultipleFileInput(), required=False)
 
 
 class ImapForm(ModelForm):

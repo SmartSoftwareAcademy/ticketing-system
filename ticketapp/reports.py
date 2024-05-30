@@ -69,28 +69,28 @@ def export_tickets_xls(request):
         cemail = request.POST.getlist('client_mails')[0]
         semail = request.POST.getlist('staff_mails')[0]
         rows = []
-        if 'pending' in request.POST:
+        if 'Pending' in request.POST:
             pending = request.POST['pending']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=pending)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
             if tckts:
                 for tckt in tckts:
                     rows.append(tckt)
-        if 'unsolved' in request.POST:
+        if 'Unsolved' in request.POST:
             unsolved = request.POST['unsolved']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=unsolved)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
             if tckts:
                 for tckt in tckts:
                     rows.append(tckt)
-        if 'urgent' in request.POST:
+        if 'Urgent' in request.POST:
             urgent = request.POST['urgent']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=urgent)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
             if tckts:
                 for tckt in tckts:
                     rows.append(tckt)
-        if 'ressolved' in request.POST:
+        if 'Ressolved' in request.POST:
             resolved = request.POST['ressolved']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=resolved)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)

@@ -15,6 +15,8 @@ from pathlib import Path
 import os
 import sys
 import dj_database_url
+from .juzmin import JAZZMIN_SETTINGS
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,12 +41,10 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS",
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'accounts',
     'resource_center',
     'ticketapp',
-    'adminlte3',
-     # Optional: Django admin theme (must be before django.contrib.admin)
-    'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -221,6 +221,7 @@ TINYMCE_DEFAULT_CONFIG = {
 #TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = False
 TINYMCE_JS_URL = os.path.join('tinymce', "tinymce.min.js")
+JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
 # TINYMCE_EXTRA_MEDIA = {
 #     'css': {
 #         'all': [
