@@ -51,7 +51,7 @@
                     </div>
                   </div>
                 </div>
-                <form id="form" method="post" action="{% url 'ticketapp:export_excel' %}">
+                <form id="form" method="post" action="">
                     {% csrf_token %}
                 <div class="form-group" id="cemail_div">
                     <label>Select Client</label>
@@ -205,11 +205,13 @@ function toggleFileds() {
     if ($("#excel").prop('checked'))
     {
       $("#pdf").hide();
+      $("#filter-form").action="{% url 'ticketapp:export_excel' %}";
     }else{
         $("#pdf").show();
     }
     if($("#pdf").prop('checked')){
        $("#excel").hide();
+       $("#filter-form").action="{% url 'ticketapp:export_pdf' %}";
     }else{
        $("#excel").show();
     }
@@ -221,35 +223,53 @@ function toggleFileds() {
         // serialize the data for sending the form data.
         var serializedData = $(this).serialize();
         // make POST ajax call
-        $.ajax({
+        if($("#excel").prop('checked')){
+           $.ajax({
             type: 'POST',
-          url: "{% url 'ticketapp:export_excel' %}",
-          data: serializedData,
-            success: function (response) {
-                // on successfull creating object
-                // 1. clear the form.
-                $("#filter-form").trigger('reset');
-                // display the newly friend to table.
-                var res = JSON.parse(response['resdata']);
-                console.log(res)
-                var fields = res[0][0];
-                 console.log(fields)
-                $("#res_table tbody").prepend(
-                    `<tr>
-                    <td>${fields["title"]||""}</td>
-                    <td>${fields["customer_email"]||""}</td>
-                    <td>${fields["resolved_by__email"]||""}</td>
-                    <td>${fields["create_date"]||""}</td>
-                    <td>${fields["resolved_date"]||""}</td>
-                    <td>${fields["issue_description"]||""}</td>
-                    </tr>`
-                )
-            },
-            error: function (response) {
-                // alert the error if any error occured
-                alert(response["responseJSON"]["error"]);
-            }
-        })
-    })
+            url: "{% url 'ticketapp:export_excel' %}",
+            data: serializedData,
+              success: function (response) {
+                  // on successfull creating object
+                  // 1. clear the form.
+                  $("#filter-form").trigger('reset');
+                  // display the newly friend to table.
+                  var res = JSON.parse(response['resdata']);
+                  console.log(res)
+                  var fields = res[0][0];
+                  console.log(fields)
+                  $("#res_table tbody").prepend(
+                      `<tr>
+                      <td>${fields["title"]||""}</td>
+                      <td>${fields["customer_email"]||""}</td>
+                      <td>${fields["resolved_by__email"]||""}</td>
+                      <td>${fields["create_date"]||""}</td>
+                      <td>${fields["resolved_date"]||""}</td>
+                      <td>${fields["issue_description"]||""}</td>
+                      </tr>`
+                  )
+              },
+              error: function (response) {
+                  // alert the error if any error occured
+                  alert(response["responseJSON"]["error"]);
+              }
+          })
+       }else if($("#pdf").prop('checked')){
+          $.ajax({
+              type: "POST",
+              url: "{% url 'ticketapp:export_pdf' %}",
+              data: formData,
+              processData: false, // Prevent jQuery from processing the data
+              contentType: false, // Prevent jQuery from setting contentType
+              success: function(response) {
+                  // Handle success response
+                  console.log("Form submitted successfully");
+              },
+              error: function(xhr, status, error) {
+                  // Handle error response
+                  console.error("Error occurred while submitting form:", error);
+              }
+          });
+        }
+      })
 </script>
 {% endblock extra_scripts %}

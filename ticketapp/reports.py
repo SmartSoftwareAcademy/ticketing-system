@@ -4,7 +4,7 @@ from reportlab.lib.units import cm
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 import xlwt
 from django.http import HttpResponse
-from datetime import datetime
+from datetime import datetime,timedelta
 from .models import *
 from django.shortcuts import render
 import re
@@ -64,8 +64,8 @@ def export_tickets_xls(request):
         unsolved = ""
         urgent = ""
         pending = ""
-        datefrom = request.POST['datefrom']
-        dateto = request.POST['dateto']
+        datefrom = request.POST.get('datefrom',datetime.now()-timedelta(days=1000))
+        dateto =  request.POST.get('datefrom',datetime.now())
         cemail = request.POST.getlist('client_mails')[0]
         semail = request.POST.getlist('staff_mails')[0]
         rows = []
@@ -212,15 +212,15 @@ def export_pdf(request):
                               splitLongWords=True,
                               spaceShrinkage=0.05,
                               ))
-    header_l0 = Paragraph(setup.company, styles['Normal_CENTER'])
-    header_l1 = Paragraph(setup.suite, styles['Normal_CENTER'])
-    header_l2 = Paragraph(f"{setup.road}-{setup.city},{setup.country}",
+    company = Paragraph(setup.company, styles['Normal_CENTER'])
+    suite = Paragraph(setup.suite, styles['Normal_CENTER'])
+    road_city_contry = Paragraph(f"{setup.road}-{setup.city},{setup.country}",
                           styles['Normal_CENTER'])
-    header_l3 = Paragraph(f"Phone:{setup.tel}", styles['Normal_CENTER'])
-    header_l4 = Paragraph(f"Email: {setup.email}",
+    tel = Paragraph(f"{setup.tel}", styles['Normal_CENTER'])
+    email = Paragraph(f"{setup.email}",
                           styles['Normal_CENTER'])
-    header_l5 = Paragraph(f"P.O Box: {setup.address}", styles['Normal_CENTER'])
-    header_l6 = Paragraph("Ticket Reports as at {}".format(
+    address = Paragraph(f"P.O Box: {setup.address}", styles['Normal_CENTER'])
+    report_title = Paragraph("Ticket Reports as at {}".format(
         datetime.now()), styles['Normal_LEFT'])
 
    
@@ -228,25 +228,52 @@ def export_pdf(request):
         logo= str(ABSOLUTE_PATH())+str(setup.logo.url)
     else:
         logo = os.path.join(ABSOLUTE_PATH(), "static", "img", "logo.png")
-    im = Image(logo, 3 * inch, 2 * inch)
+    im = Image(logo, 3 * inch, 1.5 * inch)
+    #im.hAlign="LEFT"
 
     rows = []
     data = []
     data.append(im)
-    data.append(header_l0)
-    data.append(header_l1)
-    data.append(header_l2)
-    data.append(header_l4)
-    data.append(header_l3)
-    data.append(header_l5)
-    data.append(header_l6)
+    data.append(company)
+    data.append(road_city_contry)
+    data.append(suite)
+    data.append(email)
+    data.append(address)
+    data.append(tel)
+    data.append(report_title)
     tickets = Ticket.objects.all()  # filter(ticket_status="Resolved")
-    headers = ["Ticket Issue", "Raised By",
-               "Ressolved By", "Date Raised", "Date Ressolved", "Duration\n(Days:Hours)"]
+    headers = ["Ticket Issue", "Status","Raised By",
+               "Ressolved By", "Date Raised", "Date Ressolved", "Duration\n(Days:Hrs)"]
     rows.append(headers)
+    if request.POST != None or '':
+        resolved = ""#Resolved
+        unsolved = ""
+        urgent = ""
+        pending = ""
+        datefrom = request.POST.get('datefrom','')
+        dateto =  request.POST.get('datefrom','')
+        cemail = request.POST.getlist('client_mails',['select client'])[0]
+        semail = request.POST.getlist('staff_mails',['select staff'])[0]
+        if pending !="":
+            tickets=tickets.filter(Q(ticket_status=pending))
+        if unsolved !="":
+            tickets=tickets.filter(Q(ticket_status=unsolved))
+        if urgent !="":
+            tickets=tickets.filter(Q(ticket_status=urgent))
+        if resolved !="":
+            tickets=tickets.filter(Q(ticket_status=resolved))
+            print(tickets)
+        if datefrom != '' and dateto != '':
+            tickets=tickets.filter(created_date__range=[datefrom,dateto])
+        if semail != 'select staff' or  cemail != 'select client':
+            semail = semail[2:-3]
+            cemail = cemail[2:-3]
+            tickets=tickets.filter(Q(resolved_by__email__contains=semail) | Q(customer_email__contains=cemail))
+    tickets=tickets.order_by('ticket_status')
     for ticket in tickets:
         duration = ""
         title = Paragraph(ticket.title, styles['BodyText'])
+        ticket_status = Paragraph(ticket.ticket_status, styles['BodyText'])
         cemail = Paragraph(ticket.customer_email, styles['BodyText'])
         semail = [Paragraph(ticket.resolved_by.email, styles['BodyText']) if ticket.resolved_by !=
                   None else "Not Ressolved"][0]
@@ -257,6 +284,7 @@ def export_pdf(request):
         else:
             duration = "Unknown"
         rows.append([title,
+                     ticket_status,
                      cemail,
                      semail,
                      date_format(ticket.created_date, "SHORT_DATE_FORMAT"),
@@ -264,8 +292,7 @@ def export_pdf(request):
                       if ticket.resolved_date != None else "Not Ressolved"][0],
                      duration,
                      ])
-    c_width = [5*inch, 3*inch, 3*inch, 1.5 *
-               inch, 1.5*inch]
+    c_width = [6*inch,1.5 *inch, 2*inch, 2*inch, 1.5 *inch, 1.5*inch]
     content_table = Table(rows, rowHeights=40, colWidths=c_width)
     content_table.setStyle(TableStyle([('GRID', (0, 0), (-1, -1), 1, 'black'), ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
                            ('FONTSIZE', (0, 0), (-1, -1), 12), ('ROWBACKGROUNDS', (0, 1), (-1, -2), ['lightgrey', 'white']), ]))
