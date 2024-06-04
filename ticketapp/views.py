@@ -223,6 +223,7 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         try:
             load_time_zone()
+            form.instance.ticket_status="Pending"
             form.instance.user = self.request.user
             super().form_valid(form)  # create ticket object
             ticket = self.object

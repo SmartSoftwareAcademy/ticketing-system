@@ -24,7 +24,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome to Ticket Admin",
 
     # Copyright on the footer
-    "copyright": f"Bengomall",
+    "copyright": f"Masterspace Solutions",
 
     # The model admin to search from the search bar, search bar omitted if excluded
     "search_model": "auth.User",

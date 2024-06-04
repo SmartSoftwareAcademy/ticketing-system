@@ -1,6 +1,7 @@
 from django.urls import path,re_path
 from . import views
 from .reports import ReportView, export_tickets_xls, export_pdf
+from .utils import UploadCSVTicketsData
 
 app_name = 'ticketapp'
 
@@ -43,4 +44,5 @@ urlpatterns = [
     path('reporting/', ReportView, name='reports'),
     path('export/excel/', export_tickets_xls, name='export_excel'),
     path('export/pdf/', export_pdf, name='export_pdf'),
+    path('api/importtickets/', UploadCSVTicketsData.as_view(), name='importtickets'),
 ]

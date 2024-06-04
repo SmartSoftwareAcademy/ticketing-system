@@ -1,0 +1,81 @@
+Title,Issue,Status,DateResolved,DateRaised,Asignee,RaisedBy
+Permit Autoblocking,Permit Autoblocking,Pending,,23/1/2024,zotieno,dg@kenha.co.ke
+WideLoad Prosecution,WideLoad Prosecution,Pending,,12/2/2024,micna,dg@kenha.co.ke
+Overload Computation by volume,Overload Computation by volume,Pending,,12/2/2024,micna,dg@kenha.co.ke
+Redesigning HSWIM Dashboard,Redesigning HSWIM Dashboard,Pending,,12/2/2024,mcna,dg@kenha.co.ke
+HSWIM Report,HSWIM vs Static Evaluation Report improvement,Pending,,23/2/2024,zotieno,dg@kenha.co.ke
+Ticket Narration,Allow DM to view narration on Ticket Cancellation,Pending,,23/2/2024,micna,dg@kenha.co.ke
+Prosecution Module,Chage of Delete Option in prosecution module to Cancel,Pending,,20/2/2024,micna,dg@kenha.co.ke
+Weighing,Manual Weighing,Pending,,20/2/2024,micna,dg@kenha.co.ke
+Reweighs,Re-weighs,Pending,,23/2/2024,micna,dg@kenha.co.ke
+Mobile weighbridges data,Realtime generation of mobile weighbridges data,Resolved,23/2/2024,23/1/2024,micna,dg@kenha.co.ke
+Invoice Labelling,Invoice Labelling,Resolved,12/3/2024,12/1/2024,micna,dg@kenha.co.ke
+Reporting,User level Reporting,Pending,,23/1/2024,micna,dg@kenha.co.ke
+Certificate and Release Generation,Certificate and Release Generation,Resolved,,12/2/2024,micna,dg@kenha.co.ke
+Relief Vehicle Weighing:,Relief Vehicle Weighing:,Resolved,25/2/2024,12/2/2024,micna,dg@kenha.co.ke
+User management,User Guidance and Error Handling,Resolved,25/3/2024,12/2/2024,towuor,dg@kenha.co.ke
+Search time,Search Timeframe,Resolved,25/2/2024,23/2/2024,micna,dg@kenha.co.ke
+Tags,Tag Autoclose,Resolved,28/3/2024,23/2/2024,zotieno,dg@kenha.co.ke
+Image update preservation,Image Update Preservation,Resolved,21/2/2024,23/1/2024,zotieno,dg@kenha.co.ke
+Indicator,Clear Indication of Update:,Pending,,12/2/2024,micna,dg@kenha.co.ke
+Effective Time Period Indication,Effective Time Period Indication,Pending,,12/2/2024,zotieno,dg@kenha.co.ke
+Webuye HSWIM,Integration and configuration of Webuye HSWIM,Resolved,30/4/2024,12/2/2024,zotieno,dg@kenha.co.ke
+Password Policy,User management and Password policy,Resolved,22/4/2024,23/2/2024,towuor,dg@kenha.co.ke
+Search time,Search,Resolved,25/2/2024,24/2/2024,towuor,dg@kenha.co.ke
+Refresh rate,Refresh rate,Resolved,25/3/2024,20/2/2024,zotieno,dg@kenha.co.ke
+Auto-weigh,Auto Weigh,Resolved,25/2/2024,20/2/2024,zotieno,dg@kenha.co.ke
+Tags,Tags belonging to other weigh bridges that have been untagged still appear tagged in the system,Resolved,,23/2/2023,zotieno,ict@interways.co.ke
+Permit Scanning,"Some Permits do not scan in the system like number plates starting with DT or ETS, and sometimes Kenload system fails to add new permits.",Resolved,30/4/2024,23/1/2024,micna,ict@interways.co.ke
+Ticket Charges,The system charges with the first ticket after redistributing or reweighing,Resolved,22/4/2024,12/2/2024,micna,ict@interways.co.ke
+Edit ticket details,There should be provision for editing ticket details at prosecution stage eg Trailer No,Resolved,25/2/2024,23/1/2024,micna,ict@interways.co.ke
+Auto-prohibit,"Prohibition of vehicles is automated, but now issues so many prohibition orders even to trucks exited and without overload.",Resolved,25/3/2024,12/2/2024,micna,ict@interways.co.ke
+Eldoret Bound HSWIM integration with Kenload V2,Eldoret Bound HSWIM integration with Kenload V2,Pending,25/2/2024,12/2/2024,micna,ict@interways.co.ke
+reporting module,Some reports in the report module do not work,Resolved,,12/2/2024,micna,ict@interways.co.ke
+Kenload dashboard,The Kenload dashboard does not work.,Resolved,30/4/2024,23/2/2024,zotieno,ict@interways.co.ke
+Filters,Some filters in different modules do not work i.e. the status in the prosecution model,Resolved,22/4/2024,23/2/2024,micna,ict@interways.co.ke
+Procesution to be intergrated fully in Kenload,Procesution to be intergrated fully in Kenload,Resolved,25/2/2024,23/1/2024,micna,ict@interways.co.ke
+Tag closing,Closed Tags from other weighbridges should be intergrated in all other weighbridge systems,Resolved,25/3/2024,12/2/2024,zotieno,ict@interways.co.ke
+Kenload data,Data from before upgrade to Kenload V2 can't be retrieved,Resolved,25/2/2024,12/2/2024,micna,ict@interways.co.ke
+User roles,Some roles of the different positions have not been defined yet,Resolved,,12/2/2024,towuor,ict@interways.co.ke
+Shift management,Shift module has challenges i.e. sometimes it logs users out who are on shift,Resolved,30/4/2024,23/2/2024,towuor,ict@interways.co.ke
+Mpesa Integration,Mpesa/ Kenload intergration,Resolved,22/4/2024,25/2/2024,micna,ict@interways.co.ke
+Yard,Provision to divert vehicles to the yard even if it's been cleared to proceed i.e. Whereby Computer Operator Weighing can enter reason for diverting,Resolved,25/2/2024,20/2/2024,micna,ict@interways.co.ke
+Police reports,There is a provision to extract police brief but data that will be extracted is not accurate.,Resolved,25/3/2024,20/2/2024,towuor,ict@interways.co.ke
+Scale test,Scale test always appears failed on the ticket-to clarify how these tests on decks are to be done.,Resolved,25/2/2024,23/2/2024,micna,ict@interways.co.ke
+Cargo details,"The displaying of cargo details on w/b ticket is being generated on a straight line, so when it's too long it's not wrapped and appears to overlaps other wordings.",Resolved,25/3/2024,23/1/2024,micna,ict@interways.co.ke
+Report titles,Titles heads of some reports are not inline with the data they present,Resolved,30/4/2024,12/3/2024,zotieno,ict@interways.co.ke
+Weighing,"Weighing Module dashboard to be simplified, for faster weighing",Resolved,22/4/2024,23/1/2023,micna,ict@interways.co.ke
+Audit logs,"Audit module- should not limit no. of vehicles, should be able to filter by date, time, vehicle registration no and by user",Resolved,25/2/2024,12/2/2024,micna,ict@interways.co.ke
+Auto weigh,Auto weighing to be included,Resolved,25/3/2024,12/2/2024,zotieno,ict@interways.co.ke
+Reporting module,"Some Reports in Report module don't work i.e. Payment list, Time turn report etc.",Resolved,25/2/2024,12/2/2024,micna,ict@interways.co.ke
+Weighing,Refreshing of the browser in the process of weighing a vehicle to be deactivated.,Resolved,25/3/2024,23/2/2024,micna,ict@interways.co.ke
+Tags belonging to other weigh bridges that have been untagged still appear tagged in the system,Tags belonging to other weigh bridges that have been untagged still appear tagged in the system,Pending,25/2/2024,23/2/2024,towuor,dg@kenha.co.ke
+"Some Permits do not scan in the system like number plates starting with DT or ETS, and sometimes Kenload system fails to add new permits.","Some Permits do not scan in the system like number plates starting with DT or ETS, and sometimes Kenload system fails to add new permits.",Pending,28/3/2024,23/1/2023,micna,info@dankaafrica.com
+The system charges with the first ticket after redistributing or reweighing,The system charges with the first ticket after redistributing or reweighing,Pending,21/2/2024,12/2/2024,micna,info@ebenezerctwtltd.com
+There should be provision for editing ticket details at prosecution stage eg Trailer No,There should be provision for editing ticket details at prosecution stage eg Trailer No,Pending,30/4/2024,12/2/2024,zotieno,dg@kenha.co.ke
+"Prohibition of vehicles is automated, but now issues so many prohibition orders even to trucks exited and without overload.","Prohibition of vehicles is automated, but now issues so many prohibition orders even to trucks exited and without overload.",Pending,22/4/2024,12/2/2024,micna,dg@kenha.co.ke
+Eldoret Bound HSWIM integration with Kenload V2,Eldoret Bound HSWIM integration with Kenload V2,Pending,25/2/2024,23/2/2024,micna,dg@kenha.co.ke
+Some reports in the report module do not work,Some reports in the report module do not work,Pending,22/4/2024,26/2/2024,zotieno,info@dankaafrica.com
+The Kenload dashboard does not work.,The Kenload dashboard does not work.,Pending,25/2/2024,20/2/2024,micna,info@ebenezerctwtltd.com
+Some filters in different modules do not work i.e. the status in the prosecution model,Some filters in different modules do not work i.e. the status in the prosecution model,Pending,25/3/2024,20/2/2024,micna,ict@interways.co.ke
+Procesution to be intergrated fully in Kenload,Procesution to be intergrated fully in Kenload,Resolved,25/2/2024,23/2/2024,towuor,ict@interways.co.ke
+Closed Tags from other weighbridges should be intergrated in all other weighbridge systems,Closed Tags from other weighbridges should be intergrated in all other weighbridge systems,Resolved,28/3/2024,23/1/2024,micna,ict@interways.co.ke
+Data from before upgrade to Kenload V2 can't be retrieved,Data from before upgrade to Kenload V2 can't be retrieved,Pending,21/2/2024,12/4/2024,micna,ict@interways.co.ke
+Some roles of the different positions have not been defined yet,Some roles of the different positions have not been defined yet,Resolved,30/4/2024,23/1/2024,zotieno,ict@interways.co.ke
+Shift module has challenges i.e. sometimes it logs users out who are on shift,Shift module has challenges i.e. sometimes it logs users out who are on shift,Resolved,22/4/2024,12/2/2024,micna,dg@kenha.co.ke
+Mpesa/ Kenload intergration,Mpesa/ Kenload intergration,Resolved,25/2/2024,12/2/2024,micna,info@dankaafrica.com
+Provision to divert vehicles to the yard even if it's been cleared to proceed i.e. Whereby Computer Operator Weighing can enter reason for diverting,Provision to divert vehicles to the yard even if it's been cleared to proceed i.e. Whereby Computer Operator Weighing can enter reason for diverting,Resolved,25/3/2024,12/2/2024,zotieno,info@ebenezerctwtltd.com
+There is a provision to extract police brief but data that will be extracted is not accurate.,There is a provision to extract police brief but data that will be extracted is not accurate.,Resolved,25/2/2024,23/2/2024,micna,dg@kenha.co.ke
+Scale test always appears failed on the ticket-to clarify how these tests on decks are to be done.,Scale test always appears failed on the ticket-to clarify how these tests on decks are to be done.,Resolved,28/3/2024,23/2/2024,micna,info@dankaafrica.com
+"The displaying of cargo details on w/b ticket is being generated on a straight line, so when it's too long it's not wrapped and appears to overlaps other wordings.","The displaying of cargo details on w/b ticket is being generated on a straight line, so when it's too long it's not wrapped and appears to overlaps other wordings.",Resolved,21/2/2024,23/1/2024,towuor,info@ebenezerctwtltd.com
+Titles heads of some reports are not inline with the data they present,Titles heads of some reports are not inline with the data they present,Resolved,30/4/2024,12/2/2024,micna,ict@interways.co.ke
+"Weighing Module dashboard to be simplified, for faster weighing","Weighing Module dashboard to be simplified, for faster weighing",Resolved,22/4/2024,12/2/2024,micna,dg@kenha.co.ke
+"Audit module- should not limit no. of vehicles, should be able to filter by date, time, vehicle registration no and by user","Audit module- should not limit no. of vehicles, should be able to filter by date, time, vehicle registration no and by user",Resolved,25/2/2024,12/2/2024,zotieno,info@dankaafrica.com
+Auto weighing to be included,Auto weighing to be included,Resolved,25/3/2024,23/2/2023,micna,info@ebenezerctwtltd.com
+"Some Reports in Report module don't work i.e. Payment list, Time turn report etc.","Some Reports in Report module don't work i.e. Payment list, Time turn report etc.",Resolved,25/2/2024,27/2/2024,micna,dg@kenha.co.ke
+Refreshing of the browser in the process of weighing a vehicle to be deactivated.,"For trucks with sacco, transporter details was automatically captured when permit is valid but for sometime now computer operator is compelled to enter those details even if the permit is valid otherwise we will have no transporter data.",Resolved,28/3/2024,20/2/2024,zotieno,info@dankaafrica.com
+Permit Details,Permit Details,Resolved,21/2/2024,20/2/2024,micna,info@ebenezerctwtltd.com
+Charge Sheet,Everytime Police Charge sheet is generated it comes with different axle &amp; gvw weights as those weights from it's respective tickets.,Resolved,30/4/2024,23/2/2024,micna,ict@interways.co.ke
+User management,An admin user cannot edit an existing account details ( ROLE ) he has to create a new account. When SA step in for the role of DM( when they are leave or for other reasons) we cannot make such changes.,Resolved,22/4/2024,23/1/2023,towuor,ict@interways.co.ke
+Case Management,"When adding cases on case management feature, error code 400 pops up. Error states case or similar OB exist. Even though it's a new entry. New cases cannot be saved or added to KenLoad due to this error.",Resolved,25/2/2024,12/5/2024,micna,ict@interways.co.ke
+Ticket time difference,NAIROBI BOUND TICKET TIME DIFFERENCE-Nairobi bound tickets have varience between the time a vehicle has been weighed and the time printed when the vehicle was weighed. The time printed on the ticket isn't when the vehicle was weighed.,Resolved,25/3/2024,23/1/2024,micna,ict@interways.co.ke

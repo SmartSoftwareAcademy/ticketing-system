@@ -58,39 +58,37 @@ def export_tickets_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
     rows = []
-    if request.POST != None or '':
-        print(request.POST)
+    if request.POST:
         resolved = ""
         unsolved = ""
         urgent = ""
         pending = ""
-        datefrom = request.POST.get('datefrom',datetime.now()-timedelta(days=1000))
-        dateto =  request.POST.get('datefrom',datetime.now())
-        cemail = request.POST.getlist('client_mails')[0]
-        semail = request.POST.getlist('staff_mails')[0]
-        rows = []
-        if 'Pending' in request.POST:
+        datefrom = request.POST.get('datefrom','')
+        dateto =  request.POST.get('datefrom','')
+        cemail = request.POST.getlist('client_mails',['select client'])[0]
+        semail = request.POST.getlist('staff_mails',['select staff'])[0]
+        if pending !="":
             pending = request.POST['pending']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=pending)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
             if tckts:
                 for tckt in tckts:
                     rows.append(tckt)
-        if 'Unsolved' in request.POST:
+        if unsolved !="":
             unsolved = request.POST['unsolved']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=unsolved)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
             if tckts:
                 for tckt in tckts:
                     rows.append(tckt)
-        if 'Urgent' in request.POST:
+        if urgent !="":
             urgent = request.POST['urgent']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=urgent)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
             if tckts:
                 for tckt in tckts:
                     rows.append(tckt)
-        if 'Ressolved' in request.POST:
+        if resolved !="":
             resolved = request.POST['ressolved']
             tckts=Ticket.objects.filter(Q(ticket_status__contains=resolved)).values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
@@ -116,7 +114,6 @@ def export_tickets_xls(request):
     else:
         rows = Ticket.objects.all().values_list(
             'title', 'customer_email', 'created_date', 'resolved_date', 'resolved_by__email', 'issue_description',)
-        pdb.set_trace()
     #print(rows)
     for row in rows:
         row_num += 1
@@ -169,7 +166,7 @@ def export_pdf(request):
     response['Content-Disposition'] = f'attachment; filename="{file_name}"'
     styles = getSampleStyleSheet()
 
-    PAGESIZE = pagesizes.landscape(pagesizes.A3)
+    PAGESIZE = pagesizes.landscape(pagesizes.A4)
     #load site setups
     setup=System_Settings.objects.first()
 
@@ -221,7 +218,7 @@ def export_pdf(request):
                           styles['Normal_CENTER'])
     address = Paragraph(f"P.O Box: {setup.address}", styles['Normal_CENTER'])
     report_title = Paragraph("Ticket Reports as at {}".format(
-        datetime.now()), styles['Normal_LEFT'])
+        datetime.now().strftime("%d-%m-%Y")), styles['Normal_LEFT'])
 
    
     if setup.logo:
@@ -243,9 +240,11 @@ def export_pdf(request):
     data.append(report_title)
     tickets = Ticket.objects.all()  # filter(ticket_status="Resolved")
     headers = ["Ticket Issue", "Status","Raised By",
-               "Ressolved By", "Date Raised", "Date Ressolved", "Duration\n(Days:Hrs)"]
+               "Ressolved By", "Date Raised", "Date Ressolved", 
+               #"Duration\n(Days:Hrs)"
+               ]
     rows.append(headers)
-    if request.POST != None or '':
+    if request.POST:
         resolved = ""#Resolved
         unsolved = ""
         urgent = ""
@@ -269,34 +268,44 @@ def export_pdf(request):
             semail = semail[2:-3]
             cemail = cemail[2:-3]
             tickets=tickets.filter(Q(resolved_by__email__contains=semail) | Q(customer_email__contains=cemail))
-    tickets=tickets.order_by('ticket_status')
+    tickets=tickets.order_by('-ticket_status')
     for ticket in tickets:
         duration = ""
-        title = Paragraph(ticket.title, styles['BodyText'])
+        issue_description = Paragraph(ticket.issue_description if ticket.issue_description !=None else ticket.tit, styles['BodyText'])
         ticket_status = Paragraph(ticket.ticket_status, styles['BodyText'])
         cemail = Paragraph(ticket.customer_email, styles['BodyText'])
         semail = [Paragraph(ticket.resolved_by.email, styles['BodyText']) if ticket.resolved_by !=
-                  None else "Not Ressolved"][0]
+                  None else "Unknown"][0]
         if ticket.resolved_date != None:
-            duration = "D:"+str((ticket.resolved_date-ticket.created_date).days) + \
+            duration = "D:"+str(abs(ticket.resolved_date-ticket.created_date).days) + \
                 " H:"+str("{:.2f}".format((ticket.resolved_date -
                           ticket.created_date).seconds/(3600)))
         else:
             duration = "Unknown"
-        rows.append([title,
+        rows.append([issue_description,
                      ticket_status,
                      cemail,
                      semail,
                      date_format(ticket.created_date, "SHORT_DATE_FORMAT"),
                      [date_format(ticket.resolved_date, "SHORT_DATE_FORMAT")
-                      if ticket.resolved_date != None else "Not Ressolved"][0],
-                     duration,
+                      if ticket.resolved_date != None else "Unknown"][0],
+                     #duration,
                      ])
-    c_width = [6*inch,1.5 *inch, 2*inch, 2*inch, 1.5 *inch, 1.5*inch]
-    content_table = Table(rows, rowHeights=40, colWidths=c_width)
-    content_table.setStyle(TableStyle([('GRID', (0, 0), (-1, -1), 1, 'black'), ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
-                           ('FONTSIZE', (0, 0), (-1, -1), 12), ('ROWBACKGROUNDS', (0, 1), (-1, -2), ['lightgrey', 'white']), ]))
+    c_width = [4.5*inch, 1*inch, 1.5*inch, 1.5*inch, 1.4*inch]
+    content_table = Table(rows, colWidths=c_width)
+    content_table.setStyle(TableStyle([
+        ('GRID', (0, 0), (-1, -1), 1, 'black'),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
+        ('FONTSIZE', (0, 0), (-1, -1), 12),
+        ('ROWBACKGROUNDS', (0, 1), (-1, -2), ['lightgrey', 'white']),
+        ('AUTOSIZE', (0, 0), (-1, -1), True),
+        ('AUTOSIZEHEIGHT', (0, 0), (-1, -1), True),
+        ('AUTOSETFONTSIZE', (0, 0), (-1, -1), True),
+        ('AUTOSETBACKGROUND', (0, 0), (-1, -1), True),
+        ('AUTOSETPADDING', (0, 0), (-1, -1), True),
+    ]))
     data.append(content_table)
+
     data.append(PageBreak())
     doc.build(data, canvasmaker=MyCanvas)
     return response

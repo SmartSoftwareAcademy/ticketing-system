@@ -16,7 +16,9 @@ class TicketAdmin(admin.ModelAdmin):
         'ticket_priority',
         'ticket_status',
         'assigned_to',
-        'resolved_by'
+        'resolved_by',
+        'created_date',
+        'resolved_date',
     )
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE()}
@@ -25,6 +27,7 @@ class TicketAdmin(admin.ModelAdmin):
         'ticket_section',
         'ticket_priority',
         'ticket_status',
+        'resolved_by',
         'tags__tag_name',
     )
 

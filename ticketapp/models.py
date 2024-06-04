@@ -47,18 +47,18 @@ class Ticket(models.Model):
     customer_phone_number = models.CharField(
         max_length=20, null=True, blank=True)
     customer_email = models.EmailField(
-        max_length=40, default='info@tdbsoft.co.ke')
+        max_length=40, default='example@example.com')
     ticket_section = models.CharField(
         max_length=30, choices=TICKET_SECTIONS, null=True, blank=True, default='General')
     ticket_priority = models.CharField(
         max_length=100, choices=TICKET_PRIORITIES, null=True, blank=True, default="Low")
     ticket_status = models.CharField(
-        max_length=100, choices=TICKET_STATUSES, default='Unsolved')
+        max_length=100, choices=TICKET_STATUSES, default='Pending')
     assigned_to = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='assigned_to', null=True, blank=True)
     resolved_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='resolved_by', null=True, blank=True)
-    created_date = models.DateTimeField(auto_now_add=True, null=True)
+    created_date = models.DateTimeField(blank=True, null=True)
     resolved_date = models.DateTimeField(null=True, blank=True)
     updated_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='updated_by', null=True, blank=True)
