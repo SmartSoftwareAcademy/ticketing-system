@@ -41,6 +41,7 @@ class ImportCSVTickets:
             status = row['Status']
             assignee = row['Asignee'] 
             raised_by = row['RaisedBy']
+            clientName = row['ClientName']
             date_resolved = row['DateResolved']
             date_raised = row['DateRaised']
             
@@ -52,28 +53,30 @@ class ImportCSVTickets:
 
             # Get the User objects for assignee and raised_by
             try:
-                assigned_to_user = User.objects.get(username=assignee)
+                assigned_to_user = User.objects.filter(username=assignee).first()
             except User.DoesNotExist:
                 assigned_to_user = None
 
             try:
-                raised_by_user = User.objects.get(email=raised_by)
+                raised_by_user = User.objects.filter(email=raised_by).first()
             except User.DoesNotExist:
                 raised_by_user = None
 
             # Create and save the Ticket object
             ticket,created= Ticket.objects.update_or_create(
-                user=self.request.user,
-                title=title,
                 issue_description=issue,
-                ticket_status=status,
-                resolved_date=date_resolved,
                 created_date=date_raised,
-                assigned_to=assigned_to_user,
-                resolved_by=assigned_to_user,
-                customer_email=raised_by
+                customer_email=raised_by,
+                defaults={
+                "user":self.request.user,
+                "title":title,
+                "ticket_status":status,
+                "resolved_date":date_resolved,
+                "assigned_to":assigned_to_user,
+                "resolved_by":assigned_to_user,
+                "customer_full_name":clientName
+                }
             )
-
             # Save the ticket instance
         return "Tickets have been successfully uploaded from the CSV file."
 

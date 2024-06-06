@@ -239,7 +239,7 @@ def export_pdf(request):
     data.append(tel)
     data.append(report_title)
     tickets = Ticket.objects.all()  # filter(ticket_status="Resolved")
-    headers = ["Ticket Issue", "Status","Raised By",
+    headers = ["Ticket Issue", "Status","Raised By","Client Name",
                "Ressolved By", "Date Raised", "Date Ressolved", 
                #"Duration\n(Days:Hrs)"
                ]
@@ -274,6 +274,7 @@ def export_pdf(request):
         issue_description = Paragraph(ticket.issue_description if ticket.issue_description !=None else ticket.tit, styles['BodyText'])
         ticket_status = Paragraph(ticket.ticket_status, styles['BodyText'])
         cemail = Paragraph(ticket.customer_email, styles['BodyText'])
+        cname = Paragraph(ticket.customer_full_name, styles['BodyText'])
         semail = [Paragraph(ticket.resolved_by.email, styles['BodyText']) if ticket.resolved_by !=
                   None else "Unknown"][0]
         if ticket.resolved_date != None:
@@ -285,13 +286,14 @@ def export_pdf(request):
         rows.append([issue_description,
                      ticket_status,
                      cemail,
+                     cname,
                      semail,
                      date_format(ticket.created_date, "SHORT_DATE_FORMAT"),
                      [date_format(ticket.resolved_date, "SHORT_DATE_FORMAT")
                       if ticket.resolved_date != None else "Unknown"][0],
                      #duration,
                      ])
-    c_width = [4.5*inch, 1*inch, 1.5*inch, 1.5*inch, 1.4*inch]
+    c_width = [4*inch, 0.8*inch,1*inch, 1.5*inch, 1.5*inch, 1.3*inch]
     content_table = Table(rows, colWidths=c_width)
     content_table.setStyle(TableStyle([
         ('GRID', (0, 0), (-1, -1), 1, 'black'),
