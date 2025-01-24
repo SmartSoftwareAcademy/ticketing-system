@@ -66,6 +66,9 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering=['-created_date']
 
     def generate_client_id(self):
         return get_random_string(8, allowed_chars='0123456789abcdefghijklmnopuwzxyv')

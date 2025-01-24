@@ -238,7 +238,7 @@ def export_pdf(request):
     data.append(address)
     data.append(tel)
     data.append(report_title)
-    tickets = Ticket.objects.all()  # filter(ticket_status="Resolved")
+    tickets = Ticket.objects.all().order_by("-created_date")  # filter(ticket_status="Resolved")
     headers = ["Ticket Issue", "Status","Raised By","Client Name",
                "Ressolved By", "Date Raised", "Date Ressolved", 
                #"Duration\n(Days:Hrs)"
@@ -288,8 +288,8 @@ def export_pdf(request):
                      cemail,
                      cname,
                      semail,
-                     date_format(ticket.created_date, "SHORT_DATE_FORMAT"),
-                     [date_format(ticket.resolved_date, "SHORT_DATE_FORMAT")
+                     date_format(ticket.created_date if ticket.created_date is not None else datetime.now(), "SHORT_DATE_FORMAT"),
+                     [date_format(ticket.resolved_date if ticket.resolved_date is not None else datetime.now(), "SHORT_DATE_FORMAT")
                       if ticket.resolved_date != None else "Unknown"][0],
                      #duration,
                      ])

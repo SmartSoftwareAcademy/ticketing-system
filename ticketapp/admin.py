@@ -6,7 +6,8 @@ from .forms import ImapForm
 
 
 class TicketAdmin(admin.ModelAdmin):
-    list_display = (
+    list_per_page=10
+    list_display = [
         'ticket_id',
         'title',
         'customer_full_name',
@@ -19,7 +20,7 @@ class TicketAdmin(admin.ModelAdmin):
         'resolved_by',
         'created_date',
         'resolved_date',
-    )
+    ]
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE()}
     }
@@ -29,9 +30,14 @@ class TicketAdmin(admin.ModelAdmin):
         'ticket_status',
         'resolved_by',
         'tags__tag_name',
+        'created_date',
+        'resolved_date',
+        'assigned_to',
     )
 
-    search_fields = ('title', 'ticket_status', 'tcket_id',)
+    search_fields = ('title', 'ticket_status', 'ticket_id' 'created_date','resolved_date','assigned_to','resolved_by')
+    list_display_links=['ticket_id']
+    list_editable=['ticket_status','created_date','resolved_date','assigned_to','resolved_by']
 
 
 class OutgoinEmailSettingsAdmin(admin.ModelAdmin):
